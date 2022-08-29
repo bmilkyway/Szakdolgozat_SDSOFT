@@ -1,3 +1,0 @@
-C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\EK_Diagram\obj\Debug\EK_Diagram.csproj.AssemblyReference.cache
-C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\EK_Diagram\obj\Debug\EK_Diagram.csproj.SuggestedBindingRedirects.cache
-C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\EK_Diagram\obj\Debug\EK_Diagram.csproj.CoreCompileInputs.cache
