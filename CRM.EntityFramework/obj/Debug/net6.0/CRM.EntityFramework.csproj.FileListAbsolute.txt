@@ -1,0 +1,17 @@
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.EntityFramework.deps.json
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.EntityFramework.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.EntityFramework.pdb
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.Domain.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.Domain.pdb
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.csproj.AssemblyReference.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.AssemblyInfoInputs.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.AssemblyInfo.cs
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.csproj.CoreCompileInputs.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.csproj.CopyComplete
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\refint\CRM.EntityFramework.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.pdb
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\ref\CRM.EntityFramework.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.EntityFramework.runtimeconfig.json
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.genruntimeconfig.cache

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+  <Alias Key="Model" Value="CRM_EK_Diagram" />
+  <Alias Key="Target" Value="CRM_EK_Diagram.Store" />
+  <EntityContainerMapping CdmEntityContainer="CRM_EK_DiagramContainer" StorageEntityContainer="CRM_EK_DiagramTargetContainer" />
+</Mapping>

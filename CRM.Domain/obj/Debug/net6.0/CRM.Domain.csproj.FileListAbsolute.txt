@@ -1,0 +1,12 @@
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\bin\Debug\net6.0\CRM.Domain.deps.json
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\bin\Debug\net6.0\CRM.Domain.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\bin\Debug\net6.0\CRM.Domain.pdb
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\obj\Debug\net6.0\CRM.Domain.csproj.AssemblyReference.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\obj\Debug\net6.0\CRM.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\obj\Debug\net6.0\CRM.Domain.AssemblyInfoInputs.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\obj\Debug\net6.0\CRM.Domain.AssemblyInfo.cs
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\obj\Debug\net6.0\CRM.Domain.csproj.CoreCompileInputs.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\obj\Debug\net6.0\CRM.Domain.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\obj\Debug\net6.0\refint\CRM.Domain.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\obj\Debug\net6.0\CRM.Domain.pdb
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.Domain\obj\Debug\net6.0\ref\CRM.Domain.dll

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CRM_EK_Diagram" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="CRM_EK_DiagramContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserSet" EntityType="CRM_EK_Diagram.User" />
+    <EntitySet Name="PermissionSet" EntityType="CRM_EK_Diagram.Permission" />
+    <EntitySet Name="MessageSet" EntityType="CRM_EK_Diagram.Message" />
+    <EntitySet Name="TaskSet" EntityType="CRM_EK_Diagram.Task" />
+    <EntitySet Name="StatusSet" EntityType="CRM_EK_Diagram.Status" />
+    <AssociationSet Name="UserPermission" Association="CRM_EK_Diagram.UserPermission">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Permission" EntitySet="PermissionSet" />
+    </AssociationSet>
+    <AssociationSet Name="MessageUser" Association="CRM_EK_Diagram.MessageUser">
+      <End Role="Message" EntitySet="MessageSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="TaskStatus" Association="CRM_EK_Diagram.TaskStatus">
+      <End Role="Task" EntitySet="TaskSet" />
+      <End Role="Status" EntitySet="StatusSet" />
+    </AssociationSet>
+    <AssociationSet Name="TaskUser" Association="CRM_EK_Diagram.TaskUser">
+      <End Role="Task" EntitySet="TaskSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="RegistrationDate" Type="String" Nullable="false" />
+    <Property Name="IsActive" Type="String" Nullable="false" />
+    <Property Name="LoginDate" Type="String" Nullable="false" />
+    <Property Name="PermissionId" Type="String" Nullable="false" />
+    <NavigationProperty Name="Permission" Relationship="CRM_EK_Diagram.UserPermission" FromRole="User" ToRole="Permission" />
+    <NavigationProperty Name="Message" Relationship="CRM_EK_Diagram.MessageUser" FromRole="User" ToRole="Message" />
+    <NavigationProperty Name="Task" Relationship="CRM_EK_Diagram.TaskUser" FromRole="User" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PermissionName" Type="String" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="CRM_EK_Diagram.UserPermission" FromRole="Permission" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ToUserId" Type="String" Nullable="false" />
+    <Property Name="FromUserId" Type="String" Nullable="false" />
+    <Property Name="Subject" Type="String" Nullable="false" />
+    <Property Name="IsRead" Type="String" Nullable="false" />
+    <Property Name="MessageText" Type="String" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="CRM_EK_Diagram.MessageUser" FromRole="Message" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" Nullable="false" />
+    <Property Name="TaskDescription" Type="String" Nullable="false" />
+    <Property Name="TaskCategory" Type="String" Nullable="false" />
+    <Property Name="CreateDate" Type="String" Nullable="false" />
+    <Property Name="CloseDate" Type="String" Nullable="false" />
+    <Property Name="Deadline" Type="String" Nullable="false" />
+    <Property Name="CreaterUserId" Type="String" Nullable="false" />
+    <Property Name="StatusId" Type="String" Nullable="false" />
+    <Property Name="ResponsibleUserId" Type="String" Nullable="false" />
+    <NavigationProperty Name="Status" Relationship="CRM_EK_Diagram.TaskStatus" FromRole="Task" ToRole="Status" />
+    <NavigationProperty Name="User" Relationship="CRM_EK_Diagram.TaskUser" FromRole="Task" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" Nullable="false" />
+    <NavigationProperty Name="Task" Relationship="CRM_EK_Diagram.TaskStatus" FromRole="Status" ToRole="Task" />
+  </EntityType>
+  <Association Name="UserPermission">
+    <End Type="CRM_EK_Diagram.User" Role="User" Multiplicity="1" />
+    <End Type="CRM_EK_Diagram.Permission" Role="Permission" Multiplicity="*" />
+  </Association>
+  <Association Name="MessageUser">
+    <End Type="CRM_EK_Diagram.Message" Role="Message" Multiplicity="1" />
+    <End Type="CRM_EK_Diagram.User" Role="User" Multiplicity="*" />
+  </Association>
+  <Association Name="TaskStatus">
+    <End Type="CRM_EK_Diagram.Task" Role="Task" Multiplicity="1" />
+    <End Type="CRM_EK_Diagram.Status" Role="Status" Multiplicity="*" />
+  </Association>
+  <Association Name="TaskUser">
+    <End Type="CRM_EK_Diagram.Task" Role="Task" Multiplicity="1" />
+    <End Type="CRM_EK_Diagram.User" Role="User" Multiplicity="*" />
+  </Association>
+</Schema>
