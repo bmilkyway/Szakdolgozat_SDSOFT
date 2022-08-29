@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace CRM.Domain.Models
 {
-    public class Status:DomainObject
+    public class DomainObject
     {
-       
-        public string? StatusName { get; set; }
+        public int Id { get; set; }
     }
 }

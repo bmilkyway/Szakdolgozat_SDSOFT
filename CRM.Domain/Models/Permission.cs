@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CRM.Domain.Models
 {
-    public class Permission
+    public class Permission:DomainObject
     {
-       public int Id { get; set; }
+      
        public string PermissionName { get; set; }
     }
 }

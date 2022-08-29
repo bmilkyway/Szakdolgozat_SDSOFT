@@ -110,7 +110,7 @@ namespace CRM.EntityFramework.Migrations
             migrationBuilder.InsertData(
                 table: "Messages",
                 columns: new[] { "Id", "FromUserId", "MessageText", "SendDate", "Subject", "ToUserId", "UserId", "isRead" },
-                values: new object[] { 1, 1, "Ez az első elküldött levél", new DateTime(2022, 8, 29, 18, 11, 10, 48, DateTimeKind.Local).AddTicks(603), "Első levél", 1, null, false });
+                values: new object[] { 1, 1, "Ez az első elküldött levél", new DateTime(2022, 8, 29, 18, 11, 10, 48, DateTimeKind.Local).AddTicks(603), "Első levél", 1, false });
 
             migrationBuilder.InsertData(
                 table: "Permissions",
@@ -136,7 +136,7 @@ namespace CRM.EntityFramework.Migrations
             migrationBuilder.InsertData(
                 table: "Tasks",
                 columns: new[] { "Id", "Category", "CloseDate", "CreateDate", "CreatedUserId", "DeadLine", "ResponsibleUserId", "TaskDescription", "TaskName", "TaskStatusId", "UserId" },
-                values: new object[] { 1, "Prgramozás", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 8, 29, 18, 11, 10, 48, DateTimeKind.Local).AddTicks(4889), 1, new DateTime(2022, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Ez az első feladat leírása", "Első feladat", 1, null });
+                values: new object[] { 1, "Prgramozás", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 8, 29, 18, 11, 10, 48, DateTimeKind.Local).AddTicks(4889), 1, new DateTime(2022, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Ez az első feladat leírása", "Első feladat", 1 });
 
             migrationBuilder.InsertData(
                 table: "Users",
