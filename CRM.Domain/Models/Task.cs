@@ -19,5 +19,10 @@ namespace CRM.Domain.Models
         public int TaskStatusId{ get; set; }
         public int ResponsibleUserId { get; set; }
 
+        public override string ToString()
+        {
+            return String.Format("{0} - {1} (Lejárat: {2})",TaskName,Category, DeadLine);
+        }
+
     }
 }

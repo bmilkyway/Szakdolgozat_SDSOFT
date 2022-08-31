@@ -19,15 +19,16 @@ namespace CRM.WPF.Commands
 
         public UpDateCurrentViewModelCommand(INavigator navigator)
         {
+            
             _navigator = navigator;
         }
-
+              
         public bool CanExecute(object? parameter)
         {
             return true;
         }
 
-        public void Execute(object parameter)
+        public void Execute(object? parameter)
         {
            if(parameter is ViewType)
             {

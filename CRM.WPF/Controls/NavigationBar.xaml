@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CRM.WPF.Controls"
+             xmlns:assets="clr-namespace:CRM.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Gray"
+             d:DesignHeight="450" d:DesignWidth="800" Background="#31407B"
              d:MinHeight="450" d:MinWidth="800"
              xmlns:navigator="clr-namespace:CRM.WPF.State.Navigators"
              
@@ -13,40 +14,36 @@
 
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-        
-
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
-        </Grid.RowDefinitions>
+      
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="48.667"/>
-            <ColumnDefinition Width="81.333"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
+       
 
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+       
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" >
+          
+     
+            <Image Grid.Column="0" Source="/Controls/whiteLogo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 5 2 30"/>
+            <TextBlock Text="Felhasználónév" FontSize="20" Margin="10 0 0 0" Foreground="White"/>
+            <TextBlock Text="Emailcím" FontSize="15" Margin="10 0 0 20" Foreground="White"/>
+            <Button Grid.Column="0" x:Name="homeMenuBtn" Content="KEZDŐ OLDAL" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Home}" Click="Active" Padding="10"  BorderBrush="Transparent" />
+            <Button Grid.Column="0"  x:Name="messageMenuBtn" Content="ÜZENETEK" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Message}" Padding="10"  BorderBrush="Transparent"    />
+            <Button Grid.Column="0"   x:Name="taskMenuBtn" Content="FELADATOK" Background="#31407B"  FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Task}" Padding="10"   BorderBrush="Transparent"   />
+            <Button Grid.Column="0"  x:Name="overViewMenuBtn" Content="ÁTTEKINTÉS" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.OverView}" Padding="10"   BorderBrush="Transparent"  />
+            <Button Grid.Column="0"   x:Name="logOutMenuBtn" Content="KIJELENTKEZÉS" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.LogOut}" Padding="10"  BorderBrush="Transparent" />
+             
 
-
-
-
-        <Image Grid.Row="0" Grid.Column="0"  Source="/Controls/whiteLogo.png" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Grid.Column="0" Grid.Row="2" x:Name="homeMenuBtn" Content="KEZDŐ OLDAL" Background="Gray" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Home}" Grid.ColumnSpan="2" Click="Active"/>
-        <Button Grid.Column="0" Grid.Row="3" x:Name="messageMenuBtn" Content="ÜZENETEK" Background="Gray" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Message}" Grid.ColumnSpan="2"/>
-        <Button Grid.Column="0" Grid.Row="4" x:Name="taskMenuBtn" Content="FELADATOK" Background="Gray" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Task}" Grid.ColumnSpan="2"/>
-        <Button Grid.Column="0" Grid.Row="5" x:Name="overViewMenuBtn" Content="ÁTTEKINTÉS" Background="Gray" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.OverView}" Grid.ColumnSpan="2"/>
-        <Button Grid.Column="0" Grid.Row="6" x:Name="logOutMenuBtn" Content="KIJELENTKEZÉS" Background="Gray" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.LogOut}" Grid.ColumnSpan="2"/>
-
-        <TextBlock Grid.Column="0" Grid.Row="2"  x:Name="topicalPage" Background="White"  Width="5" HorizontalAlignment="Left"/>
-        <TextBlock Grid.Column="0" Grid.Row="9"  Text="Version 1.02 " FontSize="10" Foreground="White" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="37,0,0,0"/>
-
-
+        </StackPanel>
+        <TextBlock Grid.Column="0" Grid.Row="1"  Text="Version 1.02 " FontSize="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom"  />
     </Grid>
+
+
+
+  
 </UserControl>
