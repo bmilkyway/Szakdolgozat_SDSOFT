@@ -10,11 +10,24 @@
         <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
             <views:HomeView/>
         </DataTemplate>
-        
+
+
         <DataTemplate DataType="{x:Type viewmodels:MessageViewModel}">
             <views:MessageView/>
         </DataTemplate>
-
+        
+        <DataTemplate DataType="{x:Type viewmodels:IncomingMessageViewModel}">
+            <views:IncomingMessageView/>
+            
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:SentMessageViewModel}">
+            <views:SentMessageView/>
+        </DataTemplate>
+        
+  
+        <DataTemplate DataType="{x:Type viewmodels:NewMessageViewModel}">
+            <views:NewMessageView/>
+        </DataTemplate>
 
 
     </Application.Resources>

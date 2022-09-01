@@ -10,17 +10,17 @@
              Background="#41518F">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="250" />
             <RowDefinition Height="100"  />
             <RowDefinition Height="*" />
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
 
@@ -89,18 +89,29 @@
             </Border>
         </Viewbox>
 
-        <DockPanel Grid.Row="1" Grid.RowSpan="3" Grid.Column="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Saját feldatok" FontSize="18" Grid.Column="0" Grid.Row="0" Foreground="White"/>
-                <ListBox ItemsSource="{Binding ownTasks}" FontSize="20" Grid.Column="0" Grid.Row="1">
+        <DockPanel Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Margin="0 25 0 0">
+            
+               
+                <ListBox ItemsSource="{Binding ownTasks}" FontSize="20">
                     
                 </ListBox>
-            </Grid>
+         
         </DockPanel>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Background="#31407B">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+              
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Grid.Row="0" Content="Saját feladatok" Foreground="White" FontSize="15" Background="Transparent" BorderBrush="Transparent" />
+            </Grid>
+            
+        </StackPanel>
+       
     </Grid>
 
 </UserControl>

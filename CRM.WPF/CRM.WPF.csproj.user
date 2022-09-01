@@ -13,7 +13,16 @@
     <Compile Update="Views\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\IncomingMessageView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\MessageView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewMessageView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SentMessageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -27,7 +36,16 @@
     <Page Update="Views\HomeView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\IncomingMessageView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\MessageView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewMessageView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SentMessageView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -18,6 +18,9 @@ namespace CRM.WPF.State.Navigators
         Message,
         OverView,
         Task,
+        NewMessage,
+        SentMessage,
+        IncomingMessage,
     }
 
 

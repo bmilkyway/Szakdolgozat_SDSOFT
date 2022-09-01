@@ -1,4 +1,5 @@
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.EntityFramework.deps.json
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.EntityFramework.runtimeconfig.json
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.EntityFramework.dll
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.EntityFramework.pdb
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.Domain.dll
@@ -12,6 +13,5 @@ C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.dll
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\refint\CRM.EntityFramework.dll
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.pdb
-C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\ref\CRM.EntityFramework.dll
-C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\bin\Debug\net6.0\CRM.EntityFramework.runtimeconfig.json
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\CRM.EntityFramework.genruntimeconfig.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.EntityFramework\obj\Debug\net6.0\ref\CRM.EntityFramework.dll

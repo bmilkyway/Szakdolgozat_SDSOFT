@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CRM.WPF.State.Navigators;
+
 
 namespace CRM.WPF.ViewModels
 {
     public class MessageViewModel:ViewModelBase
     {
+        public INavigator Navigator { get; set; } = new Navigator();
+
+        public MessageViewModel()
+        {
+            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.IncomingMessage);
+        }
     }
 }
