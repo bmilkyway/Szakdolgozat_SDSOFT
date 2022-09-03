@@ -20,5 +20,10 @@ namespace CRM.Domain.Models
         public IEnumerable<Message>? Messages { get; set; }
         public IEnumerable<Task>? Tasks { get; set; }
 
+        public override string ToString()
+        {
+            return String.Format(Name!);
+        }
+
     }
 }

@@ -59,6 +59,29 @@ namespace CRM.EntityFramework.Services
             }
         }
 
+        public async Task<IEnumerable<User>> ActiveUsers()
+        {
+             using(CRM_DbContext context = _contextFactory.CreateDbContext())
+              {
+
+                IEnumerable<User> entities = await context.Set<User>().Where(e=> e.IsActive==true).ToArrayAsync();
+                return entities;
+                /*     Ez az sql lekérdezés
+
+                      SELECT UserName,COUNT(Messages.ToUserId) 
+                      FROM Users
+                      INNER JOIN Messages on Users.Id = Messages.FromUserId
+                      Where Messages.ToUserId = 1 
+                      GROUP BY UserName 
+                      ORDER by COUNT(Messages.ToUserId) DESC
+                      LIMIT 10
+
+         */
+
+            } 
+            
+        }
+
         public async Task<T> Update(int id, T entity)
         {
             using (CRM_DbContext context = _contextFactory.CreateDbContext())
@@ -67,6 +90,26 @@ namespace CRM.EntityFramework.Services
                 context.Set<T>().Update(entity);
                 await context.SaveChangesAsync();
                 return entity;
+            }
+        }
+
+        public async Task<IEnumerable<Message>> IncomingMessages(int toUserId)
+        {
+
+            using (CRM_DbContext context = _contextFactory.CreateDbContext())
+            {
+                IEnumerable<Message> entities = await context.Set<Message>().Where(e=> e.ToUserId==toUserId).OrderByDescending(e => e.SendDate).ToArrayAsync();
+                return entities;
+            }
+        }
+
+        public async Task<IEnumerable<Message>> SentMessages(int fromUserId)
+        {
+
+            using (CRM_DbContext context = _contextFactory.CreateDbContext())
+            {
+                IEnumerable<Message> entities = await context.Set<Message>().Where(e => e.FromUserId == fromUserId).OrderByDescending(e=> e.SendDate).ToArrayAsync();
+                return entities;
             }
         }
     }

@@ -15,5 +15,10 @@ namespace CRM.Domain.Services
         Task<T> Ceate(T entity);
         Task<T> Update(int id, T entity);
 
+        Task<IEnumerable<User>> ActiveUsers();
+
+        Task<IEnumerable<Message>> IncomingMessages(int toUserId);
+        Task<IEnumerable<Message>> SentMessages(int fromUserId);
+
     }
 }

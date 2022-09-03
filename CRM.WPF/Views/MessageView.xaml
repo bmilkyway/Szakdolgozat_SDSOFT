@@ -38,21 +38,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Column="0" Grid.Row="0"  Content="Bejövő" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White" Command="{Binding Navigator.UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.IncomingMessage}">
-                    <Button.DataContext>
-                        <ViewModels:MessageViewModel/>
-                    </Button.DataContext>
-                </Button>
-                <Button Grid.Column="1" Grid.Row="0" Content="Elküldött" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White" Command="{Binding Navigator.UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.SentMessage}">
-                    <Button.DataContext>
-                        <ViewModels:MessageViewModel/>
-                    </Button.DataContext>
-                </Button>
-                <Button Grid.Column="2"  Grid.Row="0" Content="Új" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White" Command="{Binding Navigator.UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.NewMessage}">
-                    <Button.DataContext>
-                        <ViewModels:MessageViewModel/>
-                    </Button.DataContext>
-                </Button>
+                <Button Grid.Column="0" Grid.Row="0"  Content="Bejövő" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White" Command="{Binding Navigator.UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.IncomingMessage}" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageView}}}" />
+
+
+                <Button Grid.Column="1" Grid.Row="0" Content="Elküldött" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White" Command="{Binding Navigator.UpdateCurrentViewModelCommand }" CommandParameter="{x:Static nav:ViewType.SentMessage}" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageView}}}" />
+
+                <Button Grid.Column="2"  Grid.Row="0" Content="Új" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White" Command="{Binding Navigator.UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.NewMessage}" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MessageView}}}" />
+
             </Grid>
         </StackPanel>
 

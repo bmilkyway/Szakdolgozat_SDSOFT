@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,26 @@ namespace CRM.WPF.Views
     /// </summary>
     public partial class SentMessageView : UserControl
     {
+        private readonly SentMessageViewModel sentMessageViewModel; 
         public SentMessageView()
         {
             InitializeComponent();
+            sentMessageViewModel = new SentMessageViewModel();
+        }
+
+        private void setMessageViewer(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+            txtMessageText.Text = sentMessageViewModel.messageList[lbMessageList.SelectedIndex].MessageText;
+            txtSubject.Text = sentMessageViewModel.messageList[lbMessageList.SelectedIndex].Subject;
+            txtAddress.Text = sentMessageViewModel.UserService!.Get(sentMessageViewModel.messageList[lbMessageList.SelectedIndex].FromUserId).Result.ToString();
+     
+            }
+            catch
+            {
+
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ namespace CRM.WPF.Commands
         {
             
             _navigator = navigator;
+    
         }
               
         public bool CanExecute(object? parameter)

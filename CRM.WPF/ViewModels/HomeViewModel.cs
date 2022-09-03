@@ -26,7 +26,7 @@ namespace CRM.WPF.ViewModels
 
         public HomeViewModel()
         {
-          
+            
             active_User = UserService!.Get(1).Result;
             tasks = TaskService!.GetAll().Result;
             messages = MessageService!.GetAll().Result;
