@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\App.xaml
-7-1075042100
+9-822896638
 
-23-471661130
-225-816743556
-Controls\NavigationBar.xaml;MainWindow.xaml;Views\HomeView.xaml;Views\IncomingMessageView.xaml;Views\MessageView.xaml;Views\NewMessageView.xaml;Views\SentMessageView.xaml;
+261267387989
+227-1282086350
+Controls\NavigationBar.xaml;MainWindow.xaml;Views\HomeView.xaml;Views\IncomingMessageView.xaml;Views\Login.xaml;Views\MessageView.xaml;Views\NewMessageView.xaml;Views\SentMessageView.xaml;Views\SignIn.xaml;
 
-True
+False
 

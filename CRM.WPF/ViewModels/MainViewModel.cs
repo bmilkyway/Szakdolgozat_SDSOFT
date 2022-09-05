@@ -1,4 +1,5 @@
-﻿using CRM.WPF.State.Navigators;
+﻿using CRM.Domain.Models;
+using CRM.WPF.State.Navigators;
 
 
 namespace CRM.WPF.ViewModels
@@ -7,7 +8,7 @@ namespace CRM.WPF.ViewModels
     {
         public INavigator Navigator { get; set; } = new Navigator();
 
-       public MainViewModel()
+       public MainViewModel(User activeUser)
         {
             Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
         }

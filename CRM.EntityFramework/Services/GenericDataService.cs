@@ -112,5 +112,14 @@ namespace CRM.EntityFramework.Services
                 return entities;
             }
         }
+
+        public async Task<User> Login(string username, string password)
+        {
+            using (CRM_DbContext context = _contextFactory.CreateDbContext())
+            {
+              User activeUser = await context.Set<User>().FirstOrDefaultAsync((e)=> e.UserName==username && e.Password==password);
+                return activeUser;
+            }
+        }
     }
 }

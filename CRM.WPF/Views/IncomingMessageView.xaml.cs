@@ -1,18 +1,10 @@
-﻿using CRM.WPF.ViewModels;
+﻿
+using CRM.WPF.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace CRM.WPF.Views
 {
@@ -22,10 +14,14 @@ namespace CRM.WPF.Views
     public partial class IncomingMessageView : UserControl
     {
         private readonly IncomingMessageViewModel incomingMessageViewModel;
+        CollectionView filterView;
         public IncomingMessageView()
         {
             InitializeComponent();
             incomingMessageViewModel = new IncomingMessageViewModel();
+            lbMessageList.ItemsSource = incomingMessageViewModel.messageList;
+            filterView = (CollectionView)CollectionViewSource.GetDefaultView(lbMessageList.ItemsSource);
+            filterView!.Filter = CustomFilter;
         }
 
         private void setMessageViewer(object sender, SelectionChangedEventArgs e)
@@ -46,6 +42,21 @@ namespace CRM.WPF.Views
         private void SendAnswer(object sender, RoutedEventArgs e)
         {
 
+        }
+        private bool CustomFilter(object obj)
+        {
+            if (string.IsNullOrEmpty(txtFilter.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return (obj.ToString()!.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+        }
+        private void filterList(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(lbMessageList.ItemsSource).Refresh();
         }
     }
 }

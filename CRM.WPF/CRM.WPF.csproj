@@ -9,6 +9,11 @@
 
   <ItemGroup>
     <None Remove="Controls\whiteLogo.png" />
+    <None Remove="Views\sdSoftLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.0-ci277" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +23,7 @@
 
   <ItemGroup>
     <Resource Include="Controls\whiteLogo.png" />
+    <Resource Include="Views\sdSoftLogo.png" />
   </ItemGroup>
 
 </Project>

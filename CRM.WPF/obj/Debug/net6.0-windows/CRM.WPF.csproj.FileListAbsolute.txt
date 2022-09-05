@@ -67,3 +67,9 @@ C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windo
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\IncomingMessageView.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\NewMessageView.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\SentMessageView.baml
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\bin\Debug\net6.0-windows\MaterialDesignColors.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\Login.baml
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\SignIn.baml
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\Login.g.cs
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\SignIn.g.cs

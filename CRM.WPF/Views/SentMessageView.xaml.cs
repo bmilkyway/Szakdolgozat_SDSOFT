@@ -21,13 +21,27 @@ namespace CRM.WPF.Views
     /// </summary>
     public partial class SentMessageView : UserControl
     {
-        private readonly SentMessageViewModel sentMessageViewModel; 
+        private readonly SentMessageViewModel sentMessageViewModel;
+        CollectionView filterView;
         public SentMessageView()
         {
             InitializeComponent();
             sentMessageViewModel = new SentMessageViewModel();
+            lbMessageList.ItemsSource = sentMessageViewModel.messageList;
+            filterView = (CollectionView)CollectionViewSource.GetDefaultView(lbMessageList.ItemsSource);
+            filterView!.Filter = CustomFilter;
         }
-
+        private bool CustomFilter(object obj)
+        {
+            if (string.IsNullOrEmpty(txtFilter.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return (obj.ToString()!.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+        }
         private void setMessageViewer(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -41,6 +55,11 @@ namespace CRM.WPF.Views
             {
 
             }
+        }
+
+        private void setFilterList(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(lbMessageList.ItemsSource).Refresh();
         }
     }
 }

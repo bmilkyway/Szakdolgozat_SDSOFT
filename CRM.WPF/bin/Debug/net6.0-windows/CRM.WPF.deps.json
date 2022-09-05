@@ -9,7 +9,8 @@
       "CRM.WPF/1.0.0": {
         "dependencies": {
           "CRM.Domain": "1.0.0",
-          "CRM.EntityFramework": "1.0.0"
+          "CRM.EntityFramework": "1.0.0",
+          "MaterialDesignThemes": "4.6.0-ci277"
         },
         "runtime": {
           "CRM.WPF.dll": {}
@@ -70,6 +71,25 @@
           "lib/netstandard2.0/K4os.Hash.xxHash.dll": {
             "assemblyVersion": "1.0.6.0",
             "fileVersion": "1.0.6.0"
+          }
+        }
+      },
+      "MaterialDesignColors/2.0.7-ci277": {
+        "runtime": {
+          "lib/net6.0/MaterialDesignColors.dll": {
+            "assemblyVersion": "2.0.7.0",
+            "fileVersion": "2.0.7.0"
+          }
+        }
+      },
+      "MaterialDesignThemes/4.6.0-ci277": {
+        "dependencies": {
+          "MaterialDesignColors": "2.0.7-ci277"
+        },
+        "runtime": {
+          "lib/net6.0/MaterialDesignThemes.Wpf.dll": {
+            "assemblyVersion": "4.6.0.0",
+            "fileVersion": "4.6.0.0"
           }
         }
       },
@@ -1198,6 +1218,20 @@
       "sha512": "sha512-jCfNP0inx1sGcP3KSbpiDEH3km2e1sVBjMfKo+V92jr1dL4ZYgA1uhRMl1wAtdGZcbObXIikKqtVlgx3j/CW6g==",
       "path": "k4os.hash.xxhash/1.0.6",
       "hashPath": "k4os.hash.xxhash.1.0.6.nupkg.sha512"
+    },
+    "MaterialDesignColors/2.0.7-ci277": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mq/OCX1P3o2iS50bRmw21qLfIT6Le9lHJrx0VyiMOD6hkfdqP9vxuKoQAEZOnez8/RWr9VTaeSroWemiktTJlQ==",
+      "path": "materialdesigncolors/2.0.7-ci277",
+      "hashPath": "materialdesigncolors.2.0.7-ci277.nupkg.sha512"
+    },
+    "MaterialDesignThemes/4.6.0-ci277": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kmCOopPUD07Eo75OFa1MA6F0UNxLMDUB5Ig58e6BSu4ArWGudE+hIVqqnUbng5jucLxa6jaC50KQwQzYD2jZvg==",
+      "path": "materialdesignthemes/4.6.0-ci277",
+      "hashPath": "materialdesignthemes.4.6.0-ci277.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",

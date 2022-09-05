@@ -10,6 +10,9 @@
     <Compile Update="Controls\NavigationBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,9 +28,15 @@
     <Compile Update="Views\SentMessageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\SignIn.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\NavigationBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Login.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
@@ -46,6 +55,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SentMessageView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SignIn.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

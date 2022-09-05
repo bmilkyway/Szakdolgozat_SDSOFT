@@ -20,5 +20,8 @@ namespace CRM.Domain.Services
         Task<IEnumerable<Message>> IncomingMessages(int toUserId);
         Task<IEnumerable<Message>> SentMessages(int fromUserId);
 
+
+        Task<User> Login(string username, string password);
+       
     }
 }

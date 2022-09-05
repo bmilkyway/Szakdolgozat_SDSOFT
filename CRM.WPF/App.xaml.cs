@@ -16,8 +16,8 @@ namespace CRM.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Window window = new MainWindow();
-            window.DataContext = new MainViewModel();
+            Window window = new Login();
+
             window.Show();
             base.OnStartup(e);
         }

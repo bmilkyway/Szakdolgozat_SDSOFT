@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hmWww9UDJnvoo1iOk8jTkYH+yTkiLlyi3F8rGhM8ZlGEqtA71Y0Qymqe1oT/PMhU81nJW941OxhCst/EiAxt9A==",
+  "dgSpecHash": "GIGzNKKVbRqs7WDSgGwoQPvo5Rwee0uwc80Xxh6LQ+fYYmiD08PUA0uCr8i0TfZbFsEHodwbKXtYIJ4skfLE3Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\bajar\\OneDrive\\Dokumentumok\\Szakdolgozat\\CRM.WPF\\CRM.WPF.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\bajar\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
     "C:\\Users\\bajar\\.nuget\\packages\\k4os.compression.lz4.streams\\1.1.11\\k4os.compression.lz4.streams.1.1.11.nupkg.sha512",
     "C:\\Users\\bajar\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\bajar\\.nuget\\packages\\materialdesigncolors\\2.0.7-ci277\\materialdesigncolors.2.0.7-ci277.nupkg.sha512",
+    "C:\\Users\\bajar\\.nuget\\packages\\materialdesignthemes\\4.6.0-ci277\\materialdesignthemes.4.6.0-ci277.nupkg.sha512",
     "C:\\Users\\bajar\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\bajar\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\bajar\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
