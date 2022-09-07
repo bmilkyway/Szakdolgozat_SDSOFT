@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\App.xaml
-9-822896638
+10-312047687
 
-24233787821
+28-329059522
 227-1282086350
-Controls\NavigationBar.xaml;MainWindow.xaml;Views\HomeView.xaml;Views\IncomingMessageView.xaml;Views\Login.xaml;Views\MessageView.xaml;Views\NewMessageView.xaml;Views\SentMessageView.xaml;Views\SignIn.xaml;
+Controls\NavigationBar.xaml;MainWindow.xaml;Views\ForgotPasswordView.xaml;Views\HomeView.xaml;Views\IncomingMessageView.xaml;Views\Login.xaml;Views\MessageView.xaml;Views\NewMessageView.xaml;Views\SentMessageView.xaml;Views\SignIn.xaml;
 
 False
 

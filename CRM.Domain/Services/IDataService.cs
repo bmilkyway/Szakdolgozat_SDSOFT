@@ -22,6 +22,8 @@ namespace CRM.Domain.Services
 
 
         Task<User> Login(string username, string password);
-       
+
+        Task<User> ForgotUser(string email);
+
     }
 }

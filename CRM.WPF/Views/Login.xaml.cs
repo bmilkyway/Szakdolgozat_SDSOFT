@@ -1,4 +1,5 @@
-﻿using CRM.WPF.ViewModels;
+﻿using CRM.WPF.Services.EmailSender;
+using CRM.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,7 @@ namespace CRM.WPF
                 {
                     loginViewModel.navigationToMain();
                     this.Close();
+                   
                 }
                 else
                 {
@@ -71,10 +73,19 @@ namespace CRM.WPF
           
         }
 
+        
+
+
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
         
             loginViewModel.signInWindow();  
+            this.Close();
+        }
+
+        private void btnForgetPasswd_Click(object sender, RoutedEventArgs e)
+        {
+            loginViewModel.forgotPasswordWindow();
             this.Close();
         }
     }

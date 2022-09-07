@@ -1,4 +1,5 @@
 ﻿using CRM.Domain.Models;
+using CRM.WPF.Services.EmailSender;
 using CRM.WPF.Views;
 
 using System.Windows;
@@ -8,7 +9,7 @@ namespace CRM.WPF.ViewModels
     public class LoginViewModel: ViewModelBase
     {
 
-        private User? acticeUser;
+        private User? activeUser;
 
         public LoginViewModel() { 
         }
@@ -16,22 +17,23 @@ namespace CRM.WPF.ViewModels
         public void navigationToMain()
         {
             Window window = new MainWindow();
-            window.DataContext = new MainViewModel(acticeUser!);
+            window.DataContext = new MainViewModel(activeUser!);
             window.Show();
         }
        public bool loginIsSuccesful(string username, string password)
         {
-            acticeUser = UserService!.Login(username, password).Result;
+            activeUser = UserService!.Login(username, password).Result;
 
-            if (acticeUser == null)
+            if (activeUser == null)
             {
                 return false;     
             }
             else
             { 
-                 acticeUser.IsActive = true;
-                acticeUser.LoginDate = System.DateTime.Now;
-                UserService.Update(acticeUser.Id,acticeUser);
+                 activeUser.IsActive = true;
+                activeUser.LoginDate = System.DateTime.Now;
+                UserService.Update(activeUser.Id,activeUser);
+              
                  return true;
                 
             }
@@ -40,6 +42,11 @@ namespace CRM.WPF.ViewModels
         public void signInWindow()
         {
             Window window = new SignIn();
+            window.Show();
+        }
+        public void forgotPasswordWindow()
+        {
+            Window window = new ForgotPasswordView();
             window.Show();
         }
     }

@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using CRM.WPF.ViewModels;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows;
 
 namespace CRM.WPF.Views
 {
@@ -19,14 +9,21 @@ namespace CRM.WPF.Views
     /// </summary>
     public partial class SignIn : Window
     {
+        private SignInViewModel signInViewModel;
         public SignIn()
         {
             InitializeComponent();
+            signInViewModel = new SignInViewModel();
         }
 
-        private void Sign_In(object sender, RoutedEventArgs e)
+        private void StartSignIn(object sender, RoutedEventArgs e)
         {
-
+            if (signInViewModel.registrationIsSuccesful(txtUsername.Text, txtPassword.Password, txtEmail.Text, txtName.Text))
+            {
+                     signInViewModel.navigationToMain();
+                    this.Close();
+                
+            }
         }
 
         #region Alkalmazás bezárása
@@ -43,5 +40,11 @@ namespace CRM.WPF.Views
             DragMove();
         }
         #endregion
+
+        private void CancelSignIn(object sender, RoutedEventArgs e)
+        {
+            signInViewModel.LoginWindow();
+            this.Close();
+        }
     }
 }

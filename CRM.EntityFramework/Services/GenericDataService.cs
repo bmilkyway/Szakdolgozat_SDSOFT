@@ -121,5 +121,14 @@ namespace CRM.EntityFramework.Services
                 return activeUser;
             }
         }
+
+        public async Task<User> ForgotUser(string email)
+        {
+            using (CRM_DbContext context = _contextFactory.CreateDbContext())
+            {
+                User forgotUser = await context.Set<User>().FirstOrDefaultAsync((e) => e.Email == email);
+                return forgotUser;
+            }
+        }
     }
 }

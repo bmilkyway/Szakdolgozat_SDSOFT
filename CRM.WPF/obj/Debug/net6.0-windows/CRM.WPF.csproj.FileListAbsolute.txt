@@ -73,3 +73,5 @@ C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windo
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\SignIn.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\Login.g.cs
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\SignIn.g.cs
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\ForgotPasswordView.baml
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\ForgotPasswordView.g.cs
