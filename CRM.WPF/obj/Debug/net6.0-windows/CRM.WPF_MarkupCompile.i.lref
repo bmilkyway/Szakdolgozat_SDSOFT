@@ -2,9 +2,13 @@
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\App.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Controls\NavigationBar.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\MainWindow.xaml;;
+FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\AllTaskView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\HomeView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\IncomingMessageView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\MessageView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\NewMessageView.xaml;;
+FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\NewTaskView.xaml;;
+FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\OwnTaskView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\SentMessageView.xaml;;
+FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\TaskView.xaml;;
 

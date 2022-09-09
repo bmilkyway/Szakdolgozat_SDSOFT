@@ -38,7 +38,7 @@ namespace CRM.WPF.ViewModels
         }
         public void sendMessage(Message message)
         {
-            MessageService!.Ceate(message);
+            MessageService!.Create(message);
         }
             
       

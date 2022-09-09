@@ -93,6 +93,14 @@
           }
         }
       },
+      "Microsoft.AspNet.Identity.Core/2.2.3": {
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.3.11125"
+          }
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "runtime": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -1161,6 +1169,9 @@
         }
       },
       "CRM.Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNet.Identity.Core": "2.2.3"
+        },
         "runtime": {
           "CRM.Domain.dll": {}
         }
@@ -1232,6 +1243,13 @@
       "sha512": "sha512-kmCOopPUD07Eo75OFa1MA6F0UNxLMDUB5Ig58e6BSu4ArWGudE+hIVqqnUbng5jucLxa6jaC50KQwQzYD2jZvg==",
       "path": "materialdesignthemes/4.6.0-ci277",
       "hashPath": "materialdesignthemes.4.6.0-ci277.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Identity.Core/2.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Mv5FpoaxspE8hlWLE4r1IdZtovg/OyFgVRhxQbx47J4sqdLImN1hnM1lnwCj+/wLmqtqFk/RYMoZ5GAcwm/00g==",
+      "path": "microsoft.aspnet.identity.core/2.2.3",
+      "hashPath": "microsoft.aspnet.identity.core.2.2.3.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",

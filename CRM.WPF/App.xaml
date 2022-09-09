@@ -33,6 +33,20 @@
             <DataTemplate DataType="{x:Type viewmodels:NewMessageViewModel}">
                 <views:NewMessageView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:TaskViewModel}">
+                <views:TaskView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:OwnTaskViewModel}">
+                <views:OwnTaskView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:NewTaskViewModel}">
+                <views:NewTaskView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:AllTaskViewModel}">
+                <views:AllTaskView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

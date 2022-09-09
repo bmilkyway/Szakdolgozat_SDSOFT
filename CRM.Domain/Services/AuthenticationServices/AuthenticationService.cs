@@ -41,7 +41,7 @@ namespace CRM.Domain.Services.AuthenticationServices
 
 
             };
-            await dataService.Ceate(user);
+            await dataService.Create(user);
             return true;
         }
     }

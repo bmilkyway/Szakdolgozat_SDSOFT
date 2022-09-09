@@ -57,6 +57,15 @@ namespace CRM.WPF.Commands
                     case ViewType.IncomingMessage:
                         _navigator.CurrentViewModel = new IncomingMessageViewModel();
                         break;
+                    case ViewType.NewTask:
+                        _navigator.CurrentViewModel = new NewTaskViewModel();
+                        break;
+                    case ViewType.AllTask:
+                        _navigator.CurrentViewModel = new AllTaskViewModel();
+                        break;
+                    case ViewType.OwnTask:
+                        _navigator.CurrentViewModel = new OwnTaskViewModel();
+                        break;
                     case ViewType.LogOut:
                         Application.Current.Shutdown();
                         break;

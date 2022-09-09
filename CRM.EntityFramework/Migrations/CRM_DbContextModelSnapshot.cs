@@ -27,14 +27,12 @@ namespace CRM.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MessageText")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("SendDate")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Subject")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ToUserId")
@@ -58,7 +56,7 @@ namespace CRM.EntityFramework.Migrations
                             Id = 1,
                             FromUserId = 1,
                             MessageText = "Ez az első elküldött levél",
-                            SendDate = new DateTime(2022, 8, 29, 18, 11, 10, 48, DateTimeKind.Local).AddTicks(603),
+                            SendDate = new DateTime(2022, 9, 9, 22, 56, 18, 437, DateTimeKind.Local).AddTicks(6081),
                             Subject = "Első levél",
                             ToUserId = 1,
                             isRead = false
@@ -72,7 +70,6 @@ namespace CRM.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PermissionName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -104,7 +101,6 @@ namespace CRM.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("StatusName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -141,10 +137,9 @@ namespace CRM.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Category")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("CloseDate")
+                    b.Property<DateTime?>("CloseDate")
                         .HasColumnType("datetime");
 
                     b.Property<DateTime>("CreateDate")
@@ -153,18 +148,16 @@ namespace CRM.EntityFramework.Migrations
                     b.Property<int>("CreatedUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DeadLine")
+                    b.Property<DateTime?>("DeadLine")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("ResponsibleUserId")
+                    b.Property<int?>("ResponsibleUserId")
                         .HasColumnType("int");
 
                     b.Property<string>("TaskDescription")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("TaskName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("TaskStatusId")
@@ -184,8 +177,7 @@ namespace CRM.EntityFramework.Migrations
                         {
                             Id = 1,
                             Category = "Prgramozás",
-                            CloseDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreateDate = new DateTime(2022, 8, 29, 18, 11, 10, 48, DateTimeKind.Local).AddTicks(4889),
+                            CreateDate = new DateTime(2022, 9, 9, 22, 56, 18, 437, DateTimeKind.Local).AddTicks(9543),
                             CreatedUserId = 1,
                             DeadLine = new DateTime(2022, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResponsibleUserId = 1,
@@ -202,7 +194,6 @@ namespace CRM.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
@@ -212,11 +203,9 @@ namespace CRM.EntityFramework.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("PermissionId")
@@ -226,7 +215,6 @@ namespace CRM.EntityFramework.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -239,11 +227,11 @@ namespace CRM.EntityFramework.Migrations
                             Id = 1,
                             Email = "Bajarmilan2001@gmail.com",
                             IsActive = true,
-                            LoginDate = new DateTime(2022, 8, 29, 18, 11, 10, 46, DateTimeKind.Local).AddTicks(6765),
+                            LoginDate = new DateTime(2022, 9, 9, 22, 56, 18, 436, DateTimeKind.Local).AddTicks(2340),
                             Name = "Bajár Milán",
                             Password = "Admin",
                             PermissionId = 1,
-                            RegistrationDate = new DateTime(2022, 8, 29, 18, 11, 10, 43, DateTimeKind.Local).AddTicks(7261),
+                            RegistrationDate = new DateTime(2022, 9, 9, 22, 56, 18, 432, DateTimeKind.Local).AddTicks(8176),
                             UserName = "Admin"
                         });
                 });

@@ -18,7 +18,7 @@ namespace CRM.EntityFramework.Services
             _contextFactory = contextFactory;
         }
 
-        public async Task<T> Ceate(T entity)
+        public async Task<T> Create(T entity)
         {
            using(CRM_DbContext context = _contextFactory.CreateDbContext())
             {
@@ -128,6 +128,15 @@ namespace CRM.EntityFramework.Services
             {
                 User forgotUser = await context.Set<User>().FirstOrDefaultAsync((e) => e.Email == email);
                 return forgotUser;
+            }
+        }
+
+        public async Task<IEnumerable<Domain.Models.Task>> OwnTask(int userId)
+        {
+            using (CRM_DbContext context = _contextFactory.CreateDbContext())
+            {
+                IEnumerable<Domain.Models.Task> tasks = await context.Set<Domain.Models.Task>().Where((e) => e.ResponsibleUserId == userId).OrderBy((e)=> e.DeadLine).ToArrayAsync();
+                return tasks;
             }
         }
     }

@@ -10,6 +10,9 @@
     <Compile Update="Controls\NavigationBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AllTaskView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ForgotPasswordView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,15 +31,27 @@
     <Compile Update="Views\NewMessageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\NewTaskView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\OwnTaskView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\SentMessageView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\SignIn.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\TaskView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\NavigationBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AllTaskView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ForgotPasswordView.xaml">
@@ -60,10 +75,19 @@
     <Page Update="Views\NewMessageView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\NewTaskView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\OwnTaskView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\SentMessageView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SignIn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TaskView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -17,11 +17,11 @@ namespace CRM.Domain.Models
         public DateTime? DeadLine { get; set; }
         public int CreatedUserId { get; set; }
         public int TaskStatusId{ get; set; }
-        public int ResponsibleUserId { get; set; }
+        public int? ResponsibleUserId { get; set; }
 
         public override string ToString()
         {
-            return String.Format("{0} - {1} (Lejárat: {2})",TaskName,Category, DeadLine);
+            return String.Format("{0} - {1} (Határidő: {2})",TaskName,Category, DeadLine);
         }
 
     }

@@ -71,7 +71,7 @@ namespace CRM.WPF.ViewModels
                     IsActive = true,
                     PermissionId = 2,
                 };
-                UserService.Ceate(newUser);
+                UserService.Create(newUser);
                 EmailSender senderEmail = new EmailSender();
                 senderEmail.succesfullSignIn(newUser);
                 MessageBox.Show("Sikeres regisztráció!", "Regisztráció", MessageBoxButton.OK);

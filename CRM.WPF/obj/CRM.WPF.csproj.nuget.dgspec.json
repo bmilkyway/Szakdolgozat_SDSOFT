@@ -120,7 +120,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.27, )"
             },
             "MySql.Data.EntityFrameworkCore": {
               "target": "Package",

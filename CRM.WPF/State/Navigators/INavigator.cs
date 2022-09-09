@@ -21,6 +21,9 @@ namespace CRM.WPF.State.Navigators
         NewMessage,
         SentMessage,
         IncomingMessage,
+        NewTask,
+        OwnTask,
+        AllTask
     }
 
 

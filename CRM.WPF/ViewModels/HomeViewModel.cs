@@ -28,7 +28,7 @@ namespace CRM.WPF.ViewModels
         {
             
             active_User = UserService!.Get(1).Result;
-            tasks = TaskService!.GetAll().Result;
+            tasks = TaskService!.OwnTask(active_User.Id).Result;
             messages = MessageService!.GetAll().Result;
             activeTaskCount = 0;
             closedTaskCount = 0;
@@ -38,9 +38,7 @@ namespace CRM.WPF.ViewModels
             ownTasks = new List<Task>();
             foreach (var task in tasks)
             {
-                if (task.ResponsibleUserId == active_User.Id)
-                {
-                    ownTasks!.Add(task);
+                ownTasks.Add(task);
                     switch (task.TaskStatusId)
                     {
                         case 1: 
@@ -59,7 +57,7 @@ namespace CRM.WPF.ViewModels
                     {
                         nearTheDeadlineCount++;
                     }
-                }
+                
             }
             foreach(var message in messages)
             {
