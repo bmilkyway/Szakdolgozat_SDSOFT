@@ -21,7 +21,15 @@ namespace CRM.Domain.Models
 
         public override string ToString()
         {
-            return String.Format("{0} - {1} (Határidő: {2})",TaskName,Category, DeadLine);
+            if (TaskStatusId == 1)
+                return String.Format("{0}/{1} - Tervezés alatt (Határidő: {2})", TaskName, Category, DeadLine);
+            else if (TaskStatusId == 2)
+                return String.Format("{0}/{1} - Szabad (Határidő: {2})", TaskName, Category, DeadLine);
+            else if (TaskStatusId == 3)
+                return String.Format("{0}/{1} - Elkezdett (Határidő: {2})", TaskName, Category, DeadLine);
+            else 
+                return String.Format("{0}/{1} - Lezárt (Határidő: {2})", TaskName, Category, DeadLine);
+
         }
 
     }

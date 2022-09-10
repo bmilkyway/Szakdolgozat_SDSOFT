@@ -29,5 +29,11 @@ namespace CRM.WPF.Views
             allTaskViewModel = new AllTaskViewModel();
             
         }
+
+        private void openActualTaskWindow(object sender, SelectionChangedEventArgs e)
+        {
+            ActualTask actual = new ActualTask(allTaskViewModel.allTask[lbTaskList.SelectedIndex]);
+            actual.Show();
+        }
     }
 }

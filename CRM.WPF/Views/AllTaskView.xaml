@@ -22,7 +22,7 @@
 
         <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" >
             <Border Background="#31407B" CornerRadius="10">
-                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" ItemsSource="{Binding allTask}" >
+                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" ItemsSource="{Binding allTask}" SelectionChanged="openActualTaskWindow" >
                     <ListBox.DataContext>
                         <viewModel:AllTaskViewModel/>
                     </ListBox.DataContext>
