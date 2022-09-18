@@ -19,6 +19,7 @@ namespace CRM.WPF.Views
         {
             InitializeComponent();
             incomingMessageViewModel = new IncomingMessageViewModel();
+            lbMessageList.DataContext = incomingMessageViewModel;
             lbMessageList.ItemsSource = incomingMessageViewModel.messageList;
             filterView = (CollectionView)CollectionViewSource.GetDefaultView(lbMessageList.ItemsSource);
             filterView!.Filter = CustomFilter;
@@ -26,16 +27,19 @@ namespace CRM.WPF.Views
 
         private void setMessageViewer(object sender, SelectionChangedEventArgs e)
         {
+
             try
             {
+                incomingMessageViewModel.readNewMessage(incomingMessageViewModel.messageList[lbMessageList.SelectedIndex]);
+                lbMessageList.Items.Refresh();
                 txtMessageText.Text = incomingMessageViewModel.messageList[lbMessageList.SelectedIndex].MessageText;
                 txtSubject.Text = incomingMessageViewModel.messageList[lbMessageList.SelectedIndex].Subject;
                 txtAddress.Text = incomingMessageViewModel.UserService!.Get(incomingMessageViewModel.messageList[lbMessageList.SelectedIndex].ToUserId).Result.ToString();
-
+              
             }
             catch
             {
-
+                MessageBox.Show("Nem sikerült megnyitni az adott feladatot!","Hiba!",MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 

@@ -15,7 +15,7 @@ namespace CRM.WPF.ViewModels
         public int nearDeadline { get; set; }
        
         private readonly IEnumerable<Task> tasks;
-        private readonly User activeUser;
+        public  User activeUser;
         public OwnTaskViewModel()
         {
             activeUser = UserService!.Get(1).Result;

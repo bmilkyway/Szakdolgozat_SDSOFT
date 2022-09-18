@@ -66,17 +66,7 @@ namespace CRM.EntityFramework.Services
 
                 IEnumerable<User> entities = await context.Set<User>().Where(e=> e.IsActive==true).ToArrayAsync();
                 return entities;
-                /*     Ez az sql lekérdezés
-
-                      SELECT UserName,COUNT(Messages.ToUserId) 
-                      FROM Users
-                      INNER JOIN Messages on Users.Id = Messages.FromUserId
-                      Where Messages.ToUserId = 1 
-                      GROUP BY UserName 
-                      ORDER by COUNT(Messages.ToUserId) DESC
-                      LIMIT 10
-
-         */
+              
 
             } 
             
@@ -135,7 +125,7 @@ namespace CRM.EntityFramework.Services
         {
             using (CRM_DbContext context = _contextFactory.CreateDbContext())
             {
-                IEnumerable<Domain.Models.Task> tasks = await context.Set<Domain.Models.Task>().Where((e) => e.ResponsibleUserId == userId).OrderBy((e)=> e.DeadLine).ToArrayAsync();
+                IEnumerable<Domain.Models.Task> tasks = await context.Set<Domain.Models.Task>().Where((e) => e.ResponsibleUserId == userId).OrderBy((e)=> e.DeadLine).OrderBy((a) => a.TaskStatusId).ToArrayAsync();
                 return tasks;
             }
         }

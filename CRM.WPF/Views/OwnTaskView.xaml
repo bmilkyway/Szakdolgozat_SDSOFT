@@ -22,7 +22,7 @@
         
         <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" >
             <Border Background="#31407B" CornerRadius="10">
-                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" />
+                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" SelectionChanged="openSelectedTask" />
             </Border>
         </DockPanel>
         <TextBlock Text="Saját feladatok" FontSize="20" Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Bold" Margin="20 10"/>

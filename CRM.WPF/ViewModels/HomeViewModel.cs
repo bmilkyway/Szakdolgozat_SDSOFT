@@ -15,12 +15,12 @@ namespace CRM.WPF.ViewModels
         public int closedTaskCount { get; set; }
         public int plannedTaskCount { get; set; }
         public int nearTheDeadlineCount { get; set; }
-
+    
         public int unReadMessageCount { get; set; }
         public List<Task>? ownTasks { get; set; }
 
 
-        private readonly User active_User;
+        public  User active_User;
         private readonly IEnumerable<Task> tasks;
         private readonly IEnumerable<Message> messages;
 
@@ -69,7 +69,8 @@ namespace CRM.WPF.ViewModels
   
         }
         
-    }   
+    } 
+    
     
 }
 

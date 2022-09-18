@@ -32,7 +32,7 @@ namespace CRM.WPF.Views
 
         private void openActualTaskWindow(object sender, SelectionChangedEventArgs e)
         {
-            ActualTask actual = new ActualTask(allTaskViewModel.allTask[lbTaskList.SelectedIndex]);
+            ActualTask actual = new ActualTask(allTaskViewModel.allTask[lbTaskList.SelectedIndex], allTaskViewModel.allTask[lbTaskList.SelectedIndex].CreatedUserId==allTaskViewModel.activeUser.Id?true:false,allTaskViewModel.activeUser);
             actual.Show();
         }
     }

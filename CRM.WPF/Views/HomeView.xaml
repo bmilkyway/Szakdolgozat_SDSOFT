@@ -90,12 +90,14 @@
         </Viewbox>
 
         <DockPanel Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Margin="0 25 0 0">
-            
-               
-                <ListBox ItemsSource="{Binding ownTasks}" FontSize="20">
+
+            <Border Background="#31407B" CornerRadius="20" Padding="20">
+
+
+                <ListBox Name="lbOwnTasks" ItemsSource="{Binding ownTasks, Mode=TwoWay}" FontSize="20" SelectionChanged="openThisTask">
                     
                 </ListBox>
-         
+            </Border>
         </DockPanel>
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Background="#31407B">
             <Grid>

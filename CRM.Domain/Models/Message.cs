@@ -18,10 +18,15 @@ namespace CRM.Domain.Models
 
         public override string ToString()
         {
-            if(isRead)
-            return String.Format("{0} - {1}", Subject, SendDate.ToString());
+            
+            if (isRead)
+            {
+                return String.Format("{0} - {1}", Subject, SendDate.ToString());
+            }
             else
                 return String.Format("(Új) {0} - {1}", Subject, SendDate.ToString());
         }
+
+       
     }
 }

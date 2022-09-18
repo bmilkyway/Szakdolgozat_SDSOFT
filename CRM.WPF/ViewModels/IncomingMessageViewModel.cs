@@ -1,4 +1,5 @@
 ﻿using CRM.Domain.Models;
+using CRM.WPF.State.Navigators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,26 @@ namespace CRM.WPF.ViewModels
 
         public List<Message> messageList { get; set; }
         private readonly IEnumerable<Message> incomingMessages;
+        private readonly MessageViewModel messageViewModel;
         public IncomingMessageViewModel()
         {
             incomingMessages = MessageService!.IncomingMessages(1).Result;
             messageList = incomingMessages.ToList();
+            messageViewModel = new MessageViewModel();
            
         }
+
+        public void readNewMessage(Message actualMessage)
+        {
+            if (!actualMessage.isRead)
+            {
+                actualMessage.isRead = true;
+                MessageService!.Update(actualMessage.Id,actualMessage);
+                messageList = MessageService!.IncomingMessages(1).Result.ToList();
+
+            }
+        }
+
+       
     }
 }

@@ -29,5 +29,14 @@ namespace CRM.WPF.Views
             ownTaskViewModel = new OwnTaskViewModel();
             lbTaskList.ItemsSource = ownTaskViewModel.ownTasks;
         }
+
+        private void openSelectedTask(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbTaskList.SelectedIndex != -1)
+            {
+                ActualTask window = new ActualTask(ownTaskViewModel.ownTasks[lbTaskList.SelectedIndex],true,ownTaskViewModel.activeUser);
+                window.Show();
+            }
+        }
     }
 }

@@ -17,15 +17,18 @@ namespace CRM.WPF.Views
     public partial class HomeView : UserControl
     {
         private List<Category> Categories { get; set; }
-     
+      private readonly  HomeViewModel homeViewModel;
         public HomeView()
         {
             InitializeComponent();
             float pieWidth = 650, pieHeight = 650, centerX = pieWidth / 2, centerY = pieHeight / 2, radius = pieWidth / 2;
             mainCanvas.Width = pieWidth;
             mainCanvas.Height = pieHeight;
-            HomeViewModel homeViewModel = new HomeViewModel();
+            homeViewModel = new HomeViewModel();
+
           
+
+
             Categories = new List<Category>()
             {
                 #region Kördiagramm részei
@@ -125,6 +128,17 @@ namespace CRM.WPF.Views
                 mainCanvas.Children.Add(outline1);
                 mainCanvas.Children.Add(outline2);
             }
+        }
+
+        private void openThisTask(object sender, SelectionChangedEventArgs e)
+        {
+            if(lbOwnTasks.SelectedIndex!=-1)
+            {
+                ActualTask actual = new ActualTask(homeViewModel.ownTasks![lbOwnTasks.SelectedIndex],true,homeViewModel.active_User);
+                actual.Show();
+
+            }
+           
         }
     }
 

@@ -50,6 +50,9 @@ namespace CRM.WPF.Views
                         SendDate = DateTime.Now
                     });
                     MessageBox.Show("Az üzenet el lett küldve!", "Sikeres küldés!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    txtMessageText.Text = "";
+                    txtSubjectText.Text = "";
+                    cbToUserAddress.SelectedIndex = -1;
                 }
                 catch
                 {
