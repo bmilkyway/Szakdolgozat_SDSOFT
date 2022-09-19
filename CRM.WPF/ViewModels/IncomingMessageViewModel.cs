@@ -13,12 +13,11 @@ namespace CRM.WPF.ViewModels
 
         public List<Message> messageList { get; set; }
         private readonly IEnumerable<Message> incomingMessages;
-        private readonly MessageViewModel messageViewModel;
         public IncomingMessageViewModel()
         {
             incomingMessages = MessageService!.IncomingMessages(1).Result;
             messageList = incomingMessages.ToList();
-            messageViewModel = new MessageViewModel();
+        
            
         }
 

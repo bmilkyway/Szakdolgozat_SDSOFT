@@ -35,7 +35,7 @@ namespace CRM.WPF.ViewModels
                 {
                     planedTaskCount++;
                 }
-                if (task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear < 10)
+                if (task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear < 10 && task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear > 0 && task.TaskStatusId != 4)
                 {
                     nearDeadline++;
                 }

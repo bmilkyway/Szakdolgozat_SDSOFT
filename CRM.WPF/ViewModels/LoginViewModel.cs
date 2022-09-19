@@ -1,7 +1,7 @@
 ﻿using CRM.Domain.Models;
 using CRM.WPF.Services.EmailSender;
 using CRM.WPF.Views;
-
+using System;
 using System.Windows;
 
 namespace CRM.WPF.ViewModels
@@ -22,20 +22,28 @@ namespace CRM.WPF.ViewModels
         }
        public bool loginIsSuccesful(string username, string password)
         {
-            activeUser = UserService!.Login(username, password).Result;
-
-            if (activeUser == null)
+            try
             {
-                return false;     
+                activeUser = UserService!.Login(username, password).Result;
+
+                if (activeUser == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    activeUser.IsActive = true;
+                    activeUser.LoginDate = System.DateTime.Now;
+                    UserService.Update(activeUser.Id, activeUser);
+
+                    return true;
+
+                }
             }
-            else
-            { 
-                 activeUser.IsActive = true;
-                activeUser.LoginDate = System.DateTime.Now;
-                UserService.Update(activeUser.Id,activeUser);
-              
-                 return true;
-                
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
             }
         }
 

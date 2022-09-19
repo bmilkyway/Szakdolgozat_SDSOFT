@@ -15,14 +15,16 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="280"/>
+            <RowDefinition Height="240"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
 
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" >
+        <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" Margin="0 0 0 10" >
             <Border Background="#31407B" CornerRadius="10">
-                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" ItemsSource="{Binding allTask}" SelectionChanged="openActualTaskWindow" >
+                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" ItemsSource="{Binding showFilteredTask}" SelectionChanged="openActualTaskWindow" >
                     <ListBox.DataContext>
                         <viewModel:AllTaskViewModel/>
                     </ListBox.DataContext>
@@ -35,32 +37,32 @@
             <Border Background="#31407B" CornerRadius="10">
                 <StackPanel>
                     <TextBlock Text="Áttekintés" Foreground="White" FontSize="20" FontWeight="Bold" Margin="20 10"/>
-                    <TextBlock Text="{Binding allTask.Count, StringFormat=Feladatok száma: \{0\}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 50 20 10">
+                    <TextBlock Text="{Binding allTask.Count, StringFormat=Feladatok száma: \{0\}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 20 20 10">
                         <TextBlock.DataContext>
                             <viewModel:AllTaskViewModel/>
                         </TextBlock.DataContext>
                     </TextBlock>
-                    <TextBlock Text="{Binding ownTaskCount,StringFormat=Ebből saját: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
+                    <TextBlock Text="{Binding ownTask.Count,StringFormat=Ebből saját: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
                         <TextBlock.DataContext>
                             <viewModel:AllTaskViewModel/>
                         </TextBlock.DataContext>
                     </TextBlock>
-                    <TextBlock Text="{Binding closedTaskCount,StringFormat=Lezárt feladatok száma: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
+                    <TextBlock Text="{Binding closedTask.Count,StringFormat=Lezárt feladatok száma: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
                         <TextBlock.DataContext>
                             <viewModel:AllTaskViewModel/>
                         </TextBlock.DataContext>
                     </TextBlock>
-                    <TextBlock Text="{Binding freeTask,StringFormat=Szabad feladatok száma: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
+                    <TextBlock Text="{Binding freeTask.Count,StringFormat=Szabad feladatok száma: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
                         <TextBlock.DataContext>
                             <viewModel:AllTaskViewModel/>
                         </TextBlock.DataContext>
                     </TextBlock>
-                    <TextBlock Text="{Binding planningTaskCount,StringFormat=Tervezés alatt álló feladatok száma: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
+                    <TextBlock Text="{Binding planningTask.Count,StringFormat=Tervezés alatt álló feladatok száma: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
                         <TextBlock.DataContext>
                             <viewModel:AllTaskViewModel/>
                         </TextBlock.DataContext>
                     </TextBlock>
-                    <TextBlock Text="{Binding nearDeadline,StringFormat=10 napon belül lejár: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
+                    <TextBlock Text="{Binding nearDeadlineTask.Count,StringFormat=10 napon belül lejár: {0}}" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10">
                         <TextBlock.DataContext>
                             <viewModel:AllTaskViewModel/>
                         </TextBlock.DataContext>
@@ -68,7 +70,23 @@
                 </StackPanel>
             </Border>
         </DockPanel>
+        
+        <Border CornerRadius="10" Background="#31407B" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"  Margin="10" Height="auto">
+                <StackPanel >
+                <TextBlock Text="Szűrés" Foreground="White" FontSize="20" FontWeight="Bold" Margin="20 10"/>
 
+
+                <CheckBox Content="Saját" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10" Style="{StaticResource MaterialDesignAccentCheckBox}" Click="setFilterTaskList" Name="cbOwn"/>
+                <CheckBox Content="Tervezés alatt" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10" Click="setFilterTaskList" Name="cbPlanning" />
+                <CheckBox Content="Szabad" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10" Click="setFilterTaskList" Name="cbFree" />
+                <CheckBox Content="Elkezdett" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10" Click="setFilterTaskList" Name="cbStarted"/>
+                <CheckBox Content="Lezárt" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10" Click="setFilterTaskList" Name="cbClosed"/>
+                <CheckBox Content="Határidőhöz közel" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10" Click="setFilterTaskList" Name="cbNearDeadline"/>
+                <CheckBox Content="Lejárt" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10 10 20" Click="setFilterTaskList" Name="cbExpired"/>
+
+                </StackPanel>
+            </Border>
+    
 
 
     </Grid>

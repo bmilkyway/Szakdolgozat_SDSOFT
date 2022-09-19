@@ -9,52 +9,121 @@ namespace CRM.WPF.ViewModels
 {
     public class AllTaskViewModel:ViewModelBase
     {
-        public int planningTaskCount { get; set; }
-        public int closedTaskCount { get; set; }
-        public int ownTaskCount { get; set; }
-        public int nearDeadline { get; set; }
-        public int freeTask { get; set; }
-        public List<Domain.Models.Task> allTask { get; set; }
+       
+        public List<Domain.Models.Task> allTask { get;  }
+        public List<Domain.Models.Task> showFilteredTask { get; set; }
+        public List<Domain.Models.Task> planningTask { get; set; }
+        public List<Domain.Models.Task> closedTask { get; set; }
+        public List<Domain.Models.Task> ownTask { get; set; }
+        public List<Domain.Models.Task> freeTask { get; set; }
+        public List<Domain.Models.Task> startedTask { get; set; }
+        public List<Domain.Models.Task> expiredTask { get; set; }
+        public List<Domain.Models.Task> nearDeadlineTask { get; set; }
         public User activeUser;
         private readonly IEnumerable<Domain.Models.Task> tasks;
         public AllTaskViewModel()
         {
             activeUser = UserService!.Get(1).Result;
             allTask = new List<Domain.Models.Task>();
+            planningTask = new List<Domain.Models.Task>();
+            closedTask = new List<Domain.Models.Task>();
+            ownTask = new List<Domain.Models.Task>();
+            freeTask = new List<Domain.Models.Task>();
+            startedTask = new List<Domain.Models.Task>();
+            expiredTask = new List<Domain.Models.Task>();
+            nearDeadlineTask = new List<Domain.Models.Task>();
+            showFilteredTask = new List<Domain.Models.Task>();
             tasks = TaskService!.GetAll().Result;
-            planningTaskCount = 0;
-            closedTaskCount = 0;
-            ownTaskCount = 0;
-            freeTask = 0;
-            nearDeadline = 0;
+            
+
             foreach (var task in tasks)
             {
                 allTask.Add(task);
-                if(task.TaskStatusId==4)
+                showFilteredTask.Add(task);
+                if (task.TaskStatusId == 4)
                 {
-                    closedTaskCount++;
+                    closedTask!.Add(task);
                 }
                 else if (task.TaskStatusId == 2)
                 {
-                    freeTask++;
+                    freeTask!.Add(task);
 
                 }
-                else if(task.TaskStatusId == 1)
+                else if (task.TaskStatusId == 3)
                 {
-                    planningTaskCount++;
+                    startedTask!.Add(task);
+
                 }
-                if(task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear < 10)
+                else if (task.TaskStatusId == 1)
                 {
-                    nearDeadline++;
+                    planningTask!.Add(task);
                 }
+                if (task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear < 10 && task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear >0 && task.TaskStatusId != 4)
+                {
+                    nearDeadlineTask!.Add(task);
+                }
+                if (task.DeadLine!.Value.DayOfYear < DateTime.Now.DayOfYear && task.TaskStatusId != 4)
+                {
+                    expiredTask!.Add(task);
+                }
+
                 if (task.ResponsibleUserId == activeUser.Id)
                 {
-                    ownTaskCount++;
+                    ownTask!.Add(task);
                 }
               
 
 
             }
         }
+        public void setShowFilteredTask(bool own, bool planning, bool closed, bool free, bool started, bool expired, bool nearDeadline)
+        {
+           IEnumerable<Domain.Models.Task> tasks = new List<Domain.Models.Task>();
+          
+            if (own)
+            {
+            tasks = ownTask;
+            }
+            if (planning)
+            {
+                tasks = tasks.Union(planningTask.ToArray());
+            }
+            if (closed)
+            {
+                tasks = tasks.Union(closedTask.ToArray());
+            }
+            if (free)
+            {
+                tasks =tasks.Union(freeTask.ToArray());
+            }
+            if (started)
+            {
+                tasks = tasks.Union(startedTask.ToArray());
+            }
+            if (expired)
+            {
+                tasks = tasks.Union(expiredTask.ToArray());
+            }
+            if (nearDeadline)
+            {
+                tasks = tasks.Union(nearDeadlineTask.ToArray());
+            }
+
+
+            showFilteredTask.Clear();
+            if (own==false && planning==false && closed==false && free==false && started==false && expired==false && nearDeadline==false)
+            {
+       
+                showFilteredTask = allTask.ToList();
+            }
+         
+            else
+            {
+               
+                showFilteredTask = tasks.ToList();
+            }
+            
+        }
+     
     }
 }

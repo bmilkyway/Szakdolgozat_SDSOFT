@@ -21,15 +21,28 @@ namespace CRM.Domain.Models
 
         public override string ToString()
         {
-            if (TaskStatusId == 1)
-                return String.Format("{0}/{1} - Tervezés alatt (Határidő: {2})", TaskName, Category, DeadLine);
-            else if (TaskStatusId == 2)
-                return String.Format("{0}/{1} - Szabad (Határidő: {2})", TaskName, Category, DeadLine);
-            else if (TaskStatusId == 3)
-                return String.Format("{0}/{1} - Elkezdett (Határidő: {2})", TaskName, Category, DeadLine);
-            else 
-                return String.Format("{0}/{1} - Lezárt (Határidő: {2})", TaskName, Category, DeadLine);
-
+            if (DeadLine!.Value < DateTime.Now)
+            {
+                if (TaskStatusId == 1)
+                    return String.Format("{0}/{1} - Tervezés alatt (Lejárt: {2})", TaskName, Category, DeadLine);
+                else if (TaskStatusId == 2)
+                    return String.Format("{0}/{1} - Szabad (Lejárt: {2})", TaskName, Category, DeadLine);
+                else if (TaskStatusId == 3)
+                    return String.Format("{0}/{1} - Elkezdett (Lejárt:{2})", TaskName, Category, DeadLine);
+                else
+                    return String.Format("{0}/{1} - Lezárt (Lezárás: {2})", TaskName, Category, CloseDate);
+            }
+            else
+            {
+                if (TaskStatusId == 1)
+                    return String.Format("{0}/{1} - Tervezés alatt (Határidő: {2})", TaskName, Category, DeadLine);
+                else if (TaskStatusId == 2)
+                    return String.Format("{0}/{1} - Szabad (Határidő: {2})", TaskName, Category, DeadLine);
+                else if (TaskStatusId == 3)
+                    return String.Format("{0}/{1} - Elkezdett (Határidő: {2})", TaskName, Category, DeadLine);
+                else
+                    return String.Format("{0}/{1} - Lezárt (Lezárás: {2})", TaskName, Category, CloseDate);
+            }
         }
 
     }
