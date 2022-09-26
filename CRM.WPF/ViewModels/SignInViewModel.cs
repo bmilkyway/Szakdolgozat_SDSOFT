@@ -1,5 +1,9 @@
 ﻿using CRM.Domain.Models;
+using CRM.LocalDb;
 using CRM.WPF.Services.EmailSender;
+
+using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -9,11 +13,12 @@ namespace CRM.WPF.ViewModels
    
     public class SignInViewModel:ViewModelBase
     {   private User? newUser;
+        private CurrentUser? currentUser;
         private  IEnumerable<User>? allUsers;
         public void navigationToMain()
         {
-            Window window = new MainWindow();
-            window.DataContext = new MainViewModel(newUser!);
+            Window window = new MainWindow(currentUser!.userId);
+            window.DataContext = new MainViewModel();
             window.Show();
         }
 
@@ -74,6 +79,23 @@ namespace CRM.WPF.ViewModels
                 UserService.Create(newUser);
                 EmailSender senderEmail = new EmailSender();
                 senderEmail.succesfullSignIn(newUser);
+              
+                    var db = new SQLiteConnection("currentUserDb.db3");
+                    db!.CreateTable<CurrentUser>();
+                    currentUser = new CurrentUser
+                    {
+                        Id = newUser.Id,
+                        userName = newUser.UserName,
+                        name = newUser.Name,
+                        password = newUser.Password,
+                        email = newUser.Email
+                    };
+                    db!.Insert(currentUser);
+                    db!.Commit();
+
+                    db!.Close();
+
+                
                 MessageBox.Show("Sikeres regisztráció!", "Regisztráció", MessageBoxButton.OK);
 
 

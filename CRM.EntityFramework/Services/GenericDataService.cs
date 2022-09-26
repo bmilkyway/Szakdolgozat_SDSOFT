@@ -1,6 +1,8 @@
 ﻿using CRM.Domain.Models;
 using CRM.Domain.Services;
+
 using Microsoft.EntityFrameworkCore;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +22,9 @@ namespace CRM.EntityFramework.Services
 
         public async Task<T> Create(T entity)
         {
-           using(CRM_DbContext context = _contextFactory.CreateDbContext())
+            using (CRM_DbContext context = _contextFactory.CreateDbContext())
             {
-               var createEntity =  await context.Set<T>().AddAsync(entity);
+                var createEntity = await context.Set<T>().AddAsync(entity);
                 await context.SaveChangesAsync();
 
                 return createEntity.Entity;
@@ -41,12 +43,10 @@ namespace CRM.EntityFramework.Services
         }
 
         public async Task<T> Get(int id)
-        {
-            using (CRM_DbContext context = _contextFactory.CreateDbContext())
-            {
-                T entity = await context.Set<T>().FirstOrDefaultAsync((e) => e.Id == id); 
-                return entity;
-            }
+        { //!!!
+            using var context = _contextFactory.CreateDbContext();
+            T entity = await context.Set<T>().FirstOrDefaultAsync((e) => e.Id == id);
+            return entity;
         }
 
         public async Task<IEnumerable<T>> GetAll()
@@ -54,22 +54,22 @@ namespace CRM.EntityFramework.Services
 
             using (CRM_DbContext context = _contextFactory.CreateDbContext())
             {
-                IEnumerable<T> entities = await context.Set<T>().ToArrayAsync();
+                IEnumerable<T> entities = await context.Set<T>().AsNoTracking().ToArrayAsync();
                 return entities;
             }
         }
 
         public async Task<IEnumerable<User>> ActiveUsers()
         {
-             using(CRM_DbContext context = _contextFactory.CreateDbContext())
-              {
+            using (CRM_DbContext context = _contextFactory.CreateDbContext())
+            {
 
-                IEnumerable<User> entities = await context.Set<User>().Where(e=> e.IsActive==true).ToArrayAsync();
+                IEnumerable<User> entities = await context.Set<User>().Where(e => e.IsActive == true).ToArrayAsync();
                 return entities;
-              
 
-            } 
-            
+
+            }
+
         }
 
         public async Task<T> Update(int id, T entity)
@@ -88,7 +88,7 @@ namespace CRM.EntityFramework.Services
 
             using (CRM_DbContext context = _contextFactory.CreateDbContext())
             {
-                IEnumerable<Message> entities = await context.Set<Message>().Where(e=> e.ToUserId==toUserId).OrderByDescending(e => e.SendDate).ToArrayAsync();
+                IEnumerable<Message> entities = await context.Set<Message>().Where(e => e.ToUserId == toUserId).OrderByDescending(e => e.SendDate).ToArrayAsync();
                 return entities;
             }
         }
@@ -98,7 +98,7 @@ namespace CRM.EntityFramework.Services
 
             using (CRM_DbContext context = _contextFactory.CreateDbContext())
             {
-                IEnumerable<Message> entities = await context.Set<Message>().Where(e => e.FromUserId == fromUserId).OrderByDescending(e=> e.SendDate).ToArrayAsync();
+                IEnumerable<Message> entities = await context.Set<Message>().Where(e => e.FromUserId == fromUserId).OrderByDescending(e => e.SendDate).ToArrayAsync();
                 return entities;
             }
         }
@@ -107,7 +107,7 @@ namespace CRM.EntityFramework.Services
         {
             using (CRM_DbContext context = _contextFactory.CreateDbContext())
             {
-              User activeUser = await context.Set<User>().FirstOrDefaultAsync((e)=> e.UserName==username && e.Password==password);
+                User activeUser = await context.Set<User>().FirstOrDefaultAsync((e) => e.UserName == username && e.Password == password);
                 return activeUser;
             }
         }
@@ -125,7 +125,7 @@ namespace CRM.EntityFramework.Services
         {
             using (CRM_DbContext context = _contextFactory.CreateDbContext())
             {
-                IEnumerable<Domain.Models.Task> tasks = await context.Set<Domain.Models.Task>().Where((e) => e.ResponsibleUserId == userId).OrderBy((e)=> e.DeadLine).OrderBy((a) => a.TaskStatusId).ToArrayAsync();
+                IEnumerable<Domain.Models.Task> tasks = await context.Set<Domain.Models.Task>().Where((e) => e.ResponsibleUserId == userId).OrderBy((e) => e.DeadLine).OrderBy((a) => a.TaskStatusId).ToArrayAsync();
                 return tasks;
             }
         }

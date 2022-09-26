@@ -1,4 +1,8 @@
 ﻿using CRM.Domain.Models;
+using CRM.LocalDb;
+
+using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +15,12 @@ namespace CRM.WPF.ViewModels
     {
         public List<Message> messageList { get; set; }
         private readonly IEnumerable<Message> sentMessages;
+        private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
         public SentMessageViewModel()
         {
-            sentMessages = MessageService!.SentMessages(1).Result;
+            sentMessages = MessageService!.SentMessages(UserService!.Get(connection.Get<CurrentUser>(1).userId).Result.Id).Result;
             messageList = sentMessages.ToList();
+            connection.Close();
         }
     }
 }

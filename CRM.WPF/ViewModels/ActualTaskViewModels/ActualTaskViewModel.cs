@@ -17,7 +17,9 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
 
         public bool takeOnTask(Task actualTask, User user)
         {
-            actualTask.TaskStatusId = 3;
+            if (actualTask.TaskStatusId == 2)
+                actualTask.TaskStatusId = 3;
+            
             actualTask.ResponsibleUserId=user.Id;
             TaskService!.Update(actualTask.Id,actualTask);
             return true;

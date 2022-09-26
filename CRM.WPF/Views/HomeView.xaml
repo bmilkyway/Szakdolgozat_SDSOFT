@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:CRM.WPF.Views"
              xmlns:viewModel ="clr-namespace:CRM.WPF.ViewModels"
               mc:Ignorable="d" 
+             Foreground="White"
              d:DesignHeight="740" d:DesignWidth="1030"
              Background="#41518F">
     <Grid>
@@ -17,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
-            <RowDefinition Height="250" />
+            <RowDefinition Height="240" />
             <RowDefinition Height="100"  />
             <RowDefinition Height="*" />
             <RowDefinition Height="20"/>
@@ -65,15 +66,18 @@
                                        Height="40"
                                        Fill="{Binding ColorBrush}"
                                        Margin="0,0,5,0"
-                                       VerticalAlignment="Center"/>
+                                       VerticalAlignment="Center" />
 
                                         <TextBlock Text="{Binding Title}"
                                        FontSize="40"
+                                                     Margin="10,0,5,0"
+                                                   FontWeight="Bold"
                                        VerticalAlignment="Center"/>
 
                                         <TextBlock Text="{Binding Percentage}"
                                        Foreground="{Binding ColorBrush}"
                                        FontSize="40"
+                                       FontWeight="Bold"
                                        Margin="20,0,0,0"
                                                   
                                        VerticalAlignment="Center"/>
@@ -94,7 +98,7 @@
             <Border Background="#31407B" CornerRadius="20" Padding="20">
 
 
-                <ListBox Name="lbOwnTasks" ItemsSource="{Binding ownTasks, Mode=TwoWay}" FontSize="20" SelectionChanged="openThisTask">
+                <ListBox Name="lbOwnTasks" ItemsSource="{Binding ownTasks, Mode=TwoWay}" FontSize="20" SelectionChanged="openThisTask" Foreground="White">
                     
                 </ListBox>
             </Border>

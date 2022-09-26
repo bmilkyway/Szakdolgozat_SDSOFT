@@ -24,7 +24,7 @@
 
         <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" Margin="0 0 0 10" >
             <Border Background="#31407B" CornerRadius="10">
-                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" ItemsSource="{Binding showFilteredTask}" SelectionChanged="openActualTaskWindow" >
+                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" ItemsSource="{Binding showFilteredTask}" SelectionChanged="openActualTaskWindow" Foreground="White">
                     <ListBox.DataContext>
                         <viewModel:AllTaskViewModel/>
                     </ListBox.DataContext>

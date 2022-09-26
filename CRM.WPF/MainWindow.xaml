@@ -22,7 +22,7 @@
 
         </Grid.RowDefinitions>
 
-        <controls:NavigationBar  Grid.RowSpan="2" Grid.Row="0" Grid.Column="0"  DataContext="{Binding Navigator}"  />
+        <controls:NavigationBar  Grid.RowSpan="2" Grid.Row="0" Grid.Column="0"  DataContext="{Binding Navigator}" />
         <TextBlock Background="Transparent" Grid.Row="0" Grid.Column="1"   Text=""/>
 
         <ContentControl Grid.Row="0" Grid.Column="1" Content="{Binding Navigator.CurrentViewModel}">

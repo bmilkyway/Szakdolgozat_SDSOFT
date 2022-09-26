@@ -1,6 +1,10 @@
 ﻿
 using System.Windows;
 
+using CRM.Domain.Models;
+using CRM.Domain.Services;
+using CRM.EntityFramework;
+using CRM.EntityFramework.Services;
 
 namespace CRM.WPF
 {
@@ -9,9 +13,17 @@ namespace CRM.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+
+        public IDataService<User>? UserService;
+        public User currentUser { get; set; }
+        public  MainWindow(int userId)
         {
+   
             InitializeComponent();
+            Application.Current.MainWindow = this;
+            UserService = new GenericDataService<User>(new CRM_DbContextFactory());
+            currentUser = UserService!.Get(userId).Result;
+
         }
     }
 }

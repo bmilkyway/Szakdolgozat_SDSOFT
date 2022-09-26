@@ -1,0 +1,5 @@
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.csproj.AssemblyReference.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.AssemblyInfoInputs.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.AssemblyInfo.cs
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.csproj.CoreCompileInputs.cache

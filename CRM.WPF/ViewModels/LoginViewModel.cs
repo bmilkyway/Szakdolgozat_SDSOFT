@@ -1,50 +1,69 @@
-﻿using CRM.Domain.Models;
-using CRM.WPF.Services.EmailSender;
-using CRM.WPF.Views;
-using System;
+﻿using System;
 using System.Windows;
+
+using CRM.Domain.Models;
+using CRM.LocalDb;
+using CRM.WPF.Views;
+
+using SQLite;
 
 namespace CRM.WPF.ViewModels
 {
-    public class LoginViewModel: ViewModelBase
+    public class LoginViewModel : ViewModelBase
     {
 
         private User? activeUser;
-
-        public LoginViewModel() { 
+        private CurrentUser? currentUser;
+        public LoginViewModel()
+        {
         }
 
         public void navigationToMain()
         {
-            Window window = new MainWindow();
-            window.DataContext = new MainViewModel(activeUser!);
+            Window window = new MainWindow(currentUser!.userId);
+            window.DataContext = new MainViewModel();
             window.Show();
         }
-       public bool loginIsSuccesful(string username, string password)
+        public bool loginIsSuccesful(string username, string password)
         {
             try
             {
                 activeUser = UserService!.Login(username, password).Result;
 
-                if (activeUser == null)
-                {
+                if (activeUser is null)
                     return false;
-                }
-                else
-                {
-                    activeUser.IsActive = true;
-                    activeUser.LoginDate = System.DateTime.Now;
-                    UserService.Update(activeUser.Id, activeUser);
 
-                    return true;
 
-                }
+                activeUser.IsActive = true;
+                activeUser.LoginDate = System.DateTime.Now;
+                UserService.Update(activeUser.Id, activeUser);
+               
+                    var db = new SQLiteConnection("currentUserDb.db3");
+                    db!.CreateTable<CurrentUser>();
+                    currentUser = new CurrentUser
+                    {
+                      
+                        userId = activeUser.Id,
+                        userName = activeUser.UserName,
+                        name = activeUser.Name,
+                        password = activeUser.Password,
+                        email = activeUser.Email
+                    };
+                    db!.Insert(currentUser);
+                    db!.Commit();
+                    
+                    db!.Close();
+
+                
+
+                return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-                return false;
             }
+
+            return false;
         }
 
         public void signInWindow()

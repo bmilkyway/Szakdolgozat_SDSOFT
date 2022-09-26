@@ -34,8 +34,9 @@ namespace CRM.WPF.Views
         {
             if (lbTaskList.SelectedIndex != -1)
             {
-                ActualTask window = new ActualTask(ownTaskViewModel.ownTasks[lbTaskList.SelectedIndex],true,ownTaskViewModel.activeUser);
-                window.Show();
+                ActualTask actual = new ActualTask(ownTaskViewModel.ownTasks[lbTaskList.SelectedIndex],true,ownTaskViewModel.activeUser,lbTaskList);
+                actual.ShowDialog();
+                lbTaskList.Items.Refresh();
             }
         }
     }

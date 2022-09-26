@@ -30,8 +30,8 @@
           
      
             <Image Grid.Column="0" Source="/Controls/whiteLogo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 5 2 30"/>
-            <TextBlock Text="Felhasználónév" FontSize="20" Margin="10 0 0 0" Foreground="White"/>
-            <TextBlock Text="Emailcím" FontSize="15" Margin="10 0 0 20" Foreground="White"/>
+            <TextBlock Text="{Binding currentUser.Name, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type assets:MainWindow}}}" FontSize="20" Margin="10 0 0 0" Foreground="White"/>
+            <TextBlock Text="{Binding currentUser.Email, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type assets:MainWindow}}}" FontSize="15" Margin="10 0 0 20" Foreground="White"/>
             <Button Grid.Column="0" x:Name="homeMenuBtn" Content="Kezdő oldal" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Home}" Click="Active"  Height="auto"  BorderBrush="Transparent" Style="{StaticResource MaterialDesignFlatButton}"/>
             <Button Grid.Column="0"  x:Name="messageMenuBtn" Content="Üzenetek" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Message}"  Height="auto"   BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFlatButton}"  />
             <Button Grid.Column="0"   x:Name="taskMenuBtn" Content="Feladatok" Background="#31407B"  FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Task}"  Height="auto"    BorderBrush="Transparent" Style="{StaticResource MaterialDesignFlatButton}"  />

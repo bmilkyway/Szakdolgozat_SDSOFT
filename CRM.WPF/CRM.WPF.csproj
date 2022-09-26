@@ -13,12 +13,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MaterialDesignThemes" Version="4.6.0-ci277" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.7.0-ci307" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CRM.Domain\CRM.Domain.csproj" />
     <ProjectReference Include="..\CRM.EntityFramework\CRM.EntityFramework.csproj" />
+    <ProjectReference Include="..\SD_SOFT_CRM\CRM.LocalDb\CRM.LocalDb.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -17,11 +17,12 @@ namespace CRM.WPF.Views
     public partial class HomeView : UserControl
     {
         private List<Category> Categories { get; set; }
-      private readonly  HomeViewModel homeViewModel;
+        float pieWidth = 650, pieHeight = 650;
+
+        private readonly  HomeViewModel homeViewModel;
         public HomeView()
         {
             InitializeComponent();
-            float pieWidth = 650, pieHeight = 650, centerX = pieWidth / 2, centerY = pieHeight / 2, radius = pieWidth / 2;
             mainCanvas.Width = pieWidth;
             mainCanvas.Height = pieHeight;
             homeViewModel = new HomeViewModel();
@@ -57,7 +58,14 @@ namespace CRM.WPF.Views
             };
 
             detailsItemsControl.ItemsSource = Categories;
-
+            if (homeViewModel.ownTasks!.Count != 0)
+            {
+                printChart();
+            }
+        }
+        public void printChart()
+        {
+            float centerX = pieWidth / 2, centerY = pieHeight / 2, radius = pieWidth / 2;
             int tasksCount = homeViewModel.ownTasks!.Count;
             float angle = 0, prevAngle = 0;
             foreach (var category in Categories)
@@ -105,7 +113,7 @@ namespace CRM.WPF.Views
                 prevAngle = angle;
 
 
-              
+
                 var outline1 = new Line()
                 {
                     X1 = centerX,
@@ -129,13 +137,13 @@ namespace CRM.WPF.Views
                 mainCanvas.Children.Add(outline2);
             }
         }
-
         private void openThisTask(object sender, SelectionChangedEventArgs e)
         {
             if(lbOwnTasks.SelectedIndex!=-1)
             {
-                ActualTask actual = new ActualTask(homeViewModel.ownTasks![lbOwnTasks.SelectedIndex],true,homeViewModel.active_User);
-                actual.Show();
+                ActualTask actual = new ActualTask(homeViewModel.ownTasks![lbOwnTasks.SelectedIndex],true,homeViewModel.active_User,lbOwnTasks);
+                actual.ShowDialog();
+                lbOwnTasks.Items.Refresh();
 
             }
            

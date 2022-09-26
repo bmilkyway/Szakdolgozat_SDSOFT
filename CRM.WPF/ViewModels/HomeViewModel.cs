@@ -6,6 +6,8 @@ using System.Text;
 using System.Diagnostics;
 using System.Windows.Media;
 using CRM.Domain.Models;
+using SQLite;
+using CRM.LocalDb;
 
 namespace CRM.WPF.ViewModels
 {
@@ -23,11 +25,12 @@ namespace CRM.WPF.ViewModels
         public  User active_User;
         private readonly IEnumerable<Task> tasks;
         private readonly IEnumerable<Message> messages;
-
+        private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
+       
         public HomeViewModel()
         {
             
-            active_User = UserService!.Get(1).Result;
+            active_User =  UserService!.Get(connection.Get<CurrentUser>(1).userId).Result;
             tasks = TaskService!.OwnTask(active_User.Id).Result;
             messages = MessageService!.GetAll().Result;
             activeTaskCount = 0;
@@ -66,7 +69,9 @@ namespace CRM.WPF.ViewModels
                     unReadMessageCount++;
                 }
             }
-  
+            connection.Close();
+
+
         }
         
     } 

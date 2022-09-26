@@ -28,21 +28,48 @@ namespace CRM.WPF.Views
         private readonly IDataService<User>? responsibleUser;
         public User user;
         private Domain.Models.Task actualTask;
-        public ActualTask(Domain.Models.Task actualTask, bool isOwnTask, User user)
+        ListBox actualTaskListBox;
+        public ActualTask(Domain.Models.Task actualTask, bool isOwnTask, User user, ListBox actualTaskListBox)
         {
             InitializeComponent();
             actualTaskViewModel = new ActualTaskViewModel();
             this.Title = actualTask.TaskName;
             this.user = user;
             this.actualTask = actualTask;
+            this.actualTaskListBox = actualTaskListBox;
             switch (actualTask.TaskStatusId)
             {
                 case 1:
                     {
-                   
+
                         txtStatus.Text += "Tervezés alatt";
-                      
-                        btnClose.Content = "Tervezés lezárása";
+                        if (actualTask.ResponsibleUserId != null)
+                        {
+
+                            btnTakeOn.IsEnabled = false;
+                            btnClose.Content = "Tervezés lezárása";
+
+                            if (isOwnTask)
+                            {
+                                btnClose.IsEnabled = true;
+                                btnGive.IsEnabled = true;
+                                btnModify.IsEnabled = true;
+                            }
+                            else
+                            {
+                                btnGive.IsEnabled = false;
+                                btnModify.IsEnabled = false;
+                                btnClose.IsEnabled = false;
+                                btnTakeOn.IsEnabled = false;
+                            }
+                        }
+
+                        else
+                        {
+                            btnClose.IsEnabled = false;
+                            btnTakeOn.IsEnabled = true;
+                        }
+
                         break;
 
                     }
@@ -50,12 +77,15 @@ namespace CRM.WPF.Views
                     {
                         btnTakeOn.IsEnabled = true;
                         txtStatus.Text += "Szabad";
+                        btnClose.IsEnabled = false;
+                        btnGive.IsEnabled = false;
+
                         break;
-                       
+
                     }
                 case 3:
                     {
-                      
+
                         txtStatus.Text += "Elvállalt";
                         if (!isOwnTask)
                         {
@@ -74,9 +104,9 @@ namespace CRM.WPF.Views
                         break;
                     }
             }
-            txtCreatedDate.Text+= actualTask.CreateDate.ToString();
-            txtDeadline.Text+= actualTask.DeadLine.ToString();
-            tbTaskDescription.Text+= actualTask.TaskDescription;
+            txtCreatedDate.Text += actualTask.CreateDate.ToString();
+            txtDeadline.Text += actualTask.DeadLine.ToString();
+            tbTaskDescription.Text += actualTask.TaskDescription;
             txtCategory.Text += actualTask.Category;
             if (actualTask.ResponsibleUserId == null)
             {
@@ -85,8 +115,10 @@ namespace CRM.WPF.Views
             else
             {
                 responsibleUser = new GenericDataService<User>(new CRM_DbContextFactory());
-                txtResponsibleUser.Text +=responsibleUser.Get(actualTask.ResponsibleUserId.Value).Result.Name ;
+                txtResponsibleUser.Text += responsibleUser.Get(actualTask.ResponsibleUserId.Value).Result.Name;
             }
+
+          
         }
 
         private void takeOnTask(object sender, RoutedEventArgs e)
@@ -94,6 +126,7 @@ namespace CRM.WPF.Views
            if( actualTaskViewModel.takeOnTask(actualTask, user))
             {
                 MessageBox.Show("Sikersen elvállalta!");
+                actualTaskListBox.Items.Refresh();
                 this.Close();
             }
         }
@@ -103,6 +136,7 @@ namespace CRM.WPF.Views
             if (actualTaskViewModel.taskClose(actualTask))
             {
                 MessageBox.Show("Sikersen lezárta!");
+                actualTaskListBox.Items.Refresh();
                 this.Close();
             }
         }

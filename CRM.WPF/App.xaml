@@ -46,6 +46,9 @@
             <DataTemplate DataType="{x:Type viewmodels:AllTaskViewModel}">
                 <views:AllTaskView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:OverViewViewModel}">
+                <views:OverViewView/>
+            </DataTemplate>
 
         </ResourceDictionary>
     </Application.Resources>

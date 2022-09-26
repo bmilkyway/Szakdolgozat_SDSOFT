@@ -1,6 +1,14 @@
-﻿using CRM.WPF.Controls;
+﻿using CRM.Domain.Models;
+using CRM.Domain.Services;
+using CRM.EntityFramework;
+using CRM.EntityFramework.Services;
+using CRM.LocalDb;
+using CRM.WPF.Controls;
 using CRM.WPF.State.Navigators;
 using CRM.WPF.ViewModels;
+
+using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +24,13 @@ namespace CRM.WPF.Commands
         public event EventHandler? CanExecuteChanged;
 
         private readonly INavigator _navigator;
-
+        private IDataService<User>? UserService;
         public UpDateCurrentViewModelCommand(INavigator navigator)
         {
             
             _navigator = navigator;
-    
+            UserService = new GenericDataService<User>(new CRM_DbContextFactory());
+
         }
               
         public bool CanExecute(object? parameter)
@@ -67,10 +76,28 @@ namespace CRM.WPF.Commands
                         _navigator.CurrentViewModel = new OwnTaskViewModel();
                         break;
                     case ViewType.LogOut:
-                        Application.Current.Shutdown();
+
+                        Window window = Application.Current.MainWindow;
+                        logout();
+                        Window loginWindow = new Login();
+                        loginWindow.Show();
+                        window.Close();
                         break;
                 }
             }
+        }
+
+        public void logout()
+        {
+            var db = new SQLiteConnection("currentUserDb.db3");
+            CurrentUser currentUser = db!.Get<CurrentUser>(1);
+            User user = UserService!.Get(currentUser.userId).Result;
+            user.IsActive = false;
+            _ = UserService!.Update(user!.Id, user);
+            db!.Delete<CurrentUser>(1);
+            db!.Close();
+            System.IO.File.Delete("currentUserDb.db3");
+      
         }
     }
 }

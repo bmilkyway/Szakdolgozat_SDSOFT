@@ -8,7 +8,7 @@ namespace CRM.WPF.ViewModels
     {
         public INavigator Navigator { get; set; } = new Navigator();
 
-       public MainViewModel(User activeUser)
+       public MainViewModel()
         {
             Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
         }

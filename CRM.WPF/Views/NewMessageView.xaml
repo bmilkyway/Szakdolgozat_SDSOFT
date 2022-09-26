@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:CRM.WPF.Views"
                 xmlns:viewModel ="clr-namespace:CRM.WPF.ViewModels" xmlns:navigators="clr-namespace:CRM.WPF.State.Navigators" d:DataContext="{d:DesignInstance Type=navigators:Navigator}"
              mc:Ignorable="d" 
+             Foreground="White"
              d:DesignHeight="740" d:DesignWidth="1030"
              Background="#41518F">
     <Grid>
@@ -26,7 +27,9 @@
         </Grid.RowDefinitions>
         <Label Content="Cím" Grid.Row="0" Grid.Column="0" FontSize="20" Foreground="White" FontWeight="Bold" Margin="10 0 0 0"/>
         <Label Content="Tárgy" Grid.Row="0" Grid.Column="1" FontSize="20" Foreground="White" FontWeight="Bold" Margin="10 0 0 0"/>
-        <ComboBox Grid.Row="1" Grid.Column="0" Name="cbToUserAddress" Margin="10" FontSize="20" ItemsSource="{Binding userList}" IsReadOnly="false"/>
+        <ComboBox Grid.Row="1" Grid.Column="0" Name="cbToUserAddress" Margin="10" FontSize="20" ItemsSource="{Binding userList}" IsReadOnly="false"  >
+           
+        </ComboBox>
 
 
         <TextBox Grid.Row="1" Grid.Column="1" Name="txtSubjectText" Grid.ColumnSpan="2"  Margin="10" FontSize="20"/>
@@ -39,7 +42,7 @@
 
         <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="10" >
             <Border CornerRadius="20" Background="#31407B">
-                <TextBox Margin="15 35 15 15"  Name="txtMessageText" TextWrapping="Wrap" Padding="10" FontSize="20" AcceptsReturn="True"/>
+                <TextBox Margin="15 35 15 15"  Name="txtMessageText" TextWrapping="Wrap" Padding="10" FontSize="20" AcceptsReturn="True" Foreground="White"/>
             </Border>
         </DockPanel>
         <Label Content="Üzenet" Grid.Row="2" Grid.Column="0"  FontSize="20" Foreground="White" FontWeight="Bold" Margin="20 10 0 0" />

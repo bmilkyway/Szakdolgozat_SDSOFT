@@ -1,4 +1,8 @@
 ﻿using CRM.Domain.Models;
+using CRM.LocalDb;
+
+using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +19,13 @@ namespace CRM.WPF.ViewModels
         public int nearDeadline { get; set; }
        
         private readonly IEnumerable<Task> tasks;
+        private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
         public  User activeUser;
         public OwnTaskViewModel()
         {
-            activeUser = UserService!.Get(1).Result;
+            activeUser = UserService!.Get(connection.Get<CurrentUser>(1).userId).Result;
             tasks = TaskService!.OwnTask(activeUser.Id).Result;
+            connection.Close();
             ownTasks = new List<Task>();
             closeTaskCount = 0;
             planedTaskCount = 0;

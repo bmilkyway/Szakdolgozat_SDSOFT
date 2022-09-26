@@ -32,8 +32,15 @@ namespace CRM.WPF.Views
 
         private void openActualTaskWindow(object sender, SelectionChangedEventArgs e)
         {
-            ActualTask actual = new ActualTask(allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex], allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex].CreatedUserId==allTaskViewModel.activeUser.Id?true:false,allTaskViewModel.activeUser);
-            actual.Show();
+            if (lbTaskList.SelectedIndex != -1)
+            {
+  ActualTask actual = new ActualTask(allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex],
+                (allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex].ResponsibleUserId!=null && allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex].ResponsibleUserId ==allTaskViewModel.activeUser.Id)?
+                true:false,allTaskViewModel.activeUser,lbTaskList);
+            actual.ShowDialog();
+                lbTaskList.Items.Refresh();
+            }
+          
         }
 
         private void setFilterTaskList(object sender, RoutedEventArgs e)

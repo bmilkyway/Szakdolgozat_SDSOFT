@@ -6,6 +6,7 @@
             xmlns:local="clr-namespace:CRM.WPF.Views"
                  xmlns:viewModel ="clr-namespace:CRM.WPF.ViewModels"
               mc:Ignorable="d" 
+             Foreground="White"
           d:DesignHeight="740" d:DesignWidth="1030"  Background="#41518F">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,7 +23,7 @@
         
         <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" >
             <Border Background="#31407B" CornerRadius="10">
-                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" SelectionChanged="openSelectedTask" />
+                <ListBox Name="lbTaskList"  Margin="10 50 10 10" FontSize="20" SelectionChanged="openSelectedTask"  Foreground="White"/>
             </Border>
         </DockPanel>
         <TextBlock Text="Saját feladatok" FontSize="20" Grid.Column="0" Grid.Row="1" Foreground="White" FontWeight="Bold" Margin="20 10"/>

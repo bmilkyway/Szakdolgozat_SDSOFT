@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:CRM.WPF.Views"
                  xmlns:viewModel ="clr-namespace:CRM.WPF.ViewModels"
               mc:Ignorable="d" 
+             Foreground="White"
           d:DesignHeight="740" d:DesignWidth="1030"  Background="#41518F">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,7 +28,7 @@
        
         <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="4">
             <Border Background="#31407B" CornerRadius="10">
-                <ListBox Name="lbMessageList"  Margin="10 100 10 10" FontSize="20"  SelectionChanged="setMessageViewer"/>
+                <ListBox Name="lbMessageList"  Margin="10 100 10 10" FontSize="20"  SelectionChanged="setMessageViewer" Foreground="White"/>
             </Border>
         </DockPanel>
         <TextBox Text="" Name="txtFilter" TextChanged="setFilterList"  FontSize="20" Grid.Column="0" Grid.Row="2" Margin="10 0"/>

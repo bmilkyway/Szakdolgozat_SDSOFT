@@ -37,6 +37,9 @@
     <Compile Update="Views\NewTaskView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\OverViewView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\OwnTaskView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -82,6 +85,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NewTaskView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\OverViewView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\OwnTaskView.xaml">

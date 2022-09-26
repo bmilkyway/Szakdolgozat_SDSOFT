@@ -1,4 +1,8 @@
 ﻿using CRM.Domain.Models;
+using CRM.LocalDb;
+
+using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +22,12 @@ namespace CRM.WPF.ViewModels
             "Karbantartás"
         };
         private readonly User activeUser;
+        private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
+   
         public NewTaskViewModel()
         {
-            activeUser = UserService!.Get(1).Result;
+            activeUser = UserService!.Get(connection.Get<CurrentUser>(1).userId).Result;
+            connection.Close();
         }
 
 

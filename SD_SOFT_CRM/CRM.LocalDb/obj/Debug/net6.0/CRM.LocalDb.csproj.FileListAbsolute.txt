@@ -1,0 +1,12 @@
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\bin\Debug\net6.0\CRM.LocalDb.deps.json
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\bin\Debug\net6.0\CRM.LocalDb.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\bin\Debug\net6.0\CRM.LocalDb.pdb
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.csproj.AssemblyReference.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.AssemblyInfoInputs.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.AssemblyInfo.cs
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.csproj.CoreCompileInputs.cache
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\obj\Debug\net6.0\refint\CRM.LocalDb.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\obj\Debug\net6.0\CRM.LocalDb.pdb
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\SD_SOFT_CRM\CRM.LocalDb\obj\Debug\net6.0\ref\CRM.LocalDb.dll
