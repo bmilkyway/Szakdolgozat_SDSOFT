@@ -36,7 +36,7 @@ namespace CRM.WPF.Views
             {
   ActualTask actual = new ActualTask(allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex],
                 (allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex].ResponsibleUserId!=null && allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex].ResponsibleUserId ==allTaskViewModel.activeUser.Id)?
-                true:false,allTaskViewModel.activeUser,lbTaskList);
+                true:false,lbTaskList);
             actual.ShowDialog();
                 lbTaskList.Items.Refresh();
             }

@@ -17,13 +17,12 @@ namespace CRM.WPF.ViewModels
 
         public List<Message> messageList { get; set; }
         private readonly IEnumerable<Message> incomingMessages;
-        private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
-      
+       
         public IncomingMessageViewModel()
         {
-            incomingMessages = MessageService!.IncomingMessages(  UserService!.Get(connection.Get<CurrentUser>(1).userId).Result.Id).Result;
+            incomingMessages = MessageService!.IncomingMessages( currentUser.Id).Result;
             messageList = incomingMessages.ToList();
-            connection.Close();
+      
            
         }
 

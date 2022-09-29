@@ -29,9 +29,7 @@
         <DockPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="4">
             <Border Background="#31407B" CornerRadius="10">
                 <ListBox Name="lbMessageList"  Margin="10 100 10 10" FontSize="20"  SelectionChanged="setMessageViewer" ItemsSource="{Binding messageList}" Foreground="White">
-                    <ListBox.DataContext>
-                        <viewModel:IncomingMessageViewModel/>
-                    </ListBox.DataContext>
+                
                 </ListBox>
             </Border>
         </DockPanel>

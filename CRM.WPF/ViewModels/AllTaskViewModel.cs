@@ -23,11 +23,11 @@ namespace CRM.WPF.ViewModels
         public List<Domain.Models.Task> nearDeadlineTask { get; set; }
         public User activeUser;
         private readonly IEnumerable<Domain.Models.Task> tasks;
-        private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
+      
 
         public AllTaskViewModel()
         {
-            activeUser = UserService!.Get(connection.Get<CurrentUser>(1).userId).Result; 
+            this.activeUser = currentUser;
             allTask = new List<Domain.Models.Task>();
             planningTask = new List<Domain.Models.Task>();
             closedTask = new List<Domain.Models.Task>();
@@ -38,7 +38,7 @@ namespace CRM.WPF.ViewModels
             nearDeadlineTask = new List<Domain.Models.Task>();
             showFilteredTask = new List<Domain.Models.Task>();
             tasks = TaskService!.GetAll().Result;
-            connection.Close();
+           
 
             foreach (var task in tasks)
             {

@@ -141,7 +141,7 @@ namespace CRM.WPF.Views
         {
             if(lbOwnTasks.SelectedIndex!=-1)
             {
-                ActualTask actual = new ActualTask(homeViewModel.ownTasks![lbOwnTasks.SelectedIndex],true,homeViewModel.active_User,lbOwnTasks);
+                ActualTask actual = new ActualTask(homeViewModel.ownTasks![lbOwnTasks.SelectedIndex],true,lbOwnTasks);
                 actual.ShowDialog();
                 lbOwnTasks.Items.Refresh();
 

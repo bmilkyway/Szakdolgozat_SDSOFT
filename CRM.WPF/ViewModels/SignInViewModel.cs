@@ -11,13 +11,13 @@ using System.Windows;
 namespace CRM.WPF.ViewModels
 {
    
-    public class SignInViewModel:ViewModelBase
+    public class SignInViewModel:ViewModelLoginBase
     {   private User? newUser;
         private CurrentUser? currentUser;
         private  IEnumerable<User>? allUsers;
         public void navigationToMain()
         {
-            Window window = new MainWindow(currentUser!.userId);
+            Window window = new MainWindow(newUser!.Id);
             window.DataContext = new MainViewModel();
             window.Show();
         }
@@ -76,15 +76,15 @@ namespace CRM.WPF.ViewModels
                     IsActive = true,
                     PermissionId = 2,
                 };
-                UserService.Create(newUser);
-                EmailSender senderEmail = new EmailSender();
-                senderEmail.succesfullSignIn(newUser);
+                newUser =UserService.Create(newUser).Result;
+              //  EmailSender senderEmail = new EmailSender();
+               // senderEmail.succesfullSignIn(newUser);
               
                     var db = new SQLiteConnection("currentUserDb.db3");
                     db!.CreateTable<CurrentUser>();
                     currentUser = new CurrentUser
                     {
-                        Id = newUser.Id,
+                        userId = newUser.Id,
                         userName = newUser.UserName,
                         name = newUser.Name,
                         password = newUser.Password,

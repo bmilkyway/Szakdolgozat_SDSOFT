@@ -23,6 +23,7 @@ namespace CRM.WPF.Controls
         public NavigationBar()
         {
             InitializeComponent();
+            
         }
 
         private void Active(object sender, RoutedEventArgs e)

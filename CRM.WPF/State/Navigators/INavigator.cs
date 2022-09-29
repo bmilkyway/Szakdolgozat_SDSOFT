@@ -23,7 +23,12 @@ namespace CRM.WPF.State.Navigators
         IncomingMessage,
         NewTask,
         OwnTask,
-        AllTask
+        AllTask,
+        ActualTaskModify,
+        ActualTaskTakeOn,
+        ActualTaskOpen,
+        Adminlayout
+
     }
 
 

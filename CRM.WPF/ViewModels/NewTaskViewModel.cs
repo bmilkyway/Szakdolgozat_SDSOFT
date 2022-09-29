@@ -22,12 +22,11 @@ namespace CRM.WPF.ViewModels
             "Karbantartás"
         };
         private readonly User activeUser;
-        private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
+      
    
         public NewTaskViewModel()
         {
-            activeUser = UserService!.Get(connection.Get<CurrentUser>(1).userId).Result;
-            connection.Close();
+            activeUser = currentUser;
         }
 
 

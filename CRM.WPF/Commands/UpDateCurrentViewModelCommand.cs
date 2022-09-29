@@ -75,6 +75,10 @@ namespace CRM.WPF.Commands
                     case ViewType.OwnTask:
                         _navigator.CurrentViewModel = new OwnTaskViewModel();
                         break;
+                        
+                    case ViewType.Adminlayout:
+                        _navigator.CurrentViewModel = new AdminLayoutViewModel();
+                        break;
                     case ViewType.LogOut:
 
                         Window window = Application.Current.MainWindow;
@@ -82,6 +86,12 @@ namespace CRM.WPF.Commands
                         Window loginWindow = new Login();
                         loginWindow.Show();
                         window.Close();
+                        break;
+                    case ViewType.ActualTaskOpen:
+                        _navigator.CurrentViewModel = new ActualTaskOpenViewModel();
+                        break;
+                    case ViewType.ActualTaskModify:
+                        _navigator.CurrentViewModel = new ActualTaskModifyViewModel();
                         break;
                 }
             }

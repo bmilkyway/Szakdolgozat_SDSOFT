@@ -32,14 +32,10 @@
             <Border CornerRadius="2"  Background="#31407B" Padding="2" Margin="4 0 0 0">
                 <StackPanel Width="37" >
                     <TextBlock Text="{Binding nearTheDeadlineCount,StringFormat=Közelgő határidős feladatok: {0}}" FontWeight="Bold" FontSize="2" Padding="0 2 0 1" >
-                        <TextBlock.DataContext>
-                            <viewModel:HomeViewModel/>
-                        </TextBlock.DataContext>
+                       
                     </TextBlock >
                     <TextBlock Text="{Binding unReadMessageCount,StringFormat=Olvasatlan üzenetek: {0}}" FontWeight="Bold" FontSize="2" Padding="0 2 0 1" >
-                        <TextBlock.DataContext>
-                            <viewModel:HomeViewModel/>
-                        </TextBlock.DataContext>
+                       
                     </TextBlock >
                 </StackPanel>
             </Border>

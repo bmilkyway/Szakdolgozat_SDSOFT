@@ -9,7 +9,7 @@ using SQLite;
 
 namespace CRM.WPF.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelLoginBase
     {
 
         private User? activeUser;

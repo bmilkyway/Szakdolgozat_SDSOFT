@@ -19,13 +19,14 @@ namespace CRM.WPF.ViewModels
         public int nearDeadline { get; set; }
        
         private readonly IEnumerable<Task> tasks;
-        private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
+     
         public  User activeUser;
         public OwnTaskViewModel()
         {
-            activeUser = UserService!.Get(connection.Get<CurrentUser>(1).userId).Result;
+            activeUser =
+                currentUser;
             tasks = TaskService!.OwnTask(activeUser.Id).Result;
-            connection.Close();
+        
             ownTasks = new List<Task>();
             closeTaskCount = 0;
             planedTaskCount = 0;

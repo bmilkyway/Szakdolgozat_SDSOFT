@@ -42,8 +42,8 @@ namespace CRM.WPF.Views
                     newMessageViewModel.sendMessage(new Message
                     {
 
-                        ToUserId = cbToUserAddress.SelectedIndex+1,
-                        FromUserId = 1,
+                        ToUserId =newMessageViewModel.userList![cbToUserAddress.SelectedIndex].Id,
+                        FromUserId = newMessageViewModel.currentUser.Id,
                         MessageText = txtMessageText.Text,
                         Subject = txtSubjectText.Text,
                         isRead = false,

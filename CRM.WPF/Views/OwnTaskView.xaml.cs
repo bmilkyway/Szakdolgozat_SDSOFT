@@ -34,7 +34,7 @@ namespace CRM.WPF.Views
         {
             if (lbTaskList.SelectedIndex != -1)
             {
-                ActualTask actual = new ActualTask(ownTaskViewModel.ownTasks[lbTaskList.SelectedIndex],true,ownTaskViewModel.activeUser,lbTaskList);
+                ActualTask actual = new ActualTask(ownTaskViewModel.ownTasks[lbTaskList.SelectedIndex],true,lbTaskList);
                 actual.ShowDialog();
                 lbTaskList.Items.Refresh();
             }

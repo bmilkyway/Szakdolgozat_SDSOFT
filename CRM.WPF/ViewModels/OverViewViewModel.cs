@@ -33,12 +33,11 @@ namespace CRM.WPF.ViewModels
 
         public User active_User;
         private readonly IEnumerable<Task> tasks;
-        private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
         public  OverViewViewModel ()
         {
-            active_User = UserService!.Get(connection.Get<CurrentUser>(1).userId).Result; ;
+            active_User = currentUser;
             tasks = TaskService!.GetAll().Result;
-            connection.Close();
+           
             ownActiveTaskCount = 0;
             ownClosedTaskCount = 0;
             ownPlannedTaskCount = 0;

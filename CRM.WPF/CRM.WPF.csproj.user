@@ -10,7 +10,16 @@
     <Compile Update="Controls\NavigationBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ActualTask.xaml.cs">
+    <Compile Update="Views\ActualTaskView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ActualTaskModifyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ActualTaskOpenView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AdminLayoutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\AllTaskView.xaml.cs">
@@ -57,7 +66,16 @@
     <Page Update="Controls\NavigationBar.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ActualTask.xaml">
+    <Page Update="Views\ActualTaskView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ActualTaskModifyView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ActualTaskOpenView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AdminLayoutView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AllTaskView.xaml">

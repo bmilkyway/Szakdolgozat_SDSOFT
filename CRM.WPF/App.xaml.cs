@@ -28,6 +28,7 @@ namespace CRM.WPF
                 SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
                 
                     CurrentUser currentUser = connection.Get<CurrentUser>(1);
+                    
                     Window window = new MainWindow(currentUser.userId);
                     window.DataContext = new MainViewModel();
                 connection.Close();
@@ -44,6 +45,7 @@ namespace CRM.WPF
      
             base.OnStartup(e);
         }
+       
        
     }
 
