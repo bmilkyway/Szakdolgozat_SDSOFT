@@ -1,5 +1,6 @@
 ﻿using CRM.Domain.Models;
 using CRM.WPF.ViewModels;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,56 +18,30 @@ namespace CRM.WPF.Views
     public partial class HomeView : UserControl
     {
         private List<Category> Categories { get; set; }
-        float pieWidth = 650, pieHeight = 650;
+        private  readonly float pieWidth = 650, pieHeight = 650;
 
-        private readonly  HomeViewModel homeViewModel;
+        private readonly HomeViewModel homeViewModel;
         public HomeView()
         {
             InitializeComponent();
             mainCanvas.Width = pieWidth;
             mainCanvas.Height = pieHeight;
             homeViewModel = new HomeViewModel();
-
-          
-
-
-            Categories = new List<Category>()
-            {
-                #region Kördiagramm részei
-                new Category
-                {
-                    Title = "Elkezdett feladatok:",
-                    Percentage = homeViewModel.activeTaskCount,
-                    ColorBrush = Brushes.Green,
-                },
-
-                new Category
-                {
-                    Title = "Lezárt feladatok:",
-                    Percentage = homeViewModel.closedTaskCount,
-                    ColorBrush = Brushes.Gray,
-                },
-
-                new Category
-                {
-                    Title = "Tervezés alatti feladatok:",
-                    Percentage = homeViewModel.plannedTaskCount,
-                    ColorBrush = Brushes.Yellow,
-                }
-                #endregion
-
-            };
-
+            Categories = setcategories();
             detailsItemsControl.ItemsSource = Categories;
             if (homeViewModel.ownTasks!.Count != 0)
             {
-                printChart();
+                printChart(homeViewModel.ownTasks.Count);
             }
         }
-        public void printChart()
+
+        /// <summary>
+        /// Diagramm rajzolása
+        /// </summary>
+        public void printChart(int taskCount)
         {
             float centerX = pieWidth / 2, centerY = pieHeight / 2, radius = pieWidth / 2;
-            int tasksCount = homeViewModel.ownTasks!.Count;
+            int tasksCount = taskCount;
             float angle = 0, prevAngle = 0;
             foreach (var category in Categories)
             {
@@ -137,16 +112,66 @@ namespace CRM.WPF.Views
                 mainCanvas.Children.Add(outline2);
             }
         }
+
+        /// <summary>
+        /// Beállítja a kategóriákat, amik a kördiagramm adatelosztását adják
+        /// </summary>
+        /// <returns></returns>
+        private List<Category> setcategories()
+        {
+            List<Category> resaultCategories = new List<Category> { 
+            #region Kördiagramm részei
+                new Category
+                {
+                    Title = "Elkezdett feladatok:",
+                    Percentage = homeViewModel.activeTaskCount.Count,
+                    ColorBrush = Brushes.Green,
+                },
+                new Category
+                {
+
+                    Title = "Lezárt feladatok:",
+                    Percentage = homeViewModel.closedTaskCount.Count,
+                    ColorBrush = Brushes.Gray,
+                },
+                new Category
+                {
+                    Title = "Tervezés alatti feladatok:",
+                    Percentage = homeViewModel.plannedTaskCount.Count,
+                    ColorBrush = Brushes.Yellow,
+                }
+                #endregion
+
+            };
+            return resaultCategories;
+        }
+        private void setFilterTaskList(object sender, RoutedEventArgs e)
+        {
+            homeViewModel.setShowFilteredTask(cbPlanning.IsChecked!.Value, cbClosed.IsChecked!.Value, cbStarted.IsChecked!.Value, cbExpired.IsChecked!.Value, cbNearDeadline.IsChecked!.Value);
+            lbOwnTasks.ItemsSource = homeViewModel.showFilteredTask;
+            
+
+        }
+
         private void openThisTask(object sender, SelectionChangedEventArgs e)
         {
-            if(lbOwnTasks.SelectedIndex!=-1)
+            if (lbOwnTasks.SelectedIndex != -1)
             {
-                ActualTask actual = new ActualTask(homeViewModel.ownTasks![lbOwnTasks.SelectedIndex],true,lbOwnTasks);
+                ActualTaskView actual = new ActualTaskView(homeViewModel.ownTasks![lbOwnTasks.SelectedIndex], lbOwnTasks);
                 actual.ShowDialog();
+                lbOwnTasks.SelectedIndex = -1;
+                homeViewModel.reset();
+                 homeViewModel.setShowFilteredTask(cbPlanning.IsChecked!.Value, cbClosed.IsChecked!.Value, cbStarted.IsChecked!.Value, cbExpired.IsChecked!.Value, cbNearDeadline.IsChecked!.Value);
+                Categories = setcategories();
+                detailsItemsControl.ItemsSource = Categories;
+                if (homeViewModel.ownTasks!.Count != 0)
+                    printChart(homeViewModel.ownTasks.Count);
                 lbOwnTasks.Items.Refresh();
+                txtNearDeadline.Text=String.Format("Közelgő határidős feladatok: {0}",homeViewModel.nearTheDeadlineCount.Count);
+                lbOwnTasks.ItemsSource = homeViewModel.showFilteredTask;
 
             }
-           
+
         }
     }
 

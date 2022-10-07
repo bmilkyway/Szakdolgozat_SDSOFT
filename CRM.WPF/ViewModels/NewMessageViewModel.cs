@@ -6,6 +6,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Windows.Media;
 using CRM.Domain.Models;
+using CRM.WPF.Services.EmailSender;
 
 namespace CRM.WPF.ViewModels
 {
@@ -36,9 +37,11 @@ namespace CRM.WPF.ViewModels
             }
             
         }
-        public void sendMessage(Message message)
+        public void sendMessage(Message message,User user)
         {
             MessageService!.Create(message);
+            EmailSender sender = new EmailSender();
+            sender.sendMessage(user);
         }
             
       

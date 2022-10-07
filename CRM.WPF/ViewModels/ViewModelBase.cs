@@ -19,6 +19,7 @@ namespace CRM.WPF.ViewModels
         public IDataService<Task>? TaskService;
         public IDataService<Message>? MessageService ;
         public IDataService<Status>? StatusService ;
+        private Task actualTask;
         private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
         public User currentUser;
 
@@ -33,5 +34,14 @@ namespace CRM.WPF.ViewModels
             connection.Close();
 
         }
+        public void setActualTask(Task task)
+        {
+            actualTask = task;
+        }
+        public Task getActualTask()
+        {
+            return actualTask;
+        }
+        
     }
 }

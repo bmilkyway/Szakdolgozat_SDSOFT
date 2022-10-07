@@ -35,14 +35,18 @@ namespace CRM.WPF
         }
         protected override void OnClosed(EventArgs e)
         {
-            var db = new SQLiteConnection("currentUserDb.db3");
-            CurrentUser currentUser = db!.Get<CurrentUser>(1);
-            User user = UserService!.Get(currentUser.userId).Result;
-            user.IsActive = false;
-            _ = UserService!.Update(user!.Id, user);
-            db.Update(currentUser);
-            db!.Close();
-            base.OnClosed(e);
+            //Ha bezár gombra mentünk, átállítja az IsActice mezőt false-ra  
+            if (System.IO.File.Exists("currentUserDb.db3"))
+            {
+                var db = new SQLiteConnection("currentUserDb.db3");
+                CurrentUser currentUser = db!.Get<CurrentUser>(1);
+                User user = UserService!.Get(currentUser.userId).Result;
+                user.IsActive = false;
+                _ = UserService!.Update(user!.Id, user);
+                db.Update(currentUser);
+                db!.Close();
+                base.OnClosed(e);
+            }
         }
     }
 }

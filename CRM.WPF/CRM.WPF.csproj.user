@@ -13,12 +13,6 @@
     <Compile Update="Views\ActualTaskView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ActualTaskModifyView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\ActualTaskOpenView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\AdminLayoutView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -67,12 +61,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ActualTaskView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\ActualTaskModifyView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\ActualTaskOpenView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AdminLayoutView.xaml">

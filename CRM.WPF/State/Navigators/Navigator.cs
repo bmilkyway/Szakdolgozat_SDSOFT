@@ -31,6 +31,10 @@ namespace CRM.WPF.State.Navigators
 
         public event PropertyChangedEventHandler? PropertyChanged;
         
+        /// <summary>
+        /// Ha megváltozk a paraméter a CurrentViewModel navigáció esetén, cseréli azt
+        /// </summary>
+        /// <param name="propertyName"></param>
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

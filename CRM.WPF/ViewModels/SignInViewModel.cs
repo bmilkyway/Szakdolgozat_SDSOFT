@@ -77,8 +77,8 @@ namespace CRM.WPF.ViewModels
                     PermissionId = 2,
                 };
                 newUser =UserService.Create(newUser).Result;
-              //  EmailSender senderEmail = new EmailSender();
-               // senderEmail.succesfullSignIn(newUser);
+                EmailSender senderEmail = new EmailSender();
+                 senderEmail.succesfullSignIn(newUser);
               
                     var db = new SQLiteConnection("currentUserDb.db3");
                     db!.CreateTable<CurrentUser>();

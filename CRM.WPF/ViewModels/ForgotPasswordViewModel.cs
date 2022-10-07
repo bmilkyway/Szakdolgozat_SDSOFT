@@ -45,9 +45,9 @@ namespace CRM.WPF.ViewModels
                 }
                 else
                 {
-              //      authenticationCode = createCode();
-              //      EmailSender emailSender = new EmailSender();
-               //     emailSender.forgotPasswordEmail(forgotUser, authenticationCode);
+                   authenticationCode = createCode();
+                    EmailSender emailSender = new EmailSender();
+                   emailSender.forgotPasswordEmail(forgotUser, authenticationCode);
                     MessageBox.Show("A megadott email-címre elküldött, 4 számjegyű hitelesítési kód megadásával tud új jelszót beállítani!", "Hitelesítési kód elküldve!", MessageBoxButton.OK, MessageBoxImage.Information);
                     return true;
                 }

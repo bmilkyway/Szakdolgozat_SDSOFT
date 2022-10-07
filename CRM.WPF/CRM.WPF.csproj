@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Controls\logout.png" />
     <None Remove="Controls\whiteLogo.png" />
     <None Remove="Views\sdSoftLogo.png" />
   </ItemGroup>
@@ -25,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Controls\logout.png" />
     <Resource Include="Controls\whiteLogo.png" />
     <Resource Include="Views\sdSoftLogo.png" />
   </ItemGroup>

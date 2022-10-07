@@ -87,12 +87,8 @@ namespace CRM.WPF.Commands
                         loginWindow.Show();
                         window.Close();
                         break;
-                    case ViewType.ActualTaskOpen:
-                        _navigator.CurrentViewModel = new ActualTaskOpenViewModel();
-                        break;
-                    case ViewType.ActualTaskModify:
-                        _navigator.CurrentViewModel = new ActualTaskModifyViewModel();
-                        break;
+
+                  
                 }
             }
         }

@@ -54,9 +54,8 @@
                 <views:AdminLayoutView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewmodels:ActualTaskOpenViewModel}">
-                <views:ActualTaskOpenView/>
-            </DataTemplate>
+     
+
 
         </ResourceDictionary>
     </Application.Resources>

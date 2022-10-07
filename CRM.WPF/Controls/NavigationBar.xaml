@@ -8,64 +8,34 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="#31407B"
              d:MinHeight="450" d:MinWidth="800"
-             xmlns:navigator="clr-namespace:CRM.WPF.State.Navigators"
-             
-            >
-
-
+             xmlns:navigator="clr-namespace:CRM.WPF.State.Navigators">
     <Grid>
-      
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="50"/>
-
             <ColumnDefinition Width="*"/>
-       
-
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-       
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-      
         <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" >
-          
-     
             <Image Grid.Column="0"  Source="/Controls/whiteLogo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 5 2 30"/>
             <StackPanel>
-
-
                 <TextBlock Text="{Binding currentUser.Name, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type assets:MainWindow}}}" FontSize="20" Margin="10 0 0 0" Foreground="White"/>
                 <TextBlock Text="{Binding currentUser.Email, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type assets:MainWindow}}}" FontSize="15" Margin="10 0 0 20" Foreground="White"/>
-
             </StackPanel>
             <Button Grid.Column="0" x:Name="homeMenuBtn" Content="Kezdő oldal" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Home}" Click="Active"  Height="auto"  BorderBrush="Transparent" Style="{StaticResource MaterialDesignFlatButton}"/>
             <Button Grid.Column="0"  x:Name="messageMenuBtn" Content="Üzenetek" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Message}"  Height="auto"   BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFlatButton}"  />
             <Button Grid.Column="0"   x:Name="taskMenuBtn" Content="Feladatok" Background="#31407B"  FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Task}"  Height="auto"    BorderBrush="Transparent" Style="{StaticResource MaterialDesignFlatButton}"  />
             <Button Grid.Column="0"  x:Name="overViewMenuBtn" Content="Áttekintés" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.OverView}"  Height="auto"    BorderBrush="Transparent" Style="{StaticResource MaterialDesignFlatButton}" />
             <Button Grid.Column="0"  Visibility="{Binding isAdmin, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type assets:MainWindow}}}"  Content="Admin felület" Background="#31407B" FontSize="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.Adminlayout}"  Height="auto"   BorderBrush="Transparent" Style="{StaticResource MaterialDesignFlatButton}"/>
-           
-
         </StackPanel>
-        <StackPanel Grid.Column="0"  Grid.ColumnSpan="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10">
-            <Button Grid.Column="0"  x:Name="logOutMenuBtn" Content="Kijelentkezés" Background="#31407B" FontSize="20" Margin="20" Foreground="White" Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.LogOut}"  Height="auto"   BorderBrush="Transparent" Style="{StaticResource MaterialDesignFlatButton}"/>
-
+        <StackPanel Grid.Column="0"  Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Bottom" Margin="10">
             <TextBlock   Text="Version 1.02 " FontSize="10" Foreground="White" HorizontalAlignment="Center"  />
-
-        
         </StackPanel>
-        <Button Grid.Column="1"  VerticalAlignment="Top" Height="50" Margin="0 90 0 0"  Style="{StaticResource MaterialDesignFlatButton}"  Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.LogOut}" >
-
-            <Image Source="/Controls/logout.png" Stretch="Fill">
-
-            </Image>
-
+        <Button Grid.Column="1"  VerticalAlignment="Top" Height="30" Margin="0 90 0 0" Width="60"  Style="{StaticResource MaterialDesignFlatButton}"  Command="{Binding UpdateCurrentViewModelCommand}" CommandParameter="{x:Static navigator:ViewType.LogOut}" AutomationProperties.HelpText="Kijelentkezés" >
+            <Image Stretch="Fill" Source="/Controls/logout.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
-
     </Grid>
-
-
-
-  
 </UserControl>

@@ -48,7 +48,7 @@ namespace CRM.WPF.Views
                         Subject = txtSubjectText.Text,
                         isRead = false,
                         SendDate = DateTime.Now
-                    });
+                    }, newMessageViewModel.userList![cbToUserAddress.SelectedIndex]);
                     MessageBox.Show("Az üzenet el lett küldve!", "Sikeres küldés!", MessageBoxButton.OK, MessageBoxImage.Information);
                     txtMessageText.Text = "";
                     txtSubjectText.Text = "";

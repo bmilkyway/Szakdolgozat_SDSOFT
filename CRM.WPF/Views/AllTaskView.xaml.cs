@@ -34,11 +34,19 @@ namespace CRM.WPF.Views
         {
             if (lbTaskList.SelectedIndex != -1)
             {
-  ActualTask actual = new ActualTask(allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex],
-                (allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex].ResponsibleUserId!=null && allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex].ResponsibleUserId ==allTaskViewModel.activeUser.Id)?
-                true:false,lbTaskList);
-            actual.ShowDialog();
+                ActualTaskView actual = new ActualTaskView(allTaskViewModel.showFilteredTask[lbTaskList.SelectedIndex],lbTaskList);
+                actual.ShowDialog();
+                lbTaskList.SelectedIndex = -1;
+                allTaskViewModel.reset();
+                allTaskViewModel.setShowFilteredTask(cbOwn.IsChecked!.Value, cbPlanning.IsChecked!.Value, cbClosed.IsChecked!.Value, cbFree.IsChecked!.Value, cbStarted.IsChecked!.Value, cbExpired.IsChecked!.Value, cbNearDeadline.IsChecked!.Value);
                 lbTaskList.Items.Refresh();
+                lbTaskList.ItemsSource = allTaskViewModel.showFilteredTask;
+                lbAll.Text = String.Format("Feladatok száma: {0}",allTaskViewModel.allTask.Count);
+                lbOwn.Text = String.Format("Ebből saját: {0}",allTaskViewModel.ownTask.Count);
+                lbClosed.Text = String.Format("Lezárt feladatok száma: {0}",allTaskViewModel.closedTask.Count);
+                lbFree.Text = String.Format("Szabad feladatok száma: {0}",allTaskViewModel.freeTask.Count);
+                lbPlanned.Text = String.Format("Tervezés alatt álló feladatok száma: {0}",allTaskViewModel.plannedTask.Count);
+                lbNearDeadline.Text = String.Format("10 napon belül lejár: {0}",allTaskViewModel.nearDeadlineTask.Count);
             }
           
         }
@@ -47,7 +55,6 @@ namespace CRM.WPF.Views
         {
             allTaskViewModel.setShowFilteredTask(cbOwn.IsChecked!.Value,cbPlanning.IsChecked!.Value,cbClosed.IsChecked!.Value,cbFree.IsChecked!.Value,cbStarted.IsChecked!.Value,cbExpired.IsChecked!.Value,cbNearDeadline.IsChecked!.Value);
             lbTaskList.ItemsSource = allTaskViewModel.showFilteredTask;
-      
         }
     }
 }
