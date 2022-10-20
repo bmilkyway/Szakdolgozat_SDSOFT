@@ -19,7 +19,7 @@ namespace CRM.WPF.ViewModels
         public IDataService<Task>? TaskService;
         public IDataService<Message>? MessageService ;
         public IDataService<Status>? StatusService ;
-        private Task actualTask;
+        private Task? actualTask;
         private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
         public User currentUser;
 

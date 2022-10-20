@@ -54,12 +54,15 @@
             <Button Name="btnTakeOn" Content="Elvállal" FontSize="20"  Margin="10" IsEnabled="False" Click="takeOnTask"/>
             <Button Name="btnClose" Content="Lezár" FontSize="20" Margin="10" Click="taskClose"/>
             <Button Name="btnModify" Content="Módosít" FontSize="20" Margin="10" Click="startModify"/>
-            <Button Name="btnGive" Content="Átad" FontSize="20" Margin="10 10 10 0 "/>
+            <Button Name="btnGive" Content="Átad" FontSize="20" Margin="10 10 10 0 " Click="taskGiveOtherUser"/>
         </StackPanel>
         <StackPanel Name="spModify" Grid.Row="7" Grid.ColumnSpan="2" Margin="20 5 20 0"  Visibility="Hidden">
             <Button Name="btnSave" Content="Mentés" FontSize="20"  Margin="10" Click="taskSave"/>
             <Button Name="btnCancel" Content="Mégse" FontSize="20" Margin="10" Click="taskCancel"/>
-             </StackPanel>
-
+        </StackPanel>
+        <StackPanel Name="spGive" Grid.Row="7" Grid.ColumnSpan="2" Margin="20 5 20 0"  Visibility="Hidden">
+            <Button Name="btnGiveOtherUser" Content="Mentés" FontSize="20"  Margin="10" Click="taskSaveGiveOtherUser"/>
+            <Button Name="btnCancelGive" Content="Mégse" FontSize="20" Margin="10" Click="taskCancelGive"/>
+        </StackPanel>
     </Grid>
 </Window>

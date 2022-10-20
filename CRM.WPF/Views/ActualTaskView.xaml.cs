@@ -16,7 +16,7 @@ namespace CRM.WPF.Views
         private readonly ActualTaskViewModel actualTaskViewModel = new ActualTaskViewModel();
         public Task actualTask;
         private ListBox lbTasks;
-        private string responsibleUserName;
+        private string? responsibleUserName;
         public ActualTaskView(Task actualTask,ListBox lbTasks)
         {
             InitializeComponent();
@@ -29,6 +29,7 @@ namespace CRM.WPF.Views
             if (actualTask.ResponsibleUserId != null && actualTask.ResponsibleUserId == actualTaskViewModel.currentUser.Id)
             {
                 responsibleUserName = actualTaskViewModel.currentUser.Name!;
+             
                 btnClose.IsEnabled = true;
                 btnModify.IsEnabled = true;
                 btnTakeOn.IsEnabled = false;
@@ -38,6 +39,7 @@ namespace CRM.WPF.Views
             else if (actualTask.ResponsibleUserId != null)
             {
                 responsibleUserName = actualTaskViewModel.UserService!.Get(actualTask.ResponsibleUserId!.Value).Result.Name!;
+                
                 btnClose.IsEnabled = false;
                 btnModify.IsEnabled = false;
                 btnTakeOn.IsEnabled = false;
@@ -152,7 +154,7 @@ namespace CRM.WPF.Views
 
         private void taskSave(object sender, RoutedEventArgs e)
         {
-            if (actualTaskViewModel.taskModify(actualTask, lbTasks, Convert.ToDateTime(txtDeadline.Text),  cbCategory.SelectedItem.ToString(), tbTaskDescription.Text))
+            if (actualTaskViewModel.taskModify(actualTask, lbTasks, Convert.ToDateTime(txtDeadline.Text),  cbCategory.Text , tbTaskDescription.Text))
             {
                 MessageBox.Show("Sikeresen módosította a feladat részleteit!", "Sikeres módosítás!", MessageBoxButton.OK);
                 cancel();
@@ -175,6 +177,36 @@ namespace CRM.WPF.Views
             tbTaskDescription.Text = actualTask.TaskDescription;
             spModify.Visibility = Visibility.Hidden;
             spOpen.Visibility = Visibility.Visible;
+            spGive.Visibility = Visibility.Hidden;
+            cbResponsibleUser.Visibility = Visibility.Hidden;
+            txtResponsibleUser.Visibility = Visibility.Visible;
+        }
+
+        private void taskGiveOtherUser(object sender, RoutedEventArgs e)
+        {
+            txtResponsibleUser.Visibility = Visibility.Hidden;
+            cbResponsibleUser.Visibility = Visibility.Visible;
+            cbResponsibleUser.Text = txtResponsibleUser.Text;
+
+            spGive.Visibility = Visibility.Visible;
+            spOpen.Visibility = Visibility.Hidden;
+        }
+
+        private void taskCancelGive(object sender, RoutedEventArgs e)
+        {
+            this.cancel();
+        }
+
+        private void taskSaveGiveOtherUser(object sender, RoutedEventArgs e)
+        {
+            if (actualTaskViewModel.taskTakeOn(actualTask, lbTasks, actualTaskViewModel.users[cbResponsibleUser.SelectedIndex]))
+            { MessageBox.Show("Sikeresen átadta a feladatot!", "Sikeres átadás");
+                this.Close();
+            }
+            else
+              this.cancel();
+           
+
         }
     }
 }

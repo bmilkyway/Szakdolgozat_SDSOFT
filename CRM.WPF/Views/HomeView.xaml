@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CRM.WPF.Views"
              xmlns:viewModel ="clr-namespace:CRM.WPF.ViewModels"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
               mc:Ignorable="d" 
              Foreground="White"
              d:DesignHeight="740" d:DesignWidth="1030"
@@ -14,18 +15,15 @@
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="240" />
-            
             <RowDefinition Height="100"  />
             <RowDefinition Height="*" />
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-
-
         <StackPanel Grid.Column="2" Grid.Row="1" MaxHeight="250" Width="250" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 24 0 0">
             <Border CornerRadius="10"  Background="#31407B" Padding="2" Margin="4 0 0 0">
                 <StackPanel>
@@ -34,7 +32,6 @@
                     <CheckBox Content="Lezárt" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10" Click="setFilterTaskList" Name="cbClosed"/>
                     <CheckBox Content="Határidőhöz közel" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10" Click="setFilterTaskList" Name="cbNearDeadline"/>
                     <CheckBox Content="Lejárt" Foreground="White" FontSize="13" FontWeight="Bold" Margin="20 10 10 20" Click="setFilterTaskList" Name="cbExpired"/>
-
                 </StackPanel>
             </Border>
         </StackPanel>
@@ -42,70 +39,29 @@
             <Border CornerRadius="2"  Background="#31407B" Padding="2" Margin="4 0 0 0">
                 <StackPanel Width="37" >
                     <TextBlock Text="{Binding nearTheDeadlineCount.Count,StringFormat=Közelgő határidős feladatok: {0},Mode=OneWay}" FontWeight="Bold" FontSize="2" Padding="0 2 0 1"  Name="txtNearDeadline">
-                       
                     </TextBlock >
                     <TextBlock Text="{Binding unReadMessageCount,StringFormat=Olvasatlan üzenetek: {0}}" FontWeight="Bold" FontSize="2" Padding="0 2 0 1" >
-                       
                     </TextBlock >
                 </StackPanel>
             </Border>
         </Viewbox>
-        <Viewbox Stretch="Uniform" Grid.Column="2" Grid.Row="3"  Width="300" Height="300" Margin="2 10 0 0"  VerticalAlignment="Bottom">
-            <Border Background="#31407B" Padding="20" Margin="60 0"  CornerRadius="50">
-               
-                <StackPanel x:Name="mainGrid"
-               
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-             
-                    <ScrollViewer 
-                        Margin="0 0 0 20"
-                      VerticalAlignment="Center"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Hidden">
-                        <ItemsControl x:Name="detailsItemsControl">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate DataType="{x:Type local:Category}">
-                                    <StackPanel Orientation="Horizontal"
-                                    >
-                                        <Rectangle Width="40"
-                                       Height="40"
-                                       Fill="{Binding ColorBrush}"
-                                       Margin="0,0,5,0"
-                                       VerticalAlignment="Center" />
-
-                                        <TextBlock Text="{Binding Title}"
-                                       FontSize="40"
-                                                     Margin="10,0,5,0"
-                                                   FontWeight="Bold"
-                                       VerticalAlignment="Center"/>
-
-                                        <TextBlock Text="{Binding Percentage}"
-                                       Foreground="{Binding ColorBrush}"
-                                       FontSize="40"
-                                       FontWeight="Bold"
-                                       Margin="20,0,0,0"
-                                                  
-                                       VerticalAlignment="Center"/>
-
-                                        
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </ScrollViewer>
-                    <Canvas x:Name="mainCanvas"/>
+        <StackPanel Grid.Column="2" Grid.Row="3" MaxHeight="250" Width="250" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 24 0 0">
+            <Border CornerRadius="10" Background="#31407B" >
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <lvc:PieChart HorizontalAlignment="Center" Series="{Binding tasksChart.SeriesCollection}" Margin="0" LegendLocation="None"  Height="250" Width="250" FontSize="20">
+                        <lvc:PieChart.ChartLegend>
+                            <lvc:DefaultLegend BulletSize="15"/>
+                        </lvc:PieChart.ChartLegend>
+                        <lvc:PieChart.DataTooltip>
+                            <lvc:DefaultTooltip BulletSize="20"/>
+                        </lvc:PieChart.DataTooltip>
+                    </lvc:PieChart>
                 </StackPanel>
             </Border>
-        </Viewbox>
-
+        </StackPanel>
         <DockPanel Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Margin="0 25 0 0">
-
             <Border Background="#31407B" CornerRadius="20" Padding="20">
-
-
                 <ListBox Name="lbOwnTasks" ItemsSource="{Binding showFilteredTask, Mode=TwoWay}" FontSize="20" SelectionChanged="openThisTask" Foreground="White">
-                    
                 </ListBox>
             </Border>
         </DockPanel>
@@ -117,13 +73,9 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
-              
                 </Grid.RowDefinitions>
                 <Button Grid.Column="0" Grid.Row="0" Content="Saját feladatok" Foreground="White" FontSize="15" Background="Transparent" BorderBrush="Transparent" />
             </Grid>
-            
         </StackPanel>
-       
     </Grid>
-
 </UserControl>

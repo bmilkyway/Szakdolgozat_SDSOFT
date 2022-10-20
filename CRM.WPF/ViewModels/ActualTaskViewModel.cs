@@ -91,5 +91,19 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
                 return false;
             }
         }
+   
+        public bool taskTakeOn(Task actualTask, ListBox lbTask, User selectedUser)
+        {
+            if (actualTask.ResponsibleUserId == selectedUser.Id)
+            {
+                MessageBox.Show("Nem történt változás, a feladat nem kerül átadásra!");
+                return false;
+            }
+            actualTask.ResponsibleUserId = selectedUser.Id;
+            TaskService!.Update(actualTask.Id, actualTask);
+            lbTask.Items.Refresh();
+            return true;
+        }
+    
     }
 }

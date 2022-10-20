@@ -17,140 +17,19 @@ namespace CRM.WPF.Views
     /// </summary>
     public partial class HomeView : UserControl
     {
-        private List<Category> Categories { get; set; }
-        private  readonly float pieWidth = 650, pieHeight = 650;
 
         private readonly HomeViewModel homeViewModel;
         public HomeView()
         {
             InitializeComponent();
-            mainCanvas.Width = pieWidth;
-            mainCanvas.Height = pieHeight;
             homeViewModel = new HomeViewModel();
-            Categories = setcategories();
-            detailsItemsControl.ItemsSource = Categories;
-            if (homeViewModel.ownTasks!.Count != 0)
-            {
-                printChart(homeViewModel.ownTasks.Count);
-            }
         }
 
-        /// <summary>
-        /// Diagramm rajzolása
-        /// </summary>
-        public void printChart(int taskCount)
-        {
-            float centerX = pieWidth / 2, centerY = pieHeight / 2, radius = pieWidth / 2;
-            int tasksCount = taskCount;
-            float angle = 0, prevAngle = 0;
-            foreach (var category in Categories)
-            {
-                double line1X = (radius * Math.Cos(angle * Math.PI / 180)) + centerX;
-                double line1Y = (radius * Math.Sin(angle * Math.PI / 180)) + centerY;
-
-                angle = category.Percentage * (float)359 / tasksCount + prevAngle;
-                Debug.WriteLine(angle);
-
-                double arcX = (radius * Math.Cos(angle * Math.PI / 180)) + centerX;
-                double arcY = (radius * Math.Sin(angle * Math.PI / 180)) + centerY;
-
-                var line1Segment = new LineSegment(new Point(line1X, line1Y), false);
-                double arcWidth = radius, arcHeight = radius;
-                bool isLargeArc = category.Percentage > tasksCount / 2;
-                var arcSegment = new ArcSegment()
-                {
-                    Size = new Size(arcWidth, arcHeight),
-                    Point = new Point(arcX, arcY),
-                    SweepDirection = SweepDirection.Clockwise,
-                    IsLargeArc = isLargeArc,
-                };
-                var line2Segment = new LineSegment(new Point(centerX, centerY), false);
-
-                var pathFigure = new PathFigure(
-                    new Point(centerX, centerY),
-                    new List<PathSegment>()
-                    {
-                        line1Segment,
-                        arcSegment,
-                        line2Segment,
-                    },
-                    true);
-
-                var pathFigures = new List<PathFigure>() { pathFigure, };
-                var pathGeometry = new PathGeometry(pathFigures);
-                var path = new Path()
-                {
-                    Fill = category.ColorBrush,
-                    Data = pathGeometry,
-                };
-                mainCanvas.Children.Add(path);
-
-                prevAngle = angle;
-
-
-
-                var outline1 = new Line()
-                {
-                    X1 = centerX,
-                    Y1 = centerY,
-                    X2 = line1Segment.Point.X,
-                    Y2 = line1Segment.Point.Y,
-                    Stroke = Brushes.White,
-                    StrokeThickness = 5,
-                };
-                var outline2 = new Line()
-                {
-                    X1 = centerX,
-                    Y1 = centerY,
-                    X2 = arcSegment.Point.X,
-                    Y2 = arcSegment.Point.Y,
-                    Stroke = Brushes.White,
-                    StrokeThickness = 5,
-                };
-
-                mainCanvas.Children.Add(outline1);
-                mainCanvas.Children.Add(outline2);
-            }
-        }
-
-        /// <summary>
-        /// Beállítja a kategóriákat, amik a kördiagramm adatelosztását adják
-        /// </summary>
-        /// <returns></returns>
-        private List<Category> setcategories()
-        {
-            List<Category> resaultCategories = new List<Category> { 
-            #region Kördiagramm részei
-                new Category
-                {
-                    Title = "Elkezdett feladatok:",
-                    Percentage = homeViewModel.activeTaskCount.Count,
-                    ColorBrush = Brushes.Green,
-                },
-                new Category
-                {
-
-                    Title = "Lezárt feladatok:",
-                    Percentage = homeViewModel.closedTaskCount.Count,
-                    ColorBrush = Brushes.Gray,
-                },
-                new Category
-                {
-                    Title = "Tervezés alatti feladatok:",
-                    Percentage = homeViewModel.plannedTaskCount.Count,
-                    ColorBrush = Brushes.Yellow,
-                }
-                #endregion
-
-            };
-            return resaultCategories;
-        }
+     
         private void setFilterTaskList(object sender, RoutedEventArgs e)
         {
             homeViewModel.setShowFilteredTask(cbPlanning.IsChecked!.Value, cbClosed.IsChecked!.Value, cbStarted.IsChecked!.Value, cbExpired.IsChecked!.Value, cbNearDeadline.IsChecked!.Value);
             lbOwnTasks.ItemsSource = homeViewModel.showFilteredTask;
-            
-
         }
 
         private void openThisTask(object sender, SelectionChangedEventArgs e)
@@ -161,11 +40,7 @@ namespace CRM.WPF.Views
                 actual.ShowDialog();
                 lbOwnTasks.SelectedIndex = -1;
                 homeViewModel.reset();
-                 homeViewModel.setShowFilteredTask(cbPlanning.IsChecked!.Value, cbClosed.IsChecked!.Value, cbStarted.IsChecked!.Value, cbExpired.IsChecked!.Value, cbNearDeadline.IsChecked!.Value);
-                Categories = setcategories();
-                detailsItemsControl.ItemsSource = Categories;
-                if (homeViewModel.ownTasks!.Count != 0)
-                    printChart(homeViewModel.ownTasks.Count);
+                homeViewModel.setShowFilteredTask(cbPlanning.IsChecked!.Value, cbClosed.IsChecked!.Value, cbStarted.IsChecked!.Value, cbExpired.IsChecked!.Value, cbNearDeadline.IsChecked!.Value);
                 lbOwnTasks.Items.Refresh();
                 txtNearDeadline.Text=String.Format("Közelgő határidős feladatok: {0}",homeViewModel.nearTheDeadlineCount.Count);
                 lbOwnTasks.ItemsSource = homeViewModel.showFilteredTask;
@@ -175,10 +50,5 @@ namespace CRM.WPF.Views
         }
     }
 
-    public class Category
-    {
-        public float Percentage { get; set; }
-        public string? Title { get; set; }
-        public Brush? ColorBrush { get; set; }
-    }
+   
 }

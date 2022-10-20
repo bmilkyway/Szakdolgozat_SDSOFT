@@ -8,6 +8,9 @@ using System.Windows.Media;
 using CRM.Domain.Models;
 using SQLite;
 using CRM.LocalDb;
+using LiveCharts;
+using static CRM.WPF.ChartModels.chartModels;
+using LiveCharts.Wpf;
 
 namespace CRM.WPF.ViewModels
 {
@@ -19,7 +22,7 @@ namespace CRM.WPF.ViewModels
         public List<Task> plannedTaskCount { get; set; }
         public List<Task> nearTheDeadlineCount { get; set; }
         public List<Task> expiredTaskCount { get; set; }
-
+        public PieChartDiagramm tasksChart { get; set; }
         public int unReadMessageCount { get; set; }
         public List<Task>? ownTasks { get; set; }
 
@@ -30,7 +33,6 @@ namespace CRM.WPF.ViewModels
     
         public HomeViewModel()
         {
-
             active_User = currentUser;
             tasks = TaskService!.OwnTask(active_User.Id).Result;
             messages = MessageService!.GetAll().Result;
@@ -39,6 +41,7 @@ namespace CRM.WPF.ViewModels
             plannedTaskCount = new List<Task>();
             showFilteredTask = new List<Task>();
             expiredTaskCount = new List<Task>();
+            tasksChart = new PieChartDiagramm();
             unReadMessageCount = 0;
             nearTheDeadlineCount = new List<Task>();
             ownTasks = new List<Task>();
@@ -61,30 +64,38 @@ namespace CRM.WPF.ViewModels
                             break;
                     }
                     if(Convert.ToDateTime(task.DeadLine)>DateTime.UtcNow && task.TaskStatusId!=4 && Convert.ToDateTime(task.DeadLine).DayOfYear - DateTime.Now.DayOfYear < 10)
-                    {
                         nearTheDeadlineCount.Add(task);
-                    }
               else  if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4 )
-                {
                     expiredTaskCount.Add(task);
-                }
-
             }
             foreach(var message in messages)
-            {
                 if(message.ToUserId==active_User.Id && message.isRead == false)
-                {
                     unReadMessageCount++;
-                }
-            }
-         
 
-
+            #region Saját feladatok statisztika mutatása
+            tasksChart.SeriesCollection = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title="Elkezdett",
+                    Values=new ChartValues<int> {activeTaskCount.Count},
+                },
+                new PieSeries
+                {
+                    Title="Lezárt",
+                    Values=new ChartValues<int> {closedTaskCount.Count},
+                },
+                new PieSeries
+                {
+                    Title="Tervezés alatt",
+                    Values=new ChartValues<int> {plannedTaskCount.Count},
+                },
+            };
+            #endregion
         }
 
         public void reset() 
         {
-            
             showFilteredTask.Clear();
             ownTasks!.Clear();
             plannedTaskCount.Clear();
@@ -95,7 +106,6 @@ namespace CRM.WPF.ViewModels
             var tasks =TaskService!.OwnTask(active_User.Id).Result;
             foreach (var task in tasks)
             {
-                
                 switch (task.TaskStatusId)
                 {
                     case 1:
@@ -117,15 +127,9 @@ namespace CRM.WPF.ViewModels
                         break;
                 }
                 if (Convert.ToDateTime(task.DeadLine) > DateTime.UtcNow && task.TaskStatusId != 4 && task.TaskStatusId != 2 && Convert.ToDateTime(task.DeadLine).DayOfYear - DateTime.Now.DayOfYear < 10)
-                {
-                  
                     nearTheDeadlineCount.Add(task);
-                }
                 else if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4 &&task.TaskStatusId!=2)
-                {
-                   
                     expiredTaskCount.Add(task);
-                }
 
             }
 
@@ -134,48 +138,26 @@ namespace CRM.WPF.ViewModels
         public void setShowFilteredTask(bool planning, bool closed, bool started, bool expired, bool nearDeadline)
         {
             IEnumerable<Domain.Models.Task> tasks = new List<Domain.Models.Task>();
-
-
             if (planning)
-            {
                 tasks = tasks.Union(plannedTaskCount.ToArray());
-            }
             if (closed)
-            {
                 tasks = tasks.Union(closedTaskCount.ToArray());
-            }
             if (started)
-            {
                 tasks = tasks.Union(activeTaskCount.ToArray());
-            }
-
             if (expired)
-            {
                 tasks = tasks.Union(expiredTaskCount.ToArray());
-            }
             if (nearDeadline)
-            {
                 tasks = tasks.Union(nearTheDeadlineCount.ToArray());
-            }
-
-
             showFilteredTask.Clear();
             if (planning == false && closed == false && started == false && expired == false && nearDeadline == false)
-            {
-
                 showFilteredTask = ownTasks!.ToList();
-            }
-
             else
-            {
-
                 showFilteredTask = tasks.ToList();
-            }
 
         }
 
-    } 
-    
-    
+    }
+   
+  
 }
 
