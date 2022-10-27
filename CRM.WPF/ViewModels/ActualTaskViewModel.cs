@@ -21,7 +21,7 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
                 "Tesztelés",
                 "Karbantartás"
             };
-            users = UserService!.GetAll().Result.ToList();
+            users = UserService!.GetAllUser().Result.ToList();
 
         }
         public bool takeOnTask(Task actualTask, User user, ListBox lbTask)
@@ -30,6 +30,7 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
                 actualTask.TaskStatusId = 3;
 
             actualTask.ResponsibleUserId = user.Id;
+            actualTask.StartDate = DateTime.Now;
             TaskService!.Update(actualTask.Id, actualTask);
             lbTask.Items.Refresh();
             return true;

@@ -9,7 +9,7 @@
        Background="#7666FF"
         Title=""
         Foreground="White"
-        MinHeight="700" MaxHeight="750" MinWidth="515" MaxWidth="515">
+        MinHeight="750" MaxHeight="750" MinWidth="515" MaxWidth="515">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -46,7 +46,7 @@
         <TextBlock   Text="Feladat leírása" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" FontSize="15" FontWeight="Bold" Margin="10 0 0 0" VerticalAlignment="Bottom"/>
         <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Margin="10">
             <Border Background="#41518F" CornerRadius="20" >
-                <TextBox Name="tbTaskDescription" Margin="10" IsEnabled="false" />
+                <TextBox Name="tbTaskDescription" Margin="10" IsEnabled="false" TextWrapping="Wrap" AcceptsReturn="True"/>
             </Border>
         </DockPanel>
 

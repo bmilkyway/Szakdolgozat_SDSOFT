@@ -8,6 +8,7 @@
         public string? Category { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? CloseDate { get; set; }
+        public DateTime? StartDate { get; set; }
         public DateTime? DeadLine { get; set; }
         public int CreatedUserId { get; set; }
         public int TaskStatusId { get; set; }

@@ -56,12 +56,12 @@ namespace CRM.WPF.ViewModels
 
                     TaskName = taskName,
                     TaskDescription = description,
-                    DeadLine = deadline,
+                    DeadLine = deadline.AddHours(23).AddMinutes(59).AddSeconds(59),
                     Category = Categories[category],
                     CreateDate = DateTime.Now,
                     CreatedUserId = activeUser.Id,
                     TaskStatusId = isPlanning == true ? 1 : 2,
-                    CloseDate = DateTime.Parse("0001-01-01 00:00:00")
+                    CloseDate =null,
 
 
 

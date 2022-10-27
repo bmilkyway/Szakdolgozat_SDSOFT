@@ -6,6 +6,7 @@ using System.Linq;
 using CRM.Domain.Models;
 
 using LiveCharts;
+using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 
 using static CRM.WPF.ChartModels.chartModels;
@@ -20,6 +21,10 @@ namespace CRM.WPF.ViewModels
         public List<Task> plannedTaskCount { get; set; }
         public List<Task> nearTheDeadlineCount { get; set; }
         public List<Task> expiredTaskCount { get; set; }
+
+        /// <summary>
+        /// Saját feladatok kördiagrammja
+        /// </summary>
         public PieChartDiagramm tasksChart { get; set; }
         public int unReadMessageCount { get; set; }
         public List<Task>? ownTasks { get; set; }
@@ -76,22 +81,24 @@ namespace CRM.WPF.ViewModels
                 new PieSeries
                 {
                     Title="Elkezdett",
-                    Values=new ChartValues<int> {activeTaskCount.Count},
+                    Values=new ChartValues<ObservableValue> {new ObservableValue(activeTaskCount.Count)},
                 },
                 new PieSeries
                 {
                     Title="Lezárt",
-                    Values=new ChartValues<int> {closedTaskCount.Count},
+                    Values=new ChartValues<ObservableValue> { new ObservableValue(closedTaskCount.Count)},
                 },
                 new PieSeries
                 {
                     Title="Tervezés alatt",
-                    Values=new ChartValues<int> {plannedTaskCount.Count},
+                    Values=new ChartValues<ObservableValue> { new ObservableValue(plannedTaskCount.Count)},
                 },
             };
             #endregion
         }
-
+        /// <summary>
+        /// Újratölti a feladatokat tartalmazó listákat
+        /// </summary>
         public void reset()
         {
             showFilteredTask.Clear();
@@ -128,11 +135,36 @@ namespace CRM.WPF.ViewModels
                     nearTheDeadlineCount.Add(task);
                 else if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4 && task.TaskStatusId != 2)
                     expiredTaskCount.Add(task);
+                tasksChart.SeriesCollection = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title="Elkezdett",
+                    Values=new ChartValues<ObservableValue> {new ObservableValue(activeTaskCount.Count)},
+                },
+                new PieSeries
+                {
+                    Title="Lezárt",
+                    Values=new ChartValues<ObservableValue> { new ObservableValue(closedTaskCount.Count)},
+                },
+                new PieSeries
+                {
+                    Title="Tervezés alatt",
+                    Values=new ChartValues<ObservableValue> { new ObservableValue(plannedTaskCount.Count)},
+                },
+            };
 
             }
-
-
         }
+
+        /// <summary>
+        /// Beállítja a szűrt lista tartalmát
+        /// </summary>
+        /// <param name="planning"> Tervezés alatti feladatok</param>
+        /// <param name="closed">Lezárt feladatok</param>
+        /// <param name="started">Elkezdett feladatok</param>
+        /// <param name="expired">Lejárt feladatok</param>
+        /// <param name="nearDeadline">Határidőhöz közeli feladatok</param>
         public void setShowFilteredTask(bool planning, bool closed, bool started, bool expired, bool nearDeadline)
         {
             IEnumerable<Domain.Models.Task> tasks = new List<Domain.Models.Task>();

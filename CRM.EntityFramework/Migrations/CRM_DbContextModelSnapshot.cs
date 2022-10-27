@@ -56,7 +56,7 @@ namespace CRM.EntityFramework.Migrations
                             Id = 1,
                             FromUserId = 1,
                             MessageText = "Ez az első elküldött levél",
-                            SendDate = new DateTime(2022, 9, 9, 22, 56, 18, 437, DateTimeKind.Local).AddTicks(6081),
+                            SendDate = new DateTime(2022, 10, 27, 23, 37, 51, 690, DateTimeKind.Local).AddTicks(4577),
                             Subject = "Első levél",
                             ToUserId = 1,
                             isRead = false
@@ -154,6 +154,9 @@ namespace CRM.EntityFramework.Migrations
                     b.Property<int?>("ResponsibleUserId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime");
+
                     b.Property<string>("TaskDescription")
                         .HasColumnType("text");
 
@@ -177,7 +180,7 @@ namespace CRM.EntityFramework.Migrations
                         {
                             Id = 1,
                             Category = "Prgramozás",
-                            CreateDate = new DateTime(2022, 9, 9, 22, 56, 18, 437, DateTimeKind.Local).AddTicks(9543),
+                            CreateDate = new DateTime(2022, 10, 27, 23, 37, 51, 690, DateTimeKind.Local).AddTicks(6782),
                             CreatedUserId = 1,
                             DeadLine = new DateTime(2022, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResponsibleUserId = 1,
@@ -227,11 +230,11 @@ namespace CRM.EntityFramework.Migrations
                             Id = 1,
                             Email = "Bajarmilan2001@gmail.com",
                             IsActive = true,
-                            LoginDate = new DateTime(2022, 9, 9, 22, 56, 18, 436, DateTimeKind.Local).AddTicks(2340),
+                            LoginDate = new DateTime(2022, 10, 27, 23, 37, 51, 689, DateTimeKind.Local).AddTicks(4979),
                             Name = "Bajár Milán",
                             Password = "Admin",
                             PermissionId = 1,
-                            RegistrationDate = new DateTime(2022, 9, 9, 22, 56, 18, 432, DateTimeKind.Local).AddTicks(8176),
+                            RegistrationDate = new DateTime(2022, 10, 27, 23, 37, 51, 687, DateTimeKind.Local).AddTicks(5712),
                             UserName = "Admin"
                         });
                 });

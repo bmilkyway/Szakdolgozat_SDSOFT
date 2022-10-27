@@ -17,17 +17,28 @@ namespace CRM.WPF.ViewModels
         private User? newUser;
         private CurrentUser? currentUser;
         private IEnumerable<User>? allUsers;
+        
+
+        /// <summary>
+        /// Továbbvisz a fő alkalmazásba
+        /// </summary>
         public void navigationToMain()
         {
             Window window = new MainWindow(newUser!.Id);
             window.DataContext = new MainViewModel();
             window.Show();
         }
-
+        /// <summary>
+        /// Vizsgálja a regisztráció sikerességét a paraméterek alapján.
+        /// Sikeres vizsgálat után a paraméterek alapján létrehoz egy új User objektumot, majd hozzáadja az adatbázishoz és beléptet a fő alkalmazásba
+        /// </summary>
+        /// <param name="username">Felhasználónév</param>
+        /// <param name="password">Jelszó</param>
+        /// <param name="email">Email cím</param>
+        /// <param name="name">Felhasználónév</param>
+        /// <returns>[true]-> sikeres, [false]-> sikertelen</returns>
         public bool registrationIsSuccesful(string username, string password, string email, string name)
         {
-
-
             if (name == "")
             {
                 MessageBox.Show("Nincs kitöltve a Név mező!", "Figyelem!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -49,10 +60,9 @@ namespace CRM.WPF.ViewModels
                 return false;
             }
 
-
             else
             {
-                allUsers = UserService!.GetAll().Result;
+                allUsers = UserService!.GetAllUser().Result;
                 foreach (var user in allUsers)
                 {
                     if (user.UserName!.ToLower() == username.ToLower())
@@ -111,6 +121,11 @@ namespace CRM.WPF.ViewModels
 
 
         }
+       
+        
+        /// <summary>
+        /// Visszavisz a bejelenzketés oldalra
+        /// </summary>
         public void LoginWindow()
         {
             Window window = new Login();

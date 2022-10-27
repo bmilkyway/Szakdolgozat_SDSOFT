@@ -123,5 +123,18 @@ namespace CRM.EntityFramework.Services
                 return tasks;
             }
         }
+
+        public async Task<IEnumerable<User>> GetAllUser()
+        {
+            using (CRM_DbContext context = _contextFactory.CreateDbContext())
+            {
+
+                IEnumerable<User> entities = await context.Set<User>().Where(e => e.PermissionId != 5).ToArrayAsync();
+                return entities;
+
+            }
+        }
+
+       
     }
 }

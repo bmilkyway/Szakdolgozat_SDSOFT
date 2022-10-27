@@ -5,6 +5,7 @@ namespace CRM.Domain.Services
     public interface IDataService<T>
     {
         Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<User>> GetAllUser();
         Task<T> Get(int id);
         Task<bool> Delete(int id);
         Task<T> Create(T entity);

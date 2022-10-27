@@ -14,7 +14,7 @@ namespace CRM.WPF.ViewModels
         public List<User> users { get; set; }
         public AdminLayoutViewModel()
         {
-            users = UserService!.GetAll().Result.ToList();
+            users = UserService!.GetAllUser().Result.ToList();
         }
 
         public bool deleteSelectedUser(User user, int selectedIndex)
@@ -22,7 +22,8 @@ namespace CRM.WPF.ViewModels
             if (MessageBox.Show("Biztos törli a kijelölt felhasználót?\nA törlés után az adatokat nem lehet visszaállítani!", "Figyelem!", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 users.Remove(users[selectedIndex]);
-                UserService!.Delete(user.Id);
+                user.PermissionId = 5;
+                UserService!.Update(user.Id,user);
                 return true;
             }
             else

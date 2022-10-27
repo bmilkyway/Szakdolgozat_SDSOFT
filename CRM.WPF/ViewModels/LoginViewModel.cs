@@ -12,13 +12,20 @@ namespace CRM.WPF.ViewModels
 {
     public class LoginViewModel : ViewModelLoginBase
     {
-
+        /// <summary>
+        /// Bejelentkezett felhasználó
+        /// </summary>
         private User? activeUser;
+        /// <summary>
+        /// Bejelentkezett felhasználó adatait tartalmazó osztálypéldány,amely mentésre kerül a lokális adatbázisba
+        /// </summary>
         private CurrentUser? currentUser;
         public LoginViewModel()
         {
         }
-
+        /// <summary>
+        /// Továbbvisz a fő alkalmazásba
+        /// </summary>
         public void navigationToMain()
         {
             Window window = new MainWindow(currentUser!.userId);
@@ -27,6 +34,13 @@ namespace CRM.WPF.ViewModels
 
             window.Show();
         }
+
+        /// <summary>
+        /// Ellenőrzi az autentikáció érvényességét
+        /// </summary>
+        /// <param name="username">Felhasználónév</param>
+        /// <param name="password">Jelszó</param>
+        /// <returns></returns>
         public bool loginIsSuccesful(string username, string password)
         {
             PasswordHasherService passwordHasherService = new PasswordHasherService();
@@ -38,7 +52,11 @@ namespace CRM.WPF.ViewModels
                 if (activeUser is null)
                     return false;
 
-
+                if (activeUser.PermissionId == 5)
+                {
+                    MessageBox.Show("A felhasználó függesztve van! Kérem forduljon az alkalmazás üzemeltetőjéhez!", "Függesztett felhasználói fiók!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
                 activeUser.IsActive = true;
                 activeUser.LoginDate = System.DateTime.Now;
                 UserService.Update(activeUser.Id, activeUser);
@@ -70,12 +88,18 @@ namespace CRM.WPF.ViewModels
 
             return false;
         }
-
+        /// <summary>
+        /// Továbbvisz a regisztrációs oldalra
+        /// </summary>
         public void signInWindow()
         {
             Window window = new SignIn();
             window.Show();
         }
+
+        /// <summary>
+        /// Továbbvisz az elfelejtett jelszó oldalra
+        /// </summary>
         public void forgotPasswordWindow()
         {
             Window window = new ForgotPasswordView();

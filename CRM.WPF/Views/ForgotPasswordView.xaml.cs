@@ -9,9 +9,14 @@ namespace CRM.WPF.Views
     /// Interaction logic for ForgotPasswordView.xaml
     /// </summary>
     public partial class ForgotPasswordView : Window
-    {
-        private function func;
-
+    {  
+        /// <summary>
+        /// Az éppen aktuális funkciót tartalmazza
+        /// </summary>
+       private function func;
+        /// <summary>
+        /// View-hoz tartozó viewModel példánya
+        /// </summary>
         private ForgotPasswordViewModel forgotPasswordViewModel;
         public ForgotPasswordView()
         {
@@ -19,7 +24,11 @@ namespace CRM.WPF.Views
             forgotPasswordViewModel = new ForgotPasswordViewModel();
             func = function.getCode;
         }
-
+        /// <summary>
+        /// Elküldi az 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SendAutenticationCode(object sender, RoutedEventArgs e)
         {
             switch (func)
@@ -57,7 +66,11 @@ namespace CRM.WPF.Views
 
 
         }
-
+        /// <summary>
+        /// Visszalép a login oldalhoz
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelForgotPassword(object sender, RoutedEventArgs e)
         {
             forgotPasswordViewModel.LoginWindow();
@@ -77,7 +90,9 @@ namespace CRM.WPF.Views
         }
         #endregion
     }
-
+    /// <summary>
+    /// A funkciók enum listája 
+    /// </summary>
     enum function
     {
         getCode,

@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
+using CRM.Domain.Models;
 using CRM.WPF.ViewModels;
 
 namespace CRM.WPF.Views
@@ -30,11 +33,17 @@ namespace CRM.WPF.Views
             try
             {
                 txtMessageText.Text = sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].MessageText;
+                User addressUser = sentMessageViewModel.UserService!.Get(sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].ToUserId).Result;
+                if(addressUser==null || addressUser.PermissionId==5)
+                    txtAddress.Text = "Törölt felhasználó";
+                else txtAddress.Text = addressUser.Name;
                 txtSubject.Text = sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].Subject;
-                txtAddress.Text = sentMessageViewModel.UserService!.Get(sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].FromUserId).Result.ToString();
             }
-            catch
+            catch(Exception er)
             {
+                MessageBox.Show(er.Message, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                MessageBox.Show("Nem sikerült megnyitni az adott feladatot!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
         }

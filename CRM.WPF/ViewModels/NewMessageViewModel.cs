@@ -17,7 +17,7 @@ namespace CRM.WPF.ViewModels
         public NewMessageViewModel()
         {
             activeUserList = UserService!.ActiveUsers().Result;
-            users = UserService!.GetAll().Result;
+            users = UserService!.GetAllUser().Result;
 
             activeUsers = new List<User>();
             userList = new List<User>();

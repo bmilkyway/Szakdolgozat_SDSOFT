@@ -57,12 +57,17 @@ namespace CRM.WPF.ViewModels
         public IEnumerable<User> activeUsersList;
         public IEnumerable<User> allUsersList;
         private int inactiveUsersCount { get; set; }
+
+        private int[] ownActivateForStartedTask { get; set; }
+        private int[] ownActivateForClosedTask { get; set; }
+        private int[] ownActivateForCreatedTask { get; set; }
+
         public OverViewViewModel()
         {
             active_User = currentUser;
             tasks = TaskService!.GetAll().Result;
             activeUsersList = UserService!.ActiveUsers().Result;
-            allUsersList = UserService!.GetAll().Result;
+            allUsersList = UserService!.GetAllUser().Result;
             ownActiveTaskCount = new List<Task>();
             ownClosedTaskCount = new List<Task>();
             ownPlannedTaskCount = new List<Task>();
@@ -73,6 +78,9 @@ namespace CRM.WPF.ViewModels
             activeTaskCount = new List<Task>();
             expiredTask = new List<Task>();
             nearTheDeadlineCount = new List<Task>();
+            ownActivateForCreatedTask= new int[4] {0,0,0,0};
+            ownActivateForStartedTask= new int[4] {0,0,0,0};
+            ownActivateForClosedTask= new int[4] {0,0,0,0};
             createdTaskOneWeek = 0;
             createdTaskToday = 0;
             closedTaskOneWeek = 0;
@@ -142,10 +150,35 @@ namespace CRM.WPF.ViewModels
                     {
                         ownNearTheDeadlineCount.Add(task);
                         nearTheDeadlineCount.Add(task);
-
+                        switch (task.TaskStatusId)
+                        {
+                            case 1:
+                                nearDeadlinePlannedTask++;
+                                break;
+                            case 2:
+                                nearDeadlineFreeTask++;
+                                break;
+                            case 3:
+                                nearDeadlineStartedTask++;
+                                break;
+                        }
                     }
                     else if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4)
+                    { 
                         expiredTask.Add(task);
+                        switch (task.TaskStatusId)
+                        {
+                            case 1:
+                                expiredPlannedTask++;
+                                break;
+                            case 2:
+                                expiredFreeTask++;
+                                break;
+                            case 3:
+                                expiredStartedTask++;
+                                break;
+                        }
+                    }
                 }
                 else
                 {
@@ -227,6 +260,58 @@ namespace CRM.WPF.ViewModels
                         closedTaskOneMonth++;
                 }
             }
+
+            foreach (var task in ownTasks)
+            {
+                if (currentUser.Id==task.CreatedUserId)
+                {
+                    ownActivateForCreatedTask[0]++;
+                    if (task.CreateDate.Date.Year == DateTime.Now.Year && DateTime.Now.DayOfYear-task.CreateDate.DayOfYear<30)
+                    { 
+                        ownActivateForCreatedTask[1]++;
+                        if(DateTime.Now.DayOfYear - task.CreateDate.DayOfYear < 7)
+                        {
+                            ownActivateForCreatedTask[2]++;
+                            if (task.CreateDate.Date.DayOfYear == DateTime.Now.DayOfYear)
+                                ownActivateForCreatedTask[3]++;
+                        }
+                       
+                    }
+
+                }
+
+                if (task.StartDate != null)
+                {
+                    ownActivateForStartedTask[0]++;
+                    if (task.StartDate!.Value.Date.Year == DateTime.Now.Year && DateTime.Now.DayOfYear - task.StartDate!.Value.DayOfYear < 30)
+                    {
+                        ownActivateForStartedTask[1]++;
+                        if (DateTime.Now.DayOfYear - task.StartDate!.Value.DayOfYear < 7)
+                        {
+                            ownActivateForStartedTask[2]++;
+                            if (task.StartDate!.Value.DayOfYear == DateTime.Now.DayOfYear)
+                                ownActivateForStartedTask[3]++;
+                        }
+
+                    }
+                }
+                if (task.CloseDate != null)
+                {
+                    ownActivateForClosedTask[0]++;
+                    if (task.CloseDate!.Value.Date.Year == DateTime.Now.Year && DateTime.Now.DayOfYear - task.CloseDate!.Value.DayOfYear < 30)
+                    {
+                        ownActivateForClosedTask[1]++;
+                        if (DateTime.Now.DayOfYear - task.CloseDate!.Value.DayOfYear < 7)
+                        {
+                            ownActivateForClosedTask[2]++;
+                            if (task.CloseDate!.Value.DayOfYear == DateTime.Now.DayOfYear)
+                                ownActivateForClosedTask[3]++;
+                        }
+
+                    }
+                }
+            }
+
             farToDeadline = plannedTaskCount.Count + freeTaskCount.Count + activeTaskCount.Count - nearTheDeadlineCount.Count - expiredTask.Count;
 
             #region Saját feladatok kördiagram
@@ -327,17 +412,17 @@ namespace CRM.WPF.ViewModels
                 new ColumnSeries
                 {
                     Title="Feladatok elkezdése",
-                    Values=new ChartValues<int>{ 10, 10,12,30 }
+                    Values=new ChartValues<int>{ ownActivateForStartedTask[3], ownActivateForStartedTask[2], ownActivateForStartedTask[1], ownActivateForStartedTask[0] }
                 },
                  new ColumnSeries
                 {
                     Title="Feladatok lezárása",
-                     Values=new ChartValues<int>{ 30, 4,18,36 }
+                     Values=new ChartValues<int>{ ownActivateForClosedTask[3], ownActivateForClosedTask[2], ownActivateForClosedTask[1], ownActivateForClosedTask[0] }
                 },
                   new ColumnSeries
                 {
                     Title="Feladatok létrehozása",
-                     Values=new ChartValues<int>{ 20, 21,10,30 }
+                     Values=new ChartValues<int>{ ownActivateForCreatedTask[3], ownActivateForCreatedTask[2], ownActivateForCreatedTask[1], ownActivateForCreatedTask[0] }
                 },
             };
             ownActicitates.Labels = new[] { "Ma", "7 napja", "30 napja", "elmúlt időbe" };

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
+using CRM.Domain.Models;
 using CRM.WPF.State.Navigators;
 using CRM.WPF.ViewModels;
 
@@ -39,8 +40,13 @@ namespace CRM.WPF.Views
                 {
                     txtMessageText.Text = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].MessageText;
                     txtSubject.Text = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].Subject;
-                    txtAddress.Text = incomingMessageViewModel.UserService!.Get(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].ToUserId).Result.ToString();
-                    incomingMessageViewModel.readNewMessage(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]], lbMessageList, txtFilter);
+                    User senderUser = incomingMessageViewModel.UserService!.Get(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].FromUserId).Result;
+                    
+                    if (senderUser ==null ||senderUser.PermissionId == 5)
+                        txtAddress.Text = "Törölt felhasználó";
+                    else
+                        txtAddress.Text = senderUser.Name;
+                   incomingMessageViewModel.readNewMessage(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]], lbMessageList, txtFilter);
                 }
                 catch (Exception er)
                 {
