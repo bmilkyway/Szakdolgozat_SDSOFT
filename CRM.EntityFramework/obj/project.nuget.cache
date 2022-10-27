@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1LjliB77UCvyj+SiyAxSRh9/251WJJQXFxxzLedBFJq3arU8ocoyVO7HEg3e3PwVWa2MZJUWRrTiZnts/hF3dQ==",
+  "dgSpecHash": "5d9Ypq/+m2xZZ2eS/OuQeQFR6Rtx/FZDXEZ806dTbE/jiJw/AWlgv5WHC08QXGbHWZgvBtrrR5d5j7knWD4/WQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\bajar\\OneDrive\\Dokumentumok\\Szakdolgozat\\CRM.EntityFramework\\CRM.EntityFramework.csproj",
   "expectedPackageFiles": [
@@ -116,16 +116,5 @@
     "C:\\Users\\bajar\\.nuget\\packages\\system.xml.xpath\\4.0.1\\system.xml.xpath.4.0.1.nupkg.sha512",
     "C:\\Users\\bajar\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.0.1\\system.xml.xpath.xmldocument.4.0.1.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Identity.Core 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Identity.Core",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

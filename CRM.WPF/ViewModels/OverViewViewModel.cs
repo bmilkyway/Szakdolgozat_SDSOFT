@@ -32,6 +32,7 @@ namespace CRM.WPF.ViewModels
         public PieChartDiagramm acticeUsers { get; set; }
         public PieChartDiagramm deadlineForTasksChart { get; set; }
         public PieChartDiagramm taskCategories { get; set; }
+        public PieChartDiagramm ownMessages { get; set; }
 
         private List<Task>? ownTasks { get; set; }
         private List<Task>? allTasks { get; set; }
@@ -57,6 +58,8 @@ namespace CRM.WPF.ViewModels
         public IEnumerable<User> activeUsersList;
         public IEnumerable<User> allUsersList;
         private int inactiveUsersCount { get; set; }
+        private int ownIncomingMessages { get; set; }
+        private int ownSentMessages { get; set; }
 
         private int[] ownActivateForStartedTask { get; set; }
         private int[] ownActivateForClosedTask { get; set; }
@@ -68,6 +71,8 @@ namespace CRM.WPF.ViewModels
             tasks = TaskService!.GetAll().Result;
             activeUsersList = UserService!.ActiveUsers().Result;
             allUsersList = UserService!.GetAllUser().Result;
+            ownIncomingMessages = MessageService!.IncomingMessages(currentUser.Id).Result.Count();
+            ownSentMessages = MessageService!.SentMessages(currentUser.Id).Result.Count();
             ownActiveTaskCount = new List<Task>();
             ownClosedTaskCount = new List<Task>();
             ownPlannedTaskCount = new List<Task>();
@@ -90,6 +95,7 @@ namespace CRM.WPF.ViewModels
             farToDeadline = 0;
             programingCategory = 0;
             testingCategory = 0;
+           
             maintenanceCategory = 0;
             nearDeadlinePlannedTask = 0;
             nearDeadlineStartedTask = 0;
@@ -108,6 +114,7 @@ namespace CRM.WPF.ViewModels
             deadlineForTasksChart = new PieChartDiagramm();
             taskCategories = new PieChartDiagramm();
             acticeUsers = new PieChartDiagramm();
+            ownMessages = new PieChartDiagramm();
             foreach (var task in tasks)
             {
                 allTasks!.Add(task);
@@ -485,6 +492,23 @@ namespace CRM.WPF.ViewModels
                 {
                     Title="Karbantartás",
                     Values = new ChartValues<int> { maintenanceCategory }
+                },
+            };
+            #endregion
+
+            #region Saját üzenetek
+            ownMessages.SeriesCollection = new SeriesCollection
+            {
+               
+                new PieSeries
+                {
+                    Title="Elküldött",
+                    Values = new ChartValues<int> { ownSentMessages }
+                },
+                 new PieSeries
+                {
+                    Title="Beérkezett",
+                    Values = new ChartValues<int> { ownIncomingMessages }
                 },
             };
             #endregion

@@ -46,7 +46,10 @@
           "dependencies": {
             "Microsoft.AspNet.Identity.Core": {
               "target": "Package",
-              "version": "[2.0.0, )"
+              "version": "[2.0.0, )",
+              "noWarn": [
+                "NU1701"
+              ]
             }
           },
           "imports": [
@@ -202,19 +205,31 @@
           "dependencies": {
             "LiveCharts.Wpf": {
               "target": "Package",
-              "version": "[0.9.7, )"
+              "version": "[0.9.7, )",
+              "noWarn": [
+                "NU1701"
+              ]
             },
             "MaterialDesignThemes": {
               "target": "Package",
-              "version": "[4.7.0-ci343, )"
+              "version": "[4.7.0-ci343, )",
+              "noWarn": [
+                "NU1701"
+              ]
             },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.8.3, )"
+              "version": "[4.8.3, )",
+              "noWarn": [
+                "NU1701"
+              ]
             },
             "sqlite-net-pcl": {
               "target": "Package",
-              "version": "[1.8.116, )"
+              "version": "[1.8.116, )",
+              "noWarn": [
+                "NU1701"
+              ]
             }
           },
           "imports": [

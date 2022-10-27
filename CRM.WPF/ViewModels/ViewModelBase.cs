@@ -35,7 +35,7 @@ namespace CRM.WPF.ViewModels
         }
         public Task getActualTask()
         {
-            return actualTask;
+            return actualTask!;
         }
 
     }

@@ -10,6 +10,7 @@ namespace CRM.EntityFramework
 
 
         public DbSet<User>? Users { get; set; }
+        public DbSet<Feedback>? Feedbacks { get; set; }
         public DbSet<Message>? Messages { get; set; }
         public DbSet<Permission>? Permissions { get; set; }
         public DbSet<Status>? Statuses { get; set; }
@@ -17,6 +18,8 @@ namespace CRM.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Feedback>().HasData(
+                new Feedback {Id=1, FeedbackDate = DateTime.Now, Rate = 2.2, FeedbackDescription = "Ez az első visszajelzés", FeedbackType = "Visszajelzés", FeedbackUserId = 1, isRead = false, isRevised = false });
             modelBuilder.Entity<User>().HasData(
                 new User { Id = 1, UserName = "Admin", Password = "Admin", Name = "Bajár Milán", Email = "Bajarmilan2001@gmail.com", RegistrationDate = DateTime.Now, IsActive = true, LoginDate = DateTime.Now, PermissionId = 1 });
 
