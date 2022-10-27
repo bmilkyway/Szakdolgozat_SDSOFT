@@ -17,7 +17,7 @@ namespace CRM.WPF.ViewModels
         private User? newUser;
         private CurrentUser? currentUser;
         private IEnumerable<User>? allUsers;
-        
+
 
         /// <summary>
         /// Továbbvisz a fő alkalmazásba
@@ -121,8 +121,8 @@ namespace CRM.WPF.ViewModels
 
 
         }
-       
-        
+
+
         /// <summary>
         /// Visszavisz a bejelenzketés oldalra
         /// </summary>

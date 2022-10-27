@@ -61,7 +61,7 @@ namespace CRM.WPF.ViewModels
                     CreateDate = DateTime.Now,
                     CreatedUserId = activeUser.Id,
                     TaskStatusId = isPlanning == true ? 1 : 2,
-                    CloseDate =null,
+                    CloseDate = null,
 
 
 

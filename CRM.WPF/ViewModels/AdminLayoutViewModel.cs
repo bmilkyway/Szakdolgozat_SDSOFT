@@ -23,7 +23,7 @@ namespace CRM.WPF.ViewModels
             {
                 users.Remove(users[selectedIndex]);
                 user.PermissionId = 5;
-                UserService!.Update(user.Id,user);
+                UserService!.Update(user.Id, user);
                 return true;
             }
             else

@@ -9,11 +9,11 @@ namespace CRM.WPF.Views
     /// Interaction logic for ForgotPasswordView.xaml
     /// </summary>
     public partial class ForgotPasswordView : Window
-    {  
+    {
         /// <summary>
         /// Az éppen aktuális funkciót tartalmazza
         /// </summary>
-       private function func;
+        private function func;
         /// <summary>
         /// View-hoz tartozó viewModel példánya
         /// </summary>

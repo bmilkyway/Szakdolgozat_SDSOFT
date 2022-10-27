@@ -74,6 +74,9 @@ namespace CRM.WPF.Commands
                     case ViewType.Adminlayout:
                         _navigator.CurrentViewModel = new AdminLayoutViewModel();
                         break;
+                    case ViewType.FeedbackForUser:
+                        _navigator.CurrentViewModel = new FeedbackForUsersViewModel();
+                        break;
                     case ViewType.LogOut:
 
                         Window window = Application.Current.MainWindow;

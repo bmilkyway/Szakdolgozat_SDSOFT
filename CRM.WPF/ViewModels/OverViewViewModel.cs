@@ -83,9 +83,9 @@ namespace CRM.WPF.ViewModels
             activeTaskCount = new List<Task>();
             expiredTask = new List<Task>();
             nearTheDeadlineCount = new List<Task>();
-            ownActivateForCreatedTask= new int[4] {0,0,0,0};
-            ownActivateForStartedTask= new int[4] {0,0,0,0};
-            ownActivateForClosedTask= new int[4] {0,0,0,0};
+            ownActivateForCreatedTask = new int[4] { 0, 0, 0, 0 };
+            ownActivateForStartedTask = new int[4] { 0, 0, 0, 0 };
+            ownActivateForClosedTask = new int[4] { 0, 0, 0, 0 };
             createdTaskOneWeek = 0;
             createdTaskToday = 0;
             closedTaskOneWeek = 0;
@@ -95,7 +95,7 @@ namespace CRM.WPF.ViewModels
             farToDeadline = 0;
             programingCategory = 0;
             testingCategory = 0;
-           
+
             maintenanceCategory = 0;
             nearDeadlinePlannedTask = 0;
             nearDeadlineStartedTask = 0;
@@ -171,7 +171,7 @@ namespace CRM.WPF.ViewModels
                         }
                     }
                     else if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4)
-                    { 
+                    {
                         expiredTask.Add(task);
                         switch (task.TaskStatusId)
                         {
@@ -270,19 +270,19 @@ namespace CRM.WPF.ViewModels
 
             foreach (var task in ownTasks)
             {
-                if (currentUser.Id==task.CreatedUserId)
+                if (currentUser.Id == task.CreatedUserId)
                 {
                     ownActivateForCreatedTask[0]++;
-                    if (task.CreateDate.Date.Year == DateTime.Now.Year && DateTime.Now.DayOfYear-task.CreateDate.DayOfYear<30)
-                    { 
+                    if (task.CreateDate.Date.Year == DateTime.Now.Year && DateTime.Now.DayOfYear - task.CreateDate.DayOfYear < 30)
+                    {
                         ownActivateForCreatedTask[1]++;
-                        if(DateTime.Now.DayOfYear - task.CreateDate.DayOfYear < 7)
+                        if (DateTime.Now.DayOfYear - task.CreateDate.DayOfYear < 7)
                         {
                             ownActivateForCreatedTask[2]++;
                             if (task.CreateDate.Date.DayOfYear == DateTime.Now.DayOfYear)
                                 ownActivateForCreatedTask[3]++;
                         }
-                       
+
                     }
 
                 }
@@ -499,7 +499,7 @@ namespace CRM.WPF.ViewModels
             #region Saját üzenetek
             ownMessages.SeriesCollection = new SeriesCollection
             {
-               
+
                 new PieSeries
                 {
                     Title="Elküldött",

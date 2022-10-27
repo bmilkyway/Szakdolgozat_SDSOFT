@@ -41,12 +41,12 @@ namespace CRM.WPF.Views
                     txtMessageText.Text = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].MessageText;
                     txtSubject.Text = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].Subject;
                     User senderUser = incomingMessageViewModel.UserService!.Get(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].FromUserId).Result;
-                    
-                    if (senderUser ==null ||senderUser.PermissionId == 5)
+
+                    if (senderUser == null || senderUser.PermissionId == 5)
                         txtAddress.Text = "Törölt felhasználó";
                     else
                         txtAddress.Text = senderUser.Name;
-                   incomingMessageViewModel.readNewMessage(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]], lbMessageList, txtFilter);
+                    incomingMessageViewModel.readNewMessage(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]], lbMessageList, txtFilter);
                 }
                 catch (Exception er)
                 {

@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="CRM.WPF.Views.FeedbackForUsersView"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CRM.WPF.Views"
+             xmlns:viewModel ="clr-namespace:CRM.WPF.ViewModels"
+              mc:Ignorable="d" 
+             Foreground="White"
+             d:DesignHeight="740" d:DesignWidth="1030"
+             Background="#41518F">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="40"  />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="1"  Grid.Column="2" Margin="20 25 0 0" Grid.RowSpan="3" Height="auto">
+
+            <Border Background="#31407B" CornerRadius="20" Padding="20 40 0 0" >
+                <StackPanel Margin="5 5 5 0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Row="4" Grid.Column="1" Margin="5 20 5 5">
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="200"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="2" Content="Módosítások mentése" Margin="5 0" Background="White" Foreground="Black" Click="saveSelectedUserModify" Name="btnModify">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                                <Button Grid.Column="1" Content="Törlés"  Margin="5 0" Background="White" Foreground="Black" Click="selectedUserDelete" Name="btnDelete">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </Grid>
+
+                        </StackPanel>
+                        <TextBlock Text="Név" Grid.Column="0" Grid.Row="0" FontSize="17"/>
+                        <TextBlock Text="Felhasználónév" Grid.Column="0" Grid.Row="1" FontSize="17"/>
+                        <TextBlock Text="Email" Grid.Column="0" Grid.Row="2" FontSize="17"/>
+                        <TextBlock Text="Jogosultság" Grid.Column="0" Grid.Row="3" FontSize="17"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" FontSize="17" Margin="20 0"  Name="txtName"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" FontSize="17" Margin="20 0" Name="txtUserName"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" FontSize="17" Margin="20 0" Name="txtEmail"/>
+                        <ComboBox Grid.Row="3" Grid.Column="1" FontSize="17" Margin="20 0" Name="cbPermission" />
+
+
+
+                    </Grid>
+
+                </StackPanel>
+
+
+            </Border>
+        </DockPanel>
+
+
+        <DockPanel Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" Margin="0 25 0 0">
+
+            <Border Background="#31407B" CornerRadius="20" Padding="10">
+
+
+                <ListBox Name="lbAllUsers"  FontSize="15"  Foreground="White" Margin="0 25 0 5" >
+
+                </ListBox>
+            </Border>
+        </DockPanel>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Background="#31407B">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Grid.Row="0" Content="Felhasználók kezelése" Foreground="White" FontSize="15" Background="Transparent" BorderBrush="Transparent" />
+            </Grid>
+
+        </StackPanel>
+        <TextBlock Text="Felhasználók" Grid.Column="1" Grid.Row="2" FontSize="20" Margin="10 10 0 0" FontWeight="Bold"/>
+        <TextBlock Text="Felhasználók" Grid.Column="2" Grid.Row="2" FontSize="20" Margin="30 10 0 0" FontWeight="Bold"/>
+    </Grid>
+
+</UserControl>

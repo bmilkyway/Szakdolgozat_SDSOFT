@@ -34,12 +34,12 @@ namespace CRM.WPF.Views
             {
                 txtMessageText.Text = sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].MessageText;
                 User addressUser = sentMessageViewModel.UserService!.Get(sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].ToUserId).Result;
-                if(addressUser==null || addressUser.PermissionId==5)
+                if (addressUser == null || addressUser.PermissionId == 5)
                     txtAddress.Text = "Törölt felhasználó";
                 else txtAddress.Text = addressUser.Name;
                 txtSubject.Text = sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].Subject;
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 MessageBox.Show(er.Message, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
 

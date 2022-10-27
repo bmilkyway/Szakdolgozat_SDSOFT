@@ -53,8 +53,10 @@
             <DataTemplate DataType="{x:Type viewmodels:AdminLayoutViewModel}">
                 <views:AdminLayoutView/>
             </DataTemplate>
+            
+         
 
-     
+
 
 
         </ResourceDictionary>
