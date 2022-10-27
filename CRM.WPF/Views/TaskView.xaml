@@ -43,7 +43,7 @@
 
                 <Button Grid.Column="1" Grid.Row="0" Content="Összes feladat" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White" Command="{Binding Navigator.UpdateCurrentViewModelCommand }" CommandParameter="{x:Static nav:ViewType.AllTask}" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TaskView}}}" />
 
-                <Button Grid.Column="2"  Grid.Row="0" Content="Új feladat" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White" Command="{Binding Navigator.UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.NewTask}" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TaskView}}}" />
+                <Button Grid.Column="2"  x:Name="btnNewTask"  Grid.Row="0" Content="Új feladat" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White" Command="{Binding Navigator.UpdateCurrentViewModelCommand}" CommandParameter="{x:Static nav:ViewType.NewTask}" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TaskView}}}" />
 
             </Grid>
         </StackPanel>

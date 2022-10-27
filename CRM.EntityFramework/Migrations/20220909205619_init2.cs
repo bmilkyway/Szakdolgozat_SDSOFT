@@ -112,12 +112,14 @@ namespace CRM.EntityFramework.Migrations
                 column: "SendDate",
                 value: new DateTime(2022, 9, 9, 22, 56, 18, 437, DateTimeKind.Local).AddTicks(6081));
 
-            migrationBuilder.UpdateData(
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+            _ = migrationBuilder.UpdateData(
                 table: "Tasks",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "CloseDate", "CreateDate" },
                 values: new object[] { null, new DateTime(2022, 9, 9, 22, 56, 18, 437, DateTimeKind.Local).AddTicks(9543) });
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
             migrationBuilder.UpdateData(
                 table: "Users",

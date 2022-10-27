@@ -1,17 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "onedkthHRm70lJKEKsIwZ81RvIjNvv9G3ID/nVvXMz9FU317HZvZLmdbFlTh+4TsIDeTfIFKoQ4RbPnImXnhkw==",
+  "dgSpecHash": "CcTrs9gtg9aHSVw4FzXLldx/uoyj2ZJcf3UAY9NSK8BEoSEpjskHX6xN1inni25UROvJkusHXFirTPHqhe/UPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\bajar\\OneDrive\\Dokumentumok\\Szakdolgozat\\CRM.Domain\\CRM.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\bajar\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.3\\microsoft.aspnet.identity.core.2.2.3.nupkg.sha512"
+    "C:\\Users\\bajar\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.0.0\\microsoft.aspnet.identity.core.2.0.0.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "message": "Package 'Microsoft.AspNet.Identity.Core 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.Identity.Core",
       "targetGraphs": [
         "net6.0"

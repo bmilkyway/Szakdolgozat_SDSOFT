@@ -92,7 +92,7 @@
                     <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10 10 10 10">
                               <lvc:CartesianChart Series="{Binding createdAndClosedTasks.SeriesCollection}" LegendLocation="Top" FontSize="15"  Height="320"  Width="700"  >
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Title="Feladatok műveletei" FontSize="15" Labels="{Binding createdAndClosedTasks.Labels}" Margin="10" />
+                                <lvc:Axis Title="Feladatok idő szerinti csoportosítása" FontSize="15" Labels="{Binding createdAndClosedTasks.Labels}" Margin="10" />
                             </lvc:CartesianChart.AxisX>
                             <lvc:CartesianChart.AxisY>
                                 <lvc:Axis Title="Feladatok száma"  FontSize="15"  LabelFormatter="{Binding createdAndClosedTasks.Formatter}" Margin="10" />
@@ -107,7 +107,7 @@
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10 10 10 10">
                         <lvc:CartesianChart Series="{Binding ownActicitates.SeriesCollection}" LegendLocation="Top" FontSize="15"  Height="320"  Width="700">
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Title="Feladatok műveletei" FontSize="15" Labels="{Binding ownActicitates.Labels}" Margin="10" ></lvc:Axis>
+                                <lvc:Axis Title="Feladatok idő szerinti csoportosítása" FontSize="15" Labels="{Binding ownActicitates.Labels}" Margin="10" ></lvc:Axis>
                             </lvc:CartesianChart.AxisX>
                             <lvc:CartesianChart.AxisY>
                                 <lvc:Axis Title="Feladatok száma"  FontSize="15"  LabelFormatter="{Binding ownActicitates.Formatter}" Margin="10"></lvc:Axis>
@@ -122,7 +122,7 @@
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10 10 10 10">
                         <lvc:CartesianChart Series="{Binding nearDeadlineTaskTypeSummary.SeriesCollection}"  LegendLocation="Top" FontSize="15"  Height="320"  Width="700"  >
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Title="Feladatok műveletei" FontSize="15" Labels="{Binding nearDeadlineTaskTypeSummary.Labels}" Margin="10" ></lvc:Axis>
+                                <lvc:Axis Title="Feladatok határidő státusza" FontSize="15" Labels="{Binding nearDeadlineTaskTypeSummary.Labels}" Margin="10" ></lvc:Axis>
                             </lvc:CartesianChart.AxisX>
                             <lvc:CartesianChart.AxisY>
                                 <lvc:Axis Title="Feladatok száma"  FontSize="15"  LabelFormatter="{Binding nearDeadlineTaskTypeSummary.Formatter}" Margin="10"></lvc:Axis>

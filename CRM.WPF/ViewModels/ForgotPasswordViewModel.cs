@@ -1,4 +1,5 @@
 ﻿using CRM.Domain.Models;
+using CRM.Domain.Services.NewFolder;
 using CRM.WPF.Services.EmailSender;
 using System;
 using System.Collections.Generic;
@@ -96,7 +97,9 @@ namespace CRM.WPF.ViewModels
             {
                 if (pw1 == pw2)
                 {
-                    forgotUser!.Password = pw1;
+                    PasswordHasherService passwordHasherService = new PasswordHasherService();
+                    string hashedPassword = passwordHasherService.PasswordEncodeing(pw1);
+                    forgotUser!.Password = hashedPassword;
                     UserService!.Update(forgotUser.Id,forgotUser);
                     MessageBox.Show("Sikeresen megváltoztatta a jelszavát!", "Sikeres jelszóváltoztatás!", MessageBoxButton.OK, MessageBoxImage.Information);
 

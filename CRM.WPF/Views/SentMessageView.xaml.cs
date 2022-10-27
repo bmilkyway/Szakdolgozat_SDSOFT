@@ -22,34 +22,27 @@ namespace CRM.WPF.Views
     public partial class SentMessageView : UserControl
     {
         private readonly SentMessageViewModel sentMessageViewModel;
-        CollectionView filterView;
+     
+        private List<int> filteredMessageListId;
         public SentMessageView()
         {
             InitializeComponent();
+            filteredMessageListId = new List<int>();
             sentMessageViewModel = new SentMessageViewModel();
-            lbMessageList.ItemsSource = sentMessageViewModel.messageList;
-            filterView = (CollectionView)CollectionViewSource.GetDefaultView(lbMessageList.ItemsSource);
-            filterView!.Filter = CustomFilter;
-        }
-        private bool CustomFilter(object obj)
-        {
-            if (string.IsNullOrEmpty(txtFilter.Text))
-            {
-                return true;
-            }
-            else
-            {
-                return (obj.ToString()!.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            for(int i=0;i<sentMessageViewModel.messageListTitle.Count;i++)
+            { 
+                lbMessageList.Items.Add(sentMessageViewModel.messageListTitle[i].ToString());
+                filteredMessageListId.Add(i);
             }
         }
+     
         private void setMessageViewer(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-            txtMessageText.Text = sentMessageViewModel.messageList[lbMessageList.SelectedIndex].MessageText;
-            txtSubject.Text = sentMessageViewModel.messageList[lbMessageList.SelectedIndex].Subject;
-            txtAddress.Text = sentMessageViewModel.UserService!.Get(sentMessageViewModel.messageList[lbMessageList.SelectedIndex].FromUserId).Result.ToString();
-     
+           txtMessageText.Text = sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].MessageText;
+            txtSubject.Text = sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].Subject;
+            txtAddress.Text = sentMessageViewModel.UserService!.Get(sentMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].FromUserId).Result.ToString();
             }
             catch
             {
@@ -59,7 +52,25 @@ namespace CRM.WPF.Views
 
         private void setFilterList(object sender, TextChangedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(lbMessageList.ItemsSource).Refresh();
+            lbMessageList.Items.Clear();
+            filteredMessageListId.Clear();
+            if (!string.IsNullOrEmpty(txtFilter.Text))
+            {
+                for (int i=0;i<sentMessageViewModel.messageListTitle.Count;i++)
+                    if (sentMessageViewModel.messageListTitle[i].Contains(txtFilter.Text))
+                    {
+                        lbMessageList.Items.Add(sentMessageViewModel.messageListTitle[i]);
+                        filteredMessageListId.Add(i);
+                    }
+            }
+            else
+            {
+                for (int i=0;i<sentMessageViewModel.messageListTitle.Count;i++)
+                {
+                    lbMessageList.Items.Add(sentMessageViewModel.messageListTitle[i].ToString());
+                    filteredMessageListId.Add(i);
+                }
+            }
         }
     }
 }

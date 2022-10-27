@@ -2,6 +2,7 @@
 using System.Windows;
 
 using CRM.Domain.Models;
+using CRM.Domain.Services.NewFolder;
 using CRM.LocalDb;
 using CRM.WPF.Views;
 
@@ -22,10 +23,14 @@ namespace CRM.WPF.ViewModels
         {
             Window window = new MainWindow(currentUser!.userId);
             window.DataContext = new MainViewModel();
+
+
             window.Show();
         }
         public bool loginIsSuccesful(string username, string password)
         {
+            PasswordHasherService passwordHasherService = new PasswordHasherService();
+            password=passwordHasherService.PasswordEncodeing(password);
             try
             {
                 activeUser = UserService!.Login(username, password).Result;

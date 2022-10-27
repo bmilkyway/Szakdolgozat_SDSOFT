@@ -1,6 +1,7 @@
 ﻿using CRM.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,14 +24,13 @@ namespace CRM.WPF.Views
     {
 
         private readonly NewTaskViewModel newTaskViewModel;
-        public NewTaskView()
+        public  NewTaskView()
         {
             InitializeComponent();
             newTaskViewModel = new NewTaskViewModel();
             cbTaskCategory.ItemsSource = newTaskViewModel.Categories;
             dpDeadline.SelectedDate = DateTime.Now;
         }
-
         private void saveNewTask(object sender, RoutedEventArgs e)
         {
             if(newTaskViewModel.savewTask(txtTaskName.Text, cbTaskCategory.SelectedIndex, dpDeadline.SelectedDate!.Value, txtTaskDescription.Text, rbPlanning.IsChecked == true ? true : false))

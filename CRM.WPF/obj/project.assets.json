@@ -86,7 +86,7 @@
           "lib/net45/LiveCharts.Wpf.dll": {}
         }
       },
-      "MaterialDesignColors/2.0.8-ci307": {
+      "MaterialDesignColors/2.1.0-ci343": {
         "type": "package",
         "compile": {
           "lib/net6.0/MaterialDesignColors.dll": {}
@@ -95,10 +95,10 @@
           "lib/net6.0/MaterialDesignColors.dll": {}
         }
       },
-      "MaterialDesignThemes/4.7.0-ci307": {
+      "MaterialDesignThemes/4.7.0-ci343": {
         "type": "package",
         "dependencies": {
-          "MaterialDesignColors": "[2.0.8-ci307, 3.0.0)"
+          "MaterialDesignColors": "[2.1.0-ci343, 3.0.0)"
         },
         "compile": {
           "lib/net6.0/MaterialDesignThemes.Wpf.dll": {}
@@ -110,7 +110,7 @@
           "build/MaterialDesignThemes.targets": {}
         }
       },
-      "Microsoft.AspNet.Identity.Core/2.2.3": {
+      "Microsoft.AspNet.Identity.Core/2.0.0": {
         "type": "package",
         "compile": {
           "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
@@ -2044,7 +2044,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.AspNet.Identity.Core": "2.2.3"
+          "Microsoft.AspNet.Identity.Core": "2.0.0"
         },
         "compile": {
           "bin/placeholder/CRM.Domain.dll": {}
@@ -2229,10 +2229,10 @@
         "tools/install.ps1"
       ]
     },
-    "MaterialDesignColors/2.0.8-ci307": {
-      "sha512": "7AqBbRmDtEI5tIUS8fVlh+u3GvXuHklxzh2nXEQ1+AUsQ6DfR4D99nWH5kmHWp26/dve1zOOvpLoNj/O6ea/XA==",
+    "MaterialDesignColors/2.1.0-ci343": {
+      "sha512": "29pw3SEiBzca3B+DuNC4MAmPRi4z7IGX7H+/G1IQcqGAdntCNELbW2uSGtOD2Na5scsFA/MHn9E68I60UxePKQ==",
       "type": "package",
-      "path": "materialdesigncolors/2.0.8-ci307",
+      "path": "materialdesigncolors/2.1.0-ci343",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2243,14 +2243,14 @@
         "lib/net6.0/MaterialDesignColors.pdb",
         "lib/netcoreapp3.1/MaterialDesignColors.dll",
         "lib/netcoreapp3.1/MaterialDesignColors.pdb",
-        "materialdesigncolors.2.0.8-ci307.nupkg.sha512",
+        "materialdesigncolors.2.1.0-ci343.nupkg.sha512",
         "materialdesigncolors.nuspec"
       ]
     },
-    "MaterialDesignThemes/4.7.0-ci307": {
-      "sha512": "Rex0DYkENse2awJsRhWC7KGcSKxJw1nR/ZPwfH/WWyZai9YHWcxaCoNVu+bEpYK2Nqa5WHgj05NHc1OSwRcxug==",
+    "MaterialDesignThemes/4.7.0-ci343": {
+      "sha512": "Wip/bVEVH5SkEm15zAIbtrXc/TRmQE1Bcsv0vB1jFB2GaYTB6F6WGUPIw7F0Jhihp970C6Fd8LY7pNQp/ZZSRw==",
       "type": "package",
-      "path": "materialdesignthemes/4.7.0-ci307",
+      "path": "materialdesignthemes/4.7.0-ci343",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -2284,21 +2284,21 @@
         "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll",
         "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.pdb",
         "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.xml",
-        "materialdesignthemes.4.7.0-ci307.nupkg.sha512",
+        "materialdesignthemes.4.7.0-ci343.nupkg.sha512",
         "materialdesignthemes.nuspec",
         "tools/VisualStudioToolsManifest.xml"
       ]
     },
-    "Microsoft.AspNet.Identity.Core/2.2.3": {
-      "sha512": "Mv5FpoaxspE8hlWLE4r1IdZtovg/OyFgVRhxQbx47J4sqdLImN1hnM1lnwCj+/wLmqtqFk/RYMoZ5GAcwm/00g==",
+    "Microsoft.AspNet.Identity.Core/2.0.0": {
+      "sha512": "T5wPzkikUE+joBQI+CeXLZllvi++BSqgvUazSPfxuIprR4nV1KFM7VCCowFqTya+oySPXm4tgFxFlIRm7Ic37A==",
       "type": "package",
-      "path": "microsoft.aspnet.identity.core/2.2.3",
+      "path": "microsoft.aspnet.identity.core/2.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net45/Microsoft.AspNet.Identity.Core.dll",
         "lib/net45/Microsoft.AspNet.Identity.Core.xml",
-        "microsoft.aspnet.identity.core.2.2.3.nupkg.sha512",
+        "microsoft.aspnet.identity.core.2.0.0.nupkg.sha512",
         "microsoft.aspnet.identity.core.nuspec"
       ]
     },
@@ -6979,7 +6979,7 @@
       "CRM.EntityFramework >= 1.0.0",
       "CRM.LocalDb >= 1.0.0",
       "LiveCharts.Wpf >= 0.9.7",
-      "MaterialDesignThemes >= 4.7.0-ci307",
+      "MaterialDesignThemes >= 4.7.0-ci343",
       "System.Data.SqlClient >= 4.8.3",
       "sqlite-net-pcl >= 1.8.116"
     ]
@@ -7044,7 +7044,7 @@
           },
           "MaterialDesignThemes": {
             "target": "Package",
-            "version": "[4.7.0-ci307, )"
+            "version": "[4.7.0-ci343, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
@@ -7102,7 +7102,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "message": "Package 'Microsoft.AspNet.Identity.Core 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.Identity.Core",
       "targetGraphs": [
         "net6.0-windows7.0"

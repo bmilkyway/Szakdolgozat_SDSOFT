@@ -12,7 +12,7 @@
           "CRM.EntityFramework": "1.0.0",
           "CRM.LocalDb": "1.0.0",
           "LiveCharts.Wpf": "0.9.7",
-          "MaterialDesignThemes": "4.7.0-ci307",
+          "MaterialDesignThemes": "4.7.0-ci343",
           "System.Data.SqlClient": "4.8.3",
           "sqlite-net-pcl": "1.8.116"
         },
@@ -97,17 +97,17 @@
           }
         }
       },
-      "MaterialDesignColors/2.0.8-ci307": {
+      "MaterialDesignColors/2.1.0-ci343": {
         "runtime": {
           "lib/net6.0/MaterialDesignColors.dll": {
-            "assemblyVersion": "2.0.8.0",
-            "fileVersion": "2.0.8.0"
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
           }
         }
       },
-      "MaterialDesignThemes/4.7.0-ci307": {
+      "MaterialDesignThemes/4.7.0-ci343": {
         "dependencies": {
-          "MaterialDesignColors": "2.0.8-ci307"
+          "MaterialDesignColors": "2.1.0-ci343"
         },
         "runtime": {
           "lib/net6.0/MaterialDesignThemes.Wpf.dll": {
@@ -116,11 +116,11 @@
           }
         }
       },
-      "Microsoft.AspNet.Identity.Core/2.2.3": {
+      "Microsoft.AspNet.Identity.Core/2.0.0": {
         "runtime": {
           "lib/net45/Microsoft.AspNet.Identity.Core.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.2.3.11125"
+            "fileVersion": "2.0.30227.0"
           }
         }
       },
@@ -1379,7 +1379,7 @@
       },
       "CRM.Domain/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNet.Identity.Core": "2.2.3"
+          "Microsoft.AspNet.Identity.Core": "2.0.0"
         },
         "runtime": {
           "CRM.Domain.dll": {}
@@ -1461,26 +1461,26 @@
       "path": "livecharts.wpf/0.9.7",
       "hashPath": "livecharts.wpf.0.9.7.nupkg.sha512"
     },
-    "MaterialDesignColors/2.0.8-ci307": {
+    "MaterialDesignColors/2.1.0-ci343": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7AqBbRmDtEI5tIUS8fVlh+u3GvXuHklxzh2nXEQ1+AUsQ6DfR4D99nWH5kmHWp26/dve1zOOvpLoNj/O6ea/XA==",
-      "path": "materialdesigncolors/2.0.8-ci307",
-      "hashPath": "materialdesigncolors.2.0.8-ci307.nupkg.sha512"
+      "sha512": "sha512-29pw3SEiBzca3B+DuNC4MAmPRi4z7IGX7H+/G1IQcqGAdntCNELbW2uSGtOD2Na5scsFA/MHn9E68I60UxePKQ==",
+      "path": "materialdesigncolors/2.1.0-ci343",
+      "hashPath": "materialdesigncolors.2.1.0-ci343.nupkg.sha512"
     },
-    "MaterialDesignThemes/4.7.0-ci307": {
+    "MaterialDesignThemes/4.7.0-ci343": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Rex0DYkENse2awJsRhWC7KGcSKxJw1nR/ZPwfH/WWyZai9YHWcxaCoNVu+bEpYK2Nqa5WHgj05NHc1OSwRcxug==",
-      "path": "materialdesignthemes/4.7.0-ci307",
-      "hashPath": "materialdesignthemes.4.7.0-ci307.nupkg.sha512"
+      "sha512": "sha512-Wip/bVEVH5SkEm15zAIbtrXc/TRmQE1Bcsv0vB1jFB2GaYTB6F6WGUPIw7F0Jhihp970C6Fd8LY7pNQp/ZZSRw==",
+      "path": "materialdesignthemes/4.7.0-ci343",
+      "hashPath": "materialdesignthemes.4.7.0-ci343.nupkg.sha512"
     },
-    "Microsoft.AspNet.Identity.Core/2.2.3": {
+    "Microsoft.AspNet.Identity.Core/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Mv5FpoaxspE8hlWLE4r1IdZtovg/OyFgVRhxQbx47J4sqdLImN1hnM1lnwCj+/wLmqtqFk/RYMoZ5GAcwm/00g==",
-      "path": "microsoft.aspnet.identity.core/2.2.3",
-      "hashPath": "microsoft.aspnet.identity.core.2.2.3.nupkg.sha512"
+      "sha512": "sha512-T5wPzkikUE+joBQI+CeXLZllvi++BSqgvUazSPfxuIprR4nV1KFM7VCCowFqTya+oySPXm4tgFxFlIRm7Ic37A==",
+      "path": "microsoft.aspnet.identity.core/2.0.0",
+      "hashPath": "microsoft.aspnet.identity.core.2.0.0.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",

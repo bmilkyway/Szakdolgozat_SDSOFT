@@ -58,6 +58,7 @@ namespace CRM.WPF.Views
                    if(forgotPasswordViewModel.checkPassword(txtNewPassword.Password, txtNewPasswordCopy.Password))
                     {
                         forgotPasswordViewModel.LoginWindow();
+                        this.Close();
                     }
                     break;
 

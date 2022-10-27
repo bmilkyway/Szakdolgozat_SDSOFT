@@ -1,4 +1,5 @@
 ﻿using CRM.Domain.Models;
+using CRM.Domain.Services.NewFolder;
 using CRM.LocalDb;
 using CRM.WPF.Services.EmailSender;
 
@@ -63,18 +64,20 @@ namespace CRM.WPF.ViewModels
                         MessageBox.Show("Erre az Email-címre már regisztráltak! Kérem adjon meg egy másikat!", "Figyelem!", MessageBoxButton.OK, MessageBoxImage.Error);
                         return false;
                     }
-                    
+
                 }
+                PasswordHasherService passwordHasherService = new PasswordHasherService();
+                string hashedPassword = passwordHasherService.PasswordEncodeing(password);
                 newUser = new User
                 {
                     Name = name,
                     Email = email,
-                    Password = password,
+                    Password = hashedPassword,
                     UserName = username,
                     RegistrationDate = DateTime.Now,
                     LoginDate = DateTime.Now,
                     IsActive = true,
-                    PermissionId = 2,
+                    PermissionId = 3,
                 };
                 newUser =UserService.Create(newUser).Result;
                 EmailSender senderEmail = new EmailSender();

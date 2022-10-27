@@ -46,7 +46,7 @@
           "dependencies": {
             "Microsoft.AspNet.Identity.Core": {
               "target": "Package",
-              "version": "[2.2.3, )"
+              "version": "[2.0.0, )"
             }
           },
           "imports": [
@@ -206,7 +206,7 @@
             },
             "MaterialDesignThemes": {
               "target": "Package",
-              "version": "[4.7.0-ci307, )"
+              "version": "[4.7.0-ci343, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

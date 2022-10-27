@@ -28,7 +28,13 @@ namespace CRM.WPF.Views
             InitializeComponent();
              newMessageViewModel = new NewMessageViewModel();
         }
-
+        public NewMessageView(string subject, string username)
+        {
+            InitializeComponent();
+            newMessageViewModel = new NewMessageViewModel();
+            txtSubjectText.Text = String.Format("Re: {0}", subject);
+            cbToUserAddress.Text = username;
+        }
         private void SendMessage(object sender, RoutedEventArgs e)
         {
             if (cbToUserAddress.SelectedIndex == -1)

@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.EntityFramework", "..\C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.WPF", "..\CRM.WPF\CRM.WPF.csproj", "{F1C51701-E2FD-4C48-A600-6DFFD8FDD7B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.LocalDb", "CRM.LocalDb\CRM.LocalDb.csproj", "{49948CAE-62B3-4BC2-A40C-B9185177C3AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM.LocalDb", "CRM.LocalDb\CRM.LocalDb.csproj", "{49948CAE-62B3-4BC2-A40C-B9185177C3AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3181239F-4644-4633-A06C-D2A38EF3C46A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

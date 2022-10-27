@@ -25,7 +25,7 @@ namespace CRM.WPF.ViewModels
         private readonly IEnumerable<Domain.Models.Task> tasks;
       
 
-        public AllTaskViewModel()
+        public  AllTaskViewModel()
         {
             this.activeUser = currentUser;
             allTask = new List<Domain.Models.Task>();

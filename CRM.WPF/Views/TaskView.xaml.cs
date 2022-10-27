@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using CRM.WPF.ViewModels;
+
 namespace CRM.WPF.Views
 {
     /// <summary>
@@ -20,9 +22,15 @@ namespace CRM.WPF.Views
     /// </summary>
     public partial class TaskView : UserControl
     {
+        private readonly TaskViewModel taskViewModel;
         public TaskView()
         {
             InitializeComponent();
+            taskViewModel=new TaskViewModel();
+            if (taskViewModel.currentUser.PermissionId == 3)
+            {
+                btnNewTask.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

@@ -49,6 +49,13 @@ namespace CRM.WPF.ViewModels
         private int programingCategory { get; set; }
         private int testingCategory { get; set; }
         private int maintenanceCategory { get; set; }
+        private int nearDeadlinePlannedTask { get; set; }
+        private int nearDeadlineStartedTask { get; set; }
+        private int nearDeadlineFreeTask { get; set; }
+
+        private int expiredPlannedTask { get; set; }
+        private int expiredStartedTask { get; set; }
+        private int expiredFreeTask { get; set; }
         private int farToDeadline { get; set; }
         public IEnumerable<User> activeUsersList;
         public IEnumerable<User> allUsersList;
@@ -79,6 +86,12 @@ namespace CRM.WPF.ViewModels
             programingCategory = 0;
             testingCategory = 0;
             maintenanceCategory = 0;
+            nearDeadlinePlannedTask = 0;
+            nearDeadlineStartedTask = 0;
+            nearDeadlineFreeTask = 0;
+            expiredPlannedTask = 0;
+            expiredStartedTask = 0;
+            expiredFreeTask = 0;
             inactiveUsersCount = allUsersList.Count()-activeUsersList.Count();
             ownTasks = new List<Task>();
             allTasks = new List<Task>();
@@ -155,9 +168,37 @@ namespace CRM.WPF.ViewModels
                             break;
                     }
                     if (Convert.ToDateTime(task.DeadLine) > DateTime.UtcNow && task.TaskStatusId != 4 && Convert.ToDateTime(task.DeadLine).DayOfYear - DateTime.Now.DayOfYear < 10)
-                        nearTheDeadlineCount.Add(task);
+                    { 
+                        nearTheDeadlineCount.Add(task); 
+                        switch (task.TaskStatusId)
+                        {
+                            case 1:
+                                nearDeadlinePlannedTask++;
+                                break;
+                            case 2:
+                                nearDeadlineFreeTask++;
+                                break;
+                            case 3:
+                                nearDeadlineStartedTask++;
+                                break;
+                        }
+                    }
                     else if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4)
+                    { 
                         expiredTask.Add(task);
+                        switch (task.TaskStatusId)
+                        {
+                            case 1:
+                                expiredPlannedTask++;
+                                break;
+                            case 2:
+                                expiredFreeTask++;
+                                break;
+                            case 3:
+                                expiredStartedTask++;
+                                break;
+                        }
+                    }
                 }
                 if (task.CreateDate.Date.DayOfYear == DateTime.Now.Date.DayOfYear && DateTime.Now.Year == task.CreateDate.Year)
                 {
@@ -312,18 +353,18 @@ namespace CRM.WPF.ViewModels
                 new ColumnSeries
                 {
                     Title = "Tervezés alatt",
-                    Values = new ChartValues<int> { plannedTaskCount.Count()}
+                    Values = new ChartValues<int> {nearDeadlinePlannedTask,expiredPlannedTask}
                 }
             };
             nearDeadlineTaskTypeSummary.SeriesCollection.Add(new ColumnSeries
             {
                 Title = "Szabad",
-                Values = new ChartValues<int> { freeTaskCount.Count() }
+                Values = new ChartValues<int> {nearDeadlineFreeTask, expiredFreeTask }
             });
             nearDeadlineTaskTypeSummary.SeriesCollection.Add(new ColumnSeries
             {
                 Title = "Elkezdve",
-                Values = new ChartValues<int> { activeTaskCount.Count() }
+                Values = new ChartValues<int> { nearDeadlineStartedTask,expiredStartedTask }
             });
             nearDeadlineTaskTypeSummary.Labels = new[] { "Közel", "Lejárt" };
             nearDeadlineTaskTypeSummary.Formatter = value => value.ToString("N0");
@@ -344,6 +385,7 @@ namespace CRM.WPF.ViewModels
                 },
             };
             #endregion
+
             #region Feladat kategóriák 
             taskCategories.SeriesCollection = new SeriesCollection
             {

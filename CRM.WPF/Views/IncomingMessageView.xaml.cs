@@ -1,6 +1,8 @@
 ﻿
+using CRM.WPF.State.Navigators;
 using CRM.WPF.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,53 +16,66 @@ namespace CRM.WPF.Views
     public partial class IncomingMessageView : UserControl
     {
         private readonly IncomingMessageViewModel incomingMessageViewModel;
-        CollectionView filterView;
+        private List<int> filteredMessageListId;
+        private readonly MessageViewModel messageViewModel;
         public IncomingMessageView()
         {
             InitializeComponent();
+            filteredMessageListId = new List<int>();
             incomingMessageViewModel = new IncomingMessageViewModel();
-            lbMessageList.DataContext = incomingMessageViewModel;
-            lbMessageList.ItemsSource = incomingMessageViewModel.messageList;
-            filterView = (CollectionView)CollectionViewSource.GetDefaultView(lbMessageList.ItemsSource);
-            filterView!.Filter = CustomFilter;
+            messageViewModel = new MessageViewModel();
+            for (int i = 0; i < incomingMessageViewModel.messageListTitle.Count; i++)
+            {
+                lbMessageList.Items.Add(incomingMessageViewModel.messageListTitle[i].ToString());
+                filteredMessageListId.Add(i);
+            }
         }
 
         private void setMessageViewer(object sender, SelectionChangedEventArgs e)
         {
-
-            try
+            if (lbMessageList.SelectedIndex != -1)
             {
-                incomingMessageViewModel.readNewMessage(incomingMessageViewModel.messageList[lbMessageList.SelectedIndex]);
-                lbMessageList.Items.Refresh();
-                txtMessageText.Text = incomingMessageViewModel.messageList[lbMessageList.SelectedIndex].MessageText;
-                txtSubject.Text = incomingMessageViewModel.messageList[lbMessageList.SelectedIndex].Subject;
-                txtAddress.Text = incomingMessageViewModel.UserService!.Get(incomingMessageViewModel.messageList[lbMessageList.SelectedIndex].ToUserId).Result.ToString();
-              
-            }
-            catch
-            {
-                MessageBox.Show("Nem sikerült megnyitni az adott feladatot!","Hiba!",MessageBoxButton.OK,MessageBoxImage.Error);
+                try
+                {
+                    txtMessageText.Text = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].MessageText;
+                    txtSubject.Text = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].Subject;
+                    txtAddress.Text = incomingMessageViewModel.UserService!.Get(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].ToUserId).Result.ToString();
+                    incomingMessageViewModel.readNewMessage(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]], lbMessageList, txtFilter);
+                    }
+                catch(Exception er){
+                    MessageBox.Show(er.Message, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+                
+                    MessageBox.Show("Nem sikerült megnyitni az adott feladatot!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void SendAnswer(object sender, RoutedEventArgs e)
         {
-
+            messageViewModel.Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.NewMessage);
         }
-        private bool CustomFilter(object obj)
+     
+        private void filterList(object sender, TextChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtFilter.Text))
+            lbMessageList.Items.Clear();
+            filteredMessageListId.Clear();
+            if (!string.IsNullOrEmpty(txtFilter.Text))
             {
-                return true;
+                for (int i = 0; i < incomingMessageViewModel.messageListTitle.Count; i++)
+                    if (incomingMessageViewModel.messageListTitle[i].Contains(txtFilter.Text))
+                    {
+                        lbMessageList.Items.Add(incomingMessageViewModel.messageListTitle[i]);
+                        filteredMessageListId.Add(i);
+                    }
             }
             else
             {
-                return (obj.ToString()!.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                for (int i = 0; i < incomingMessageViewModel.messageListTitle.Count; i++)
+                {
+                    lbMessageList.Items.Add(incomingMessageViewModel.messageListTitle[i].ToString());
+                    filteredMessageListId.Add(i);
+                }
             }
-        }
-        private void filterList(object sender, TextChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(lbMessageList.ItemsSource).Refresh();
         }
     }
 }

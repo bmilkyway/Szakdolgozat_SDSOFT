@@ -27,6 +27,7 @@ namespace CRM.WPF.ViewModels
         public NewTaskViewModel()
         {
             activeUser = currentUser;
+          
         }
 
 
