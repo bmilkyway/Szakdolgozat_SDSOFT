@@ -17,7 +17,7 @@ namespace CRM.WPF.Views
         public Task actualTask;
         private ListBox lbTasks;
         private string? responsibleUserName;
-        public ActualTaskView(Task actualTask,ListBox lbTasks)
+        public ActualTaskView(Task actualTask, ListBox lbTasks)
         {
             InitializeComponent();
             DataContext = actualTaskViewModel;
@@ -29,7 +29,7 @@ namespace CRM.WPF.Views
             if (actualTask.ResponsibleUserId != null && actualTask.ResponsibleUserId == actualTaskViewModel.currentUser.Id)
             {
                 responsibleUserName = actualTaskViewModel.currentUser.Name!;
-             
+
                 btnClose.IsEnabled = true;
                 btnModify.IsEnabled = true;
                 btnTakeOn.IsEnabled = false;
@@ -39,7 +39,7 @@ namespace CRM.WPF.Views
             else if (actualTask.ResponsibleUserId != null)
             {
                 responsibleUserName = actualTaskViewModel.UserService!.Get(actualTask.ResponsibleUserId!.Value).Result.Name!;
-                
+
                 btnClose.IsEnabled = false;
                 btnModify.IsEnabled = false;
                 btnTakeOn.IsEnabled = false;
@@ -60,13 +60,13 @@ namespace CRM.WPF.Views
                         txtStatus.Text = "Tervezés alatt";
                         break;
                     }
-                    case 2:
+                case 2:
                     {
                         txtStatus.Text = "Szabad";
                         break;
 
                     }
-                case 3: 
+                case 3:
                     {
                         txtStatus.Text = "Elvállalt";
                         break;
@@ -108,7 +108,7 @@ namespace CRM.WPF.Views
             txtCategory.Text = actualTask.Category;
             txtCreatedDate.Text = actualTask.CreateDate.ToString();
             tbTaskDescription.Text = actualTask.TaskDescription;
-        
+
         }
 
         /// <summary>
@@ -121,19 +121,21 @@ namespace CRM.WPF.Views
         /// <param name="e"></param>
         private void taskClose(object sender, RoutedEventArgs e)
         {
-            if (actualTaskViewModel.taskClose(actualTask,lbTasks))
-            { MessageBox.Show("Sikeresen lezárta a feladatot!");
+            if (actualTaskViewModel.taskClose(actualTask, lbTasks))
+            {
+                MessageBox.Show("Sikeresen lezárta a feladatot!");
                 this.Close();
             }
             else
                 MessageBox.Show("Nem sikerült lezárni a feladatot!");
-           
+
         }
 
         private void takeOnTask(object sender, RoutedEventArgs e)
         {
-            if (actualTaskViewModel.takeOnTask(actualTask, actualTaskViewModel.currentUser,lbTasks))
-            { MessageBox.Show("Sikeresen elvállalta a feladatot!");
+            if (actualTaskViewModel.takeOnTask(actualTask, actualTaskViewModel.currentUser, lbTasks))
+            {
+                MessageBox.Show("Sikeresen elvállalta a feladatot!");
                 this.Close();
             }
             else
@@ -154,7 +156,7 @@ namespace CRM.WPF.Views
 
         private void taskSave(object sender, RoutedEventArgs e)
         {
-            if (actualTaskViewModel.taskModify(actualTask, lbTasks, Convert.ToDateTime(txtDeadline.Text),  cbCategory.Text , tbTaskDescription.Text))
+            if (actualTaskViewModel.taskModify(actualTask, lbTasks, Convert.ToDateTime(txtDeadline.Text), cbCategory.Text, tbTaskDescription.Text))
             {
                 MessageBox.Show("Sikeresen módosította a feladat részleteit!", "Sikeres módosítás!", MessageBoxButton.OK);
                 cancel();
@@ -200,12 +202,13 @@ namespace CRM.WPF.Views
         private void taskSaveGiveOtherUser(object sender, RoutedEventArgs e)
         {
             if (actualTaskViewModel.taskTakeOn(actualTask, lbTasks, actualTaskViewModel.users[cbResponsibleUser.SelectedIndex]))
-            { MessageBox.Show("Sikeresen átadta a feladatot!", "Sikeres átadás");
+            {
+                MessageBox.Show("Sikeresen átadta a feladatot!", "Sikeres átadás");
                 this.Close();
             }
             else
-              this.cancel();
-           
+                this.cancel();
+
 
         }
     }

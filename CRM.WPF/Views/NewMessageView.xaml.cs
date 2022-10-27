@@ -1,19 +1,9 @@
-﻿using CRM.Domain.Models;
-using CRM.WPF.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+using CRM.Domain.Models;
+using CRM.WPF.ViewModels;
 
 namespace CRM.WPF.Views
 {
@@ -26,7 +16,7 @@ namespace CRM.WPF.Views
         public NewMessageView()
         {
             InitializeComponent();
-             newMessageViewModel = new NewMessageViewModel();
+            newMessageViewModel = new NewMessageViewModel();
         }
         public NewMessageView(string subject, string username)
         {
@@ -48,7 +38,7 @@ namespace CRM.WPF.Views
                     newMessageViewModel.sendMessage(new Message
                     {
 
-                        ToUserId =newMessageViewModel.userList![cbToUserAddress.SelectedIndex].Id,
+                        ToUserId = newMessageViewModel.userList![cbToUserAddress.SelectedIndex].Id,
                         FromUserId = newMessageViewModel.currentUser.Id,
                         MessageText = txtMessageText.Text,
                         Subject = txtSubjectText.Text,
@@ -64,7 +54,7 @@ namespace CRM.WPF.Views
                 {
                     MessageBox.Show("Nem sikerült elküldeni az üzenetet!", "Sikertelen küldés!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-               
+
             }
         }
 
@@ -77,7 +67,7 @@ namespace CRM.WPF.Views
                     cbToUserAddress.SelectedIndex = i;
                     cbToUserAddress.SelectedItem = i;
 
-                
+
                     break;
                 }
             }

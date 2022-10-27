@@ -30,7 +30,7 @@ namespace CRM.WPF.ViewModels
         public bool loginIsSuccesful(string username, string password)
         {
             PasswordHasherService passwordHasherService = new PasswordHasherService();
-            password=passwordHasherService.PasswordEncodeing(password);
+            password = passwordHasherService.PasswordEncodeing(password);
             try
             {
                 activeUser = UserService!.Login(username, password).Result;
@@ -42,24 +42,24 @@ namespace CRM.WPF.ViewModels
                 activeUser.IsActive = true;
                 activeUser.LoginDate = System.DateTime.Now;
                 UserService.Update(activeUser.Id, activeUser);
-               
-                    var db = new SQLiteConnection("currentUserDb.db3");
-                    db!.CreateTable<CurrentUser>();
-                    currentUser = new CurrentUser
-                    {
-                      
-                        userId = activeUser.Id,
-                        userName = activeUser.UserName,
-                        name = activeUser.Name,
-                        password = activeUser.Password,
-                        email = activeUser.Email
-                    };
-                    db!.Insert(currentUser);
-                    db!.Commit();
-                    
-                    db!.Close();
 
-                
+                var db = new SQLiteConnection("currentUserDb.db3");
+                db!.CreateTable<CurrentUser>();
+                currentUser = new CurrentUser
+                {
+
+                    userId = activeUser.Id,
+                    userName = activeUser.UserName,
+                    name = activeUser.Name,
+                    password = activeUser.Password,
+                    email = activeUser.Email
+                };
+                db!.Insert(currentUser);
+                db!.Commit();
+
+                db!.Close();
+
+
 
                 return true;
             }

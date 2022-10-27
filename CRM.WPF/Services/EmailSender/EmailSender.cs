@@ -1,11 +1,7 @@
-﻿using CRM.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
+
+using CRM.Domain.Models;
 
 namespace CRM.WPF.Services.EmailSender
 {
@@ -27,13 +23,13 @@ namespace CRM.WPF.Services.EmailSender
                 }
 
             };
-        public void forgotPasswordEmail(User user,int code) 
+        public void forgotPasswordEmail(User user, int code)
         {
 
 
 
             SmtpClient Client = SmtpClient;
-          
+
             MailAddress Küldő = new MailAddress("sdsoft.helper@gmail.com");
             MailAddress Fogadó = new MailAddress(user.Email!);
             MailMessage Üzenet = new MailMessage
@@ -65,9 +61,9 @@ namespace CRM.WPF.Services.EmailSender
         public void sendMessage(User user)
         {
 
-           
 
-            SmtpClient Client=SmtpClient;
+
+            SmtpClient Client = SmtpClient;
             MailAddress Küldő = new MailAddress("sdsoft.helper@gmail.com");
             MailAddress Fogadó = new MailAddress(user.Email!);
             MailMessage Üzenet = new MailMessage

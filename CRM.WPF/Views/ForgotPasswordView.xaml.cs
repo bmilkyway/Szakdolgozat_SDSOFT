@@ -1,17 +1,7 @@
-﻿using CRM.WPF.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+using CRM.WPF.ViewModels;
 
 namespace CRM.WPF.Views
 {
@@ -22,7 +12,7 @@ namespace CRM.WPF.Views
     {
         private function func;
 
-        private  ForgotPasswordViewModel forgotPasswordViewModel;
+        private ForgotPasswordViewModel forgotPasswordViewModel;
         public ForgotPasswordView()
         {
             InitializeComponent();
@@ -55,7 +45,7 @@ namespace CRM.WPF.Views
                     }
                     break;
                 case function.checkPasswords:
-                   if(forgotPasswordViewModel.checkPassword(txtNewPassword.Password, txtNewPasswordCopy.Password))
+                    if (forgotPasswordViewModel.checkPassword(txtNewPassword.Password, txtNewPasswordCopy.Password))
                     {
                         forgotPasswordViewModel.LoginWindow();
                         this.Close();
@@ -64,8 +54,8 @@ namespace CRM.WPF.Views
 
 
             }
-          
-           
+
+
         }
 
         private void CancelForgotPassword(object sender, RoutedEventArgs e)

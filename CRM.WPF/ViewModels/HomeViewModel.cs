@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using System.Windows.Media;
+
 using CRM.Domain.Models;
-using SQLite;
-using CRM.LocalDb;
+
 using LiveCharts;
-using static CRM.WPF.ChartModels.chartModels;
 using LiveCharts.Wpf;
+
+using static CRM.WPF.ChartModels.chartModels;
 
 namespace CRM.WPF.ViewModels
 {
@@ -27,10 +25,10 @@ namespace CRM.WPF.ViewModels
         public List<Task>? ownTasks { get; set; }
 
 
-        public  User active_User;
+        public User active_User;
         private readonly IEnumerable<Task> tasks;
         private readonly IEnumerable<Message> messages;
-    
+
         public HomeViewModel()
         {
             active_User = currentUser;
@@ -49,27 +47,27 @@ namespace CRM.WPF.ViewModels
             {
                 showFilteredTask.Add(task);
                 ownTasks.Add(task);
-                    switch (task.TaskStatusId)
-                    {
-                        case 1: 
-                            plannedTaskCount.Add(task);
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            activeTaskCount.Add(task);
-                            break;
-                        case 4:
-                            closedTaskCount.Add(task);
-                            break;
-                    }
-                    if(Convert.ToDateTime(task.DeadLine)>DateTime.UtcNow && task.TaskStatusId!=4 && Convert.ToDateTime(task.DeadLine).DayOfYear - DateTime.Now.DayOfYear < 10)
-                        nearTheDeadlineCount.Add(task);
-              else  if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4 )
+                switch (task.TaskStatusId)
+                {
+                    case 1:
+                        plannedTaskCount.Add(task);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        activeTaskCount.Add(task);
+                        break;
+                    case 4:
+                        closedTaskCount.Add(task);
+                        break;
+                }
+                if (Convert.ToDateTime(task.DeadLine) > DateTime.UtcNow && task.TaskStatusId != 4 && Convert.ToDateTime(task.DeadLine).DayOfYear - DateTime.Now.DayOfYear < 10)
+                    nearTheDeadlineCount.Add(task);
+                else if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4)
                     expiredTaskCount.Add(task);
             }
-            foreach(var message in messages)
-                if(message.ToUserId==active_User.Id && message.isRead == false)
+            foreach (var message in messages)
+                if (message.ToUserId == active_User.Id && message.isRead == false)
                     unReadMessageCount++;
 
             #region Saját feladatok statisztika mutatása
@@ -94,7 +92,7 @@ namespace CRM.WPF.ViewModels
             #endregion
         }
 
-        public void reset() 
+        public void reset()
         {
             showFilteredTask.Clear();
             ownTasks!.Clear();
@@ -103,7 +101,7 @@ namespace CRM.WPF.ViewModels
             closedTaskCount.Clear();
             expiredTaskCount.Clear();
             nearTheDeadlineCount.Clear();
-            var tasks =TaskService!.OwnTask(active_User.Id).Result;
+            var tasks = TaskService!.OwnTask(active_User.Id).Result;
             foreach (var task in tasks)
             {
                 switch (task.TaskStatusId)
@@ -128,12 +126,12 @@ namespace CRM.WPF.ViewModels
                 }
                 if (Convert.ToDateTime(task.DeadLine) > DateTime.UtcNow && task.TaskStatusId != 4 && task.TaskStatusId != 2 && Convert.ToDateTime(task.DeadLine).DayOfYear - DateTime.Now.DayOfYear < 10)
                     nearTheDeadlineCount.Add(task);
-                else if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4 &&task.TaskStatusId!=2)
+                else if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4 && task.TaskStatusId != 2)
                     expiredTaskCount.Add(task);
 
             }
 
-         
+
         }
         public void setShowFilteredTask(bool planning, bool closed, bool started, bool expired, bool nearDeadline)
         {
@@ -157,7 +155,7 @@ namespace CRM.WPF.ViewModels
         }
 
     }
-   
-  
+
+
 }
 

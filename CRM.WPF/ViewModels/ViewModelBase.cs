@@ -6,26 +6,21 @@ using CRM.LocalDb;
 
 using SQLite;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace CRM.WPF.ViewModels
 {
     public class ViewModelBase
     {
         public IDataService<User>? UserService;
         public IDataService<Task>? TaskService;
-        public IDataService<Message>? MessageService ;
-        public IDataService<Status>? StatusService ;
+        public IDataService<Message>? MessageService;
+        public IDataService<Status>? StatusService;
         private Task? actualTask;
         private SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
         public User currentUser;
 
         public ViewModelBase()
         {
-            
+
             UserService = new GenericDataService<User>(new CRM_DbContextFactory());
             TaskService = new GenericDataService<Task>(new CRM_DbContextFactory());
             MessageService = new GenericDataService<Message>(new CRM_DbContextFactory());
@@ -42,6 +37,6 @@ namespace CRM.WPF.ViewModels
         {
             return actualTask;
         }
-        
+
     }
 }

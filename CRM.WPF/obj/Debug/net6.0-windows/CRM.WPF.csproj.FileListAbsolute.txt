@@ -118,3 +118,4 @@ C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windo
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\AdminLayoutView.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\bin\Debug\net6.0-windows\LiveCharts.dll
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\bin\Debug\net6.0-windows\LiveCharts.Wpf.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\CRM.WPF_Content.g.cs

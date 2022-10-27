@@ -1,19 +1,8 @@
-﻿using CRM.WPF.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+using CRM.WPF.ViewModels;
 
 namespace CRM.WPF.Views
 {
@@ -24,7 +13,7 @@ namespace CRM.WPF.Views
     {
 
         private readonly NewTaskViewModel newTaskViewModel;
-        public  NewTaskView()
+        public NewTaskView()
         {
             InitializeComponent();
             newTaskViewModel = new NewTaskViewModel();
@@ -33,12 +22,12 @@ namespace CRM.WPF.Views
         }
         private void saveNewTask(object sender, RoutedEventArgs e)
         {
-            if(newTaskViewModel.savewTask(txtTaskName.Text, cbTaskCategory.SelectedIndex, dpDeadline.SelectedDate!.Value, txtTaskDescription.Text, rbPlanning.IsChecked == true ? true : false))
+            if (newTaskViewModel.savewTask(txtTaskName.Text, cbTaskCategory.SelectedIndex, dpDeadline.SelectedDate!.Value, txtTaskDescription.Text, rbPlanning.IsChecked == true ? true : false))
             {
                 txtTaskDescription.Text = "";
                 txtTaskName.Text = "";
                 cbTaskCategory.SelectedIndex = -1;
-                rbPlanning.IsChecked=true;
+                rbPlanning.IsChecked = true;
             }
         }
     }

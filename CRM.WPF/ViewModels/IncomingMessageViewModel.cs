@@ -1,19 +1,13 @@
-﻿using CRM.Domain.Models;
-using CRM.LocalDb;
-using CRM.WPF.State.Navigators;
-
-using SQLite;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
+
+using CRM.Domain.Models;
 
 namespace CRM.WPF.ViewModels
 {
-    public class IncomingMessageViewModel :ViewModelBase
+    public class IncomingMessageViewModel : ViewModelBase
     {
 
         public List<Message> messageList { get; set; }
@@ -21,7 +15,7 @@ namespace CRM.WPF.ViewModels
         public List<string> messageListTitle { get; set; }
         public IncomingMessageViewModel()
         {
-            incomingMessages = MessageService!.IncomingMessages( currentUser.Id).Result;
+            incomingMessages = MessageService!.IncomingMessages(currentUser.Id).Result;
             messageList = incomingMessages.ToList();
             messageListTitle = new List<string>();
             for (int i = 0; i < messageList.Count; i++)
@@ -33,13 +27,13 @@ namespace CRM.WPF.ViewModels
             }
         }
 
-        public async void readNewMessage(Message actualMessage,ListBox lbMessages,TextBox txtFilter) 
+        public async void readNewMessage(Message actualMessage, ListBox lbMessages, TextBox txtFilter)
         {
             if (!actualMessage.isRead)
             {
                 actualMessage.isRead = true;
-               await MessageService!.Update(actualMessage.Id,actualMessage);
-                messageList =  MessageService!.IncomingMessages(currentUser.Id).Result.ToList();
+                await MessageService!.Update(actualMessage.Id, actualMessage);
+                messageList = MessageService!.IncomingMessages(currentUser.Id).Result.ToList();
                 lbMessages.Items.Clear();
                 for (int i = 0; i < messageList.Count; i++)
                 {
@@ -51,6 +45,6 @@ namespace CRM.WPF.ViewModels
             }
         }
 
-       
+
     }
 }

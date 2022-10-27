@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
 using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace CRM.EntityFramework.Migrations

@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 using CRM.Domain.Models;
 using CRM.WPF.ViewModels;
@@ -24,7 +13,7 @@ namespace CRM.WPF.Views
     public partial class AdminLayoutView : UserControl
     {
 
-       private readonly List<string> permissions = new List<string>() { "Admin", "Projektfelelős", "Irodai dolgozó" };
+        private readonly List<string> permissions = new List<string>() { "Admin", "Projektfelelős", "Irodai dolgozó" };
         private AdminLayoutViewModel adminLayoutViewModel;
         private User? selectedUserData;
         public AdminLayoutView()
@@ -39,7 +28,7 @@ namespace CRM.WPF.Views
 
         private void selectedUser(object sender, SelectionChangedEventArgs e)
         {
-            
+
             if (lbAllUsers.SelectedIndex != -1)
             {
                 btnModify.IsEnabled = true;
@@ -51,7 +40,8 @@ namespace CRM.WPF.Views
                 switch (selectedUserData.PermissionId)
                 {
                     case 1:
-                        {btnDelete.IsEnabled = false;
+                        {
+                            btnDelete.IsEnabled = false;
                             cbPermission.SelectedIndex = 0;
                             break;
                         }
@@ -66,17 +56,17 @@ namespace CRM.WPF.Views
                             break;
                         }
                 }
-              
-                   
-                
-                
+
+
+
+
             }
         }
 
         private void selectedUserDelete(object sender, RoutedEventArgs e)
         {
-            if(lbAllUsers.SelectedIndex !=-1)
-                if (adminLayoutViewModel.deleteSelectedUser(selectedUserData!,lbAllUsers.SelectedIndex))
+            if (lbAllUsers.SelectedIndex != -1)
+                if (adminLayoutViewModel.deleteSelectedUser(selectedUserData!, lbAllUsers.SelectedIndex))
                 {
                     txtEmail.Text = "";
                     txtUserName.Text = "";
@@ -84,23 +74,23 @@ namespace CRM.WPF.Views
                     cbPermission.SelectedIndex = -1;
                     lbAllUsers.ItemsSource = null;
                     lbAllUsers.Items.Clear();
-                    lbAllUsers.ItemsSource=adminLayoutViewModel.users;
+                    lbAllUsers.ItemsSource = adminLayoutViewModel.users;
                     lbAllUsers.Items.Refresh();
-                  
-                
+
+
                     MessageBox.Show("Sikeresen törölte a felhasználót");
-                   
+
                 }
         }
 
         private void saveSelectedUserModify(object sender, RoutedEventArgs e)
         {
             if (lbAllUsers.SelectedIndex != -1)
-                if (adminLayoutViewModel.modifySelectedUser(selectedUserData!, txtName.Text, txtEmail.Text, txtUserName.Text, cbPermission.SelectedIndex + 1,lbAllUsers))
+                if (adminLayoutViewModel.modifySelectedUser(selectedUserData!, txtName.Text, txtEmail.Text, txtUserName.Text, cbPermission.SelectedIndex + 1, lbAllUsers))
                 {
                     lbAllUsers.ItemsSource = adminLayoutViewModel.users;
                     lbAllUsers.Items.Refresh();
-                    MessageBox.Show("Sikeresen mentette a felhaszálót!"); 
+                    MessageBox.Show("Sikeresen mentette a felhaszálót!");
                 }
                 else
                 {
@@ -109,7 +99,7 @@ namespace CRM.WPF.Views
                     txtName.Text = selectedUserData!.Name;
                     cbPermission.SelectedIndex = selectedUserData!.PermissionId - 1;
                 }
-              
+
         }
     }
 }

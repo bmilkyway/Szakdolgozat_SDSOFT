@@ -5,12 +5,17 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>SDSOFT.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Controls\logout.png" />
     <None Remove="Controls\whiteLogo.png" />
     <None Remove="Views\sdSoftLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SDSOFT.ico" />
   </ItemGroup>
 
   <ItemGroup>

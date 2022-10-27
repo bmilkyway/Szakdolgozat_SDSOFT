@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 
 using CRM.Domain.Models;
-using CRM.LocalDb;
-
-using SQLite;
 
 namespace CRM.WPF.ViewModels
 {
-    public class AllTaskViewModel:ViewModelBase
+    public class AllTaskViewModel : ViewModelBase
     {
-       
-        public List<Domain.Models.Task> allTask { get;  }
+
+        public List<Domain.Models.Task> allTask { get; }
         public List<Domain.Models.Task> showFilteredTask { get; set; }
         public List<Domain.Models.Task> plannedTask { get; set; }
         public List<Domain.Models.Task> closedTask { get; set; }
@@ -23,9 +20,9 @@ namespace CRM.WPF.ViewModels
         public List<Domain.Models.Task> nearDeadlineTask { get; set; }
         public User activeUser;
         private readonly IEnumerable<Domain.Models.Task> tasks;
-      
 
-        public  AllTaskViewModel()
+
+        public AllTaskViewModel()
         {
             this.activeUser = currentUser;
             allTask = new List<Domain.Models.Task>();
@@ -50,7 +47,7 @@ namespace CRM.WPF.ViewModels
                     startedTask!.Add(task);
                 else if (task.TaskStatusId == 1)
                     plannedTask!.Add(task);
-                if (task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear < 10 && task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear >0 && task.TaskStatusId != 4)
+                if (task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear < 10 && task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear > 0 && task.TaskStatusId != 4)
                     nearDeadlineTask!.Add(task);
                 if (task.DeadLine!.Value.DayOfYear < DateTime.Now.DayOfYear && task.TaskStatusId != 4)
                     expiredTask!.Add(task);
@@ -97,20 +94,20 @@ namespace CRM.WPF.ViewModels
 
             }
 
-          
+
         }
         public void setShowFilteredTask(bool own, bool planning, bool closed, bool free, bool started, bool expired, bool nearDeadline)
         {
-           IEnumerable<Domain.Models.Task> tasks = new List<Domain.Models.Task>();
-          
+            IEnumerable<Domain.Models.Task> tasks = new List<Domain.Models.Task>();
+
             if (own)
-            tasks = tasks.Union(ownTask.ToArray());
+                tasks = tasks.Union(ownTask.ToArray());
             if (planning)
                 tasks = tasks.Union(plannedTask.ToArray());
             if (closed)
                 tasks = tasks.Union(closedTask.ToArray());
             if (free)
-                tasks =tasks.Union(freeTask.ToArray());
+                tasks = tasks.Union(freeTask.ToArray());
             if (started)
                 tasks = tasks.Union(startedTask.ToArray());
             if (expired)
@@ -119,11 +116,11 @@ namespace CRM.WPF.ViewModels
                 tasks = tasks.Union(nearDeadlineTask.ToArray());
 
             showFilteredTask.Clear();
-            if (own==false && planning==false && closed==false && free==false && started==false && expired==false && nearDeadline==false)
+            if (own == false && planning == false && closed == false && free == false && started == false && expired == false && nearDeadline == false)
                 showFilteredTask = allTask.ToList();
             else showFilteredTask = tasks.ToList();
-            
+
         }
-     
+
     }
 }

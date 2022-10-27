@@ -1,21 +1,16 @@
-﻿using CRM.Domain.Models;
+﻿using System;
+using System.Windows;
+using System.Windows.Input;
+
+using CRM.Domain.Models;
 using CRM.Domain.Services;
 using CRM.EntityFramework;
 using CRM.EntityFramework.Services;
 using CRM.LocalDb;
-using CRM.WPF.Controls;
 using CRM.WPF.State.Navigators;
 using CRM.WPF.ViewModels;
 
 using SQLite;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 
 namespace CRM.WPF.Commands
 {
@@ -27,12 +22,12 @@ namespace CRM.WPF.Commands
         private IDataService<User>? UserService;
         public UpDateCurrentViewModelCommand(INavigator navigator)
         {
-            
+
             _navigator = navigator;
             UserService = new GenericDataService<User>(new CRM_DbContextFactory());
 
         }
-              
+
         public bool CanExecute(object? parameter)
         {
             return true;
@@ -40,7 +35,7 @@ namespace CRM.WPF.Commands
 
         public void Execute(object? parameter)
         {
-           if(parameter is ViewType)
+            if (parameter is ViewType)
             {
                 ViewType viewType = (ViewType)parameter;
                 switch (viewType)
@@ -75,7 +70,7 @@ namespace CRM.WPF.Commands
                     case ViewType.OwnTask:
                         _navigator.CurrentViewModel = new OwnTaskViewModel();
                         break;
-                        
+
                     case ViewType.Adminlayout:
                         _navigator.CurrentViewModel = new AdminLayoutViewModel();
                         break;
@@ -88,7 +83,7 @@ namespace CRM.WPF.Commands
                         window.Close();
                         break;
 
-                  
+
                 }
             }
         }
@@ -103,7 +98,7 @@ namespace CRM.WPF.Commands
             db!.Delete<CurrentUser>(1);
             db!.Close();
             System.IO.File.Delete("currentUserDb.db3");
-      
+
         }
     }
 }

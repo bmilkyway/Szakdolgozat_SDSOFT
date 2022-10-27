@@ -1,21 +1,22 @@
-﻿using CRM.Domain.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
+
+using CRM.Domain.Models;
 using CRM.Domain.Services.NewFolder;
 using CRM.LocalDb;
 using CRM.WPF.Services.EmailSender;
 
 using SQLite;
 
-using System;
-using System.Collections.Generic;
-using System.Windows;
-
 namespace CRM.WPF.ViewModels
 {
-   
-    public class SignInViewModel:ViewModelLoginBase
-    {   private User? newUser;
+
+    public class SignInViewModel : ViewModelLoginBase
+    {
+        private User? newUser;
         private CurrentUser? currentUser;
-        private  IEnumerable<User>? allUsers;
+        private IEnumerable<User>? allUsers;
         public void navigationToMain()
         {
             Window window = new MainWindow(newUser!.Id);
@@ -23,7 +24,7 @@ namespace CRM.WPF.ViewModels
             window.Show();
         }
 
-        public bool registrationIsSuccesful(string username, string password, string email,string name)
+        public bool registrationIsSuccesful(string username, string password, string email, string name)
         {
 
 
@@ -37,7 +38,7 @@ namespace CRM.WPF.ViewModels
                 MessageBox.Show("Nincs kitöltve a Email mező!", "Figyelem!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            else if (username=="")
+            else if (username == "")
             {
                 MessageBox.Show("Nincs kitöltve a Felhasználónév mező!", "Figyelem!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -47,8 +48,8 @@ namespace CRM.WPF.ViewModels
                 MessageBox.Show("Nincs kitöltve a Jelszó mező!", "Figyelem!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-          
-           
+
+
             else
             {
                 allUsers = UserService!.GetAll().Result;
@@ -59,7 +60,7 @@ namespace CRM.WPF.ViewModels
                         MessageBox.Show("Ez a felhasználónév már foglalt!", "Figyelem!", MessageBoxButton.OK, MessageBoxImage.Error);
                         return false;
                     }
-                    else if(user.Email!.ToLower() == email.ToLower())
+                    else if (user.Email!.ToLower() == email.ToLower())
                     {
                         MessageBox.Show("Erre az Email-címre már regisztráltak! Kérem adjon meg egy másikat!", "Figyelem!", MessageBoxButton.OK, MessageBoxImage.Error);
                         return false;
@@ -79,36 +80,36 @@ namespace CRM.WPF.ViewModels
                     IsActive = true,
                     PermissionId = 3,
                 };
-                newUser =UserService.Create(newUser).Result;
+                newUser = UserService.Create(newUser).Result;
                 EmailSender senderEmail = new EmailSender();
-                 senderEmail.succesfullSignIn(newUser);
-              
-                    var db = new SQLiteConnection("currentUserDb.db3");
-                    db!.CreateTable<CurrentUser>();
-                    currentUser = new CurrentUser
-                    {
-                        userId = newUser.Id,
-                        userName = newUser.UserName,
-                        name = newUser.Name,
-                        password = newUser.Password,
-                        email = newUser.Email
-                    };
-                    db!.Insert(currentUser);
-                    db!.Commit();
+                senderEmail.succesfullSignIn(newUser);
 
-                    db!.Close();
+                var db = new SQLiteConnection("currentUserDb.db3");
+                db!.CreateTable<CurrentUser>();
+                currentUser = new CurrentUser
+                {
+                    userId = newUser.Id,
+                    userName = newUser.UserName,
+                    name = newUser.Name,
+                    password = newUser.Password,
+                    email = newUser.Email
+                };
+                db!.Insert(currentUser);
+                db!.Commit();
 
-                
+                db!.Close();
+
+
                 MessageBox.Show("Sikeres regisztráció!", "Regisztráció", MessageBoxButton.OK);
 
 
                 return true;
 
             }
-            
-           
-           
-            
+
+
+
+
         }
         public void LoginWindow()
         {
@@ -116,5 +117,5 @@ namespace CRM.WPF.ViewModels
             window.Show();
         }
     }
-   
+
 }

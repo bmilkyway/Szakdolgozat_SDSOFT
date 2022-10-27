@@ -3,7 +3,7 @@
 
 namespace CRM.WPF.ViewModels
 {
-    public class MessageViewModel:ViewModelBase
+    public class MessageViewModel : ViewModelBase
     {
         public INavigator Navigator { get; set; } = new Navigator();
 

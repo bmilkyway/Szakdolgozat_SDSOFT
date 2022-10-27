@@ -1,25 +1,21 @@
-﻿using CRM.WPF.Commands;
-using CRM.WPF.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Input;
+
+using CRM.WPF.Commands;
+using CRM.WPF.ViewModels;
 
 namespace CRM.WPF.State.Navigators
 {
-    public class Navigator : INavigator,INotifyPropertyChanged
+    public class Navigator : INavigator, INotifyPropertyChanged
     {
 
         private ViewModelBase? _currentViewModelBase;
-        public ViewModelBase CurrentViewModel 
-        {     
-            get 
+        public ViewModelBase CurrentViewModel
+        {
+            get
             {
                 return _currentViewModelBase!;
-            } 
+            }
             set
             {
                 _currentViewModelBase = value;
@@ -30,7 +26,7 @@ namespace CRM.WPF.State.Navigators
         public ICommand UpdateCurrentViewModelCommand => new UpDateCurrentViewModelCommand(this);
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        
+
         /// <summary>
         /// Ha megváltozk a paraméter a CurrentViewModel navigáció esetén, cseréli azt
         /// </summary>

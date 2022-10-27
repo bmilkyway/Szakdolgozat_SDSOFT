@@ -1,13 +1,8 @@
-﻿using CRM.Domain.Models;
-using CRM.WPF.ViewModels;
-
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+
+using CRM.WPF.ViewModels;
 
 
 namespace CRM.WPF.Views
@@ -25,7 +20,7 @@ namespace CRM.WPF.Views
             homeViewModel = new HomeViewModel();
         }
 
-     
+
         private void setFilterTaskList(object sender, RoutedEventArgs e)
         {
             homeViewModel.setShowFilteredTask(cbPlanning.IsChecked!.Value, cbClosed.IsChecked!.Value, cbStarted.IsChecked!.Value, cbExpired.IsChecked!.Value, cbNearDeadline.IsChecked!.Value);
@@ -42,7 +37,7 @@ namespace CRM.WPF.Views
                 homeViewModel.reset();
                 homeViewModel.setShowFilteredTask(cbPlanning.IsChecked!.Value, cbClosed.IsChecked!.Value, cbStarted.IsChecked!.Value, cbExpired.IsChecked!.Value, cbNearDeadline.IsChecked!.Value);
                 lbOwnTasks.Items.Refresh();
-                txtNearDeadline.Text=String.Format("Közelgő határidős feladatok: {0}",homeViewModel.nearTheDeadlineCount.Count);
+                txtNearDeadline.Text = String.Format("Közelgő határidős feladatok: {0}", homeViewModel.nearTheDeadlineCount.Count);
                 lbOwnTasks.ItemsSource = homeViewModel.showFilteredTask;
 
             }
@@ -50,5 +45,5 @@ namespace CRM.WPF.Views
         }
     }
 
-   
+
 }

@@ -1,6 +1,7 @@
-﻿using CRM.WPF.ViewModels;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows;
+
+using CRM.WPF.ViewModels;
 
 namespace CRM.WPF.Views
 {
@@ -20,9 +21,9 @@ namespace CRM.WPF.Views
         {
             if (signInViewModel.registrationIsSuccesful(txtUsername.Text, txtPassword.Password, txtEmail.Text, txtName.Text))
             {
-                     signInViewModel.navigationToMain();
-                    this.Close();
-                
+                signInViewModel.navigationToMain();
+                this.Close();
+
             }
         }
 

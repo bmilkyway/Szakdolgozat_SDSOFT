@@ -1,21 +1,18 @@
-﻿using CRM.Domain.Models;
+﻿using System;
+using System.Windows;
+
+using CRM.Domain.Models;
 using CRM.Domain.Services.NewFolder;
 using CRM.WPF.Services.EmailSender;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CRM.WPF.ViewModels
 {
-    public class ForgotPasswordViewModel:ViewModelLoginBase
+    public class ForgotPasswordViewModel : ViewModelLoginBase
     {
 
         private User? forgotUser;
         private int authenticationCode;
-       
+
         private int createCode()
         {
             Random random = new Random();
@@ -30,7 +27,7 @@ namespace CRM.WPF.ViewModels
 
         public bool sendNewPassword(string email)
         {
-            if(email == "")
+            if (email == "")
             {
                 MessageBox.Show("Nincs megadva email cím!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -46,14 +43,14 @@ namespace CRM.WPF.ViewModels
                 }
                 else
                 {
-                   authenticationCode = createCode();
+                    authenticationCode = createCode();
                     EmailSender emailSender = new EmailSender();
-                   emailSender.forgotPasswordEmail(forgotUser, authenticationCode);
+                    emailSender.forgotPasswordEmail(forgotUser, authenticationCode);
                     MessageBox.Show("A megadott email-címre elküldött, 4 számjegyű hitelesítési kód megadásával tud új jelszót beállítani!", "Hitelesítési kód elküldve!", MessageBoxButton.OK, MessageBoxImage.Information);
                     return true;
                 }
             }
-           
+
         }
 
         public bool checkCode(string code)
@@ -85,10 +82,10 @@ namespace CRM.WPF.ViewModels
 
             }
         }
-    
+
         public bool checkPassword(string pw1, string pw2)
         {
-            if(pw1=="" || pw2 == "")
+            if (pw1 == "" || pw2 == "")
             {
                 MessageBox.Show("Nincs minden mező kitöltve!", "Figyelem!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -100,7 +97,7 @@ namespace CRM.WPF.ViewModels
                     PasswordHasherService passwordHasherService = new PasswordHasherService();
                     string hashedPassword = passwordHasherService.PasswordEncodeing(pw1);
                     forgotUser!.Password = hashedPassword;
-                    UserService!.Update(forgotUser.Id,forgotUser);
+                    UserService!.Update(forgotUser.Id, forgotUser);
                     MessageBox.Show("Sikeresen megváltoztatta a jelszavát!", "Sikeres jelszóváltoztatás!", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     return true;

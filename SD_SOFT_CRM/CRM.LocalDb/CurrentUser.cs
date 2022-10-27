@@ -4,7 +4,7 @@ namespace CRM.LocalDb
 {
     public class CurrentUser
     {
-        [PrimaryKey,AutoIncrement]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int userId { get; set; }
 

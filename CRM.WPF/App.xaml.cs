@@ -1,14 +1,8 @@
-﻿using CRM.WPF.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Data.SqlClient;
-using CRM.Domain.Models;
+﻿using System.Windows;
+
 using CRM.LocalDb;
+using CRM.WPF.ViewModels;
+
 using SQLite;
 
 namespace CRM.WPF
@@ -22,7 +16,7 @@ namespace CRM.WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             //Ha valaki már bejelentkezett és nem jelentkezett ki akkor azt a fiókot hozza vissza
-           if (System.IO.File.Exists("currentUserDb.db3"))
+            if (System.IO.File.Exists("currentUserDb.db3"))
             {
                 SQLiteConnection connection = new SQLiteConnection("currentUserDb.db3");
                 CurrentUser currentUser = connection.Get<CurrentUser>(1);
@@ -31,7 +25,7 @@ namespace CRM.WPF
                 connection.Close();
                 window.Show();
             }
-           //Ha nincs ilyen, akkor a login formot fogja felhozni az alkalmazás
+            //Ha nincs ilyen, akkor a login formot fogja felhozni az alkalmazás
             else
             {
                 Window window = new Login();
@@ -40,9 +34,9 @@ namespace CRM.WPF
             }
             base.OnStartup(e);
         }
-       
-       
+
+
     }
 
-  
+
 }

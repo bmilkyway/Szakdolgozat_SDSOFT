@@ -1,11 +1,11 @@
 ﻿
-using CRM.WPF.State.Navigators;
-using CRM.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+
+using CRM.WPF.State.Navigators;
+using CRM.WPF.ViewModels;
 
 
 namespace CRM.WPF.Views
@@ -41,10 +41,11 @@ namespace CRM.WPF.Views
                     txtSubject.Text = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].Subject;
                     txtAddress.Text = incomingMessageViewModel.UserService!.Get(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].ToUserId).Result.ToString();
                     incomingMessageViewModel.readNewMessage(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]], lbMessageList, txtFilter);
-                    }
-                catch(Exception er){
+                }
+                catch (Exception er)
+                {
                     MessageBox.Show(er.Message, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
-                
+
                     MessageBox.Show("Nem sikerült megnyitni az adott feladatot!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
@@ -54,7 +55,7 @@ namespace CRM.WPF.Views
         {
             messageViewModel.Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.NewMessage);
         }
-     
+
         private void filterList(object sender, TextChangedEventArgs e)
         {
             lbMessageList.Items.Clear();

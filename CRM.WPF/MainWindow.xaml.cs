@@ -21,9 +21,9 @@ namespace CRM.WPF
         public IDataService<User>? UserService;
         public Visibility isAdmin { get; set; }
         public User currentUser { get; set; }
-        public  MainWindow(int userId)
+        public MainWindow(int userId)
         {
-   
+
             InitializeComponent();
             Application.Current.MainWindow = this;
             UserService = new GenericDataService<User>(new CRM_DbContextFactory());

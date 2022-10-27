@@ -1,18 +1,7 @@
-﻿using CRM.WPF.Services.EmailSender;
-using CRM.WPF.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+using CRM.WPF.ViewModels;
 
 namespace CRM.WPF
 {
@@ -26,7 +15,7 @@ namespace CRM.WPF
         {
             InitializeComponent();
             loginViewModel = new LoginViewModel();
-            
+
         }
         #region Alkalmazás bezárása
         private void exitApp(object sender, RoutedEventArgs e)
@@ -47,9 +36,9 @@ namespace CRM.WPF
         {
             if (txtUsername.Text == "")
             {
-                MessageBox.Show("Nem adott meg felhasználónevet!","Hiba!",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Nem adott meg felhasználónevet!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if(txtPassword.Password == "")
+            else if (txtPassword.Password == "")
             {
                 MessageBox.Show("Nem adott meg jelszót!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -59,27 +48,27 @@ namespace CRM.WPF
                 {
                     loginViewModel.navigationToMain();
                     this.Close();
-                   
+
                 }
                 else
                 {
                     MessageBox.Show("Hibás a felhasználónév vagy jelszó!", "Hiba történt!", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                    
+
                 }
-              
-               
+
+
             }
-          
+
         }
 
-        
+
 
 
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
-        
-            loginViewModel.signInWindow();  
+
+            loginViewModel.signInWindow();
             this.Close();
         }
 

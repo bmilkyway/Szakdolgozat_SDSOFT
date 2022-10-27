@@ -1,16 +1,12 @@
-﻿using CRM.Domain.Models;
-using CRM.LocalDb;
-
-using SQLite;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
+using CRM.Domain.Models;
 
 namespace CRM.WPF.ViewModels
 {
-    public class OwnTaskViewModel:ViewModelBase
+    public class OwnTaskViewModel : ViewModelBase
     {
         public List<Task> showFilteredTask { get; set; }
         public List<Task> ownTasks { get; set; }
@@ -20,7 +16,7 @@ namespace CRM.WPF.ViewModels
         public List<Task> nearDeadline { get; set; }
         public List<Task> expired { get; set; }
         private readonly IEnumerable<Task> tasks;
-        public  User activeUser;
+        public User activeUser;
         public OwnTaskViewModel()
         {
             activeUser = currentUser;
@@ -44,11 +40,11 @@ namespace CRM.WPF.ViewModels
                     startedTaskCount.Add(task);
                 if (task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear < 10 && task.DeadLine!.Value.DayOfYear - DateTime.Now.DayOfYear > 0 && task.TaskStatusId != 4)
                     nearDeadline.Add(task);
-                else if (task.DeadLine!.Value.DayOfYear > DateTime.Now.DayOfYear  && task.TaskStatusId != 4)
+                else if (task.DeadLine!.Value.DayOfYear > DateTime.Now.DayOfYear && task.TaskStatusId != 4)
                     expired.Add(task);
             }
 
-           
+
         }
         public void reset()
         {
@@ -91,11 +87,11 @@ namespace CRM.WPF.ViewModels
 
 
         }
-        public void setShowFilteredTask( bool planning, bool closed,  bool started, bool expired, bool nearDeadline)
+        public void setShowFilteredTask(bool planning, bool closed, bool started, bool expired, bool nearDeadline)
         {
             IEnumerable<Domain.Models.Task> tasks = new List<Domain.Models.Task>();
 
-          
+
             if (planning)
                 tasks = tasks.Union(plannedTaskCount.ToArray());
             if (closed)
@@ -109,7 +105,7 @@ namespace CRM.WPF.ViewModels
 
 
             showFilteredTask.Clear();
-            if (planning == false && closed == false && started ==false && expired == false && nearDeadline == false)
+            if (planning == false && closed == false && started == false && expired == false && nearDeadline == false)
                 showFilteredTask = ownTasks.ToList();
             else
                 showFilteredTask = tasks.ToList();

@@ -1,19 +1,14 @@
-﻿using CRM.Domain.Models;
-using CRM.Domain.Services;
-using CRM.EntityFramework;
-using CRM.EntityFramework.Services;
-using CRM.WPF.State.Navigators;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
+using CRM.Domain.Models;
+
 namespace CRM.WPF.ViewModels.ActualTaskViewModels
 {
-    public class ActualTaskViewModel : ViewModelBase 
+    public class ActualTaskViewModel : ViewModelBase
     {
         public List<String> categories { get; set; }
         public List<User> users { get; set; }
@@ -27,7 +22,7 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
                 "Karbantartás"
             };
             users = UserService!.GetAll().Result.ToList();
-         
+
         }
         public bool takeOnTask(Task actualTask, User user, ListBox lbTask)
         {
@@ -39,7 +34,7 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
             lbTask.Items.Refresh();
             return true;
         }
-        public bool taskClose(Task actualTask,ListBox lbTask)
+        public bool taskClose(Task actualTask, ListBox lbTask)
         {
             try
             {
@@ -63,7 +58,7 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
             catch (Exception)
             { return false; }
         }
-        public bool taskModify(Task actualTask, ListBox lbTask,DateTime deadline,string taskCategory, string description)
+        public bool taskModify(Task actualTask, ListBox lbTask, DateTime deadline, string taskCategory, string description)
         {
             try
             {
@@ -71,7 +66,7 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
                 actualTask.DeadLine = deadline;
                 actualTask.Category = taskCategory;
                 if (deadline < DateTime.Now)
-                    if (MessageBox.Show("A megadott határidő kisebb a mai napnál, így a feladat lejárt címkét fog kapni! Menti ettől függetlenül a feladatot?", "Lejárt határidős feladat", MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    if (MessageBox.Show("A megadott határidő kisebb a mai napnál, így a feladat lejárt címkét fog kapni! Menti ettől függetlenül a feladatot?", "Lejárt határidős feladat", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
                         TaskService!.Update(actualTask.Id, actualTask);
                         lbTask.Items.Refresh();
@@ -91,7 +86,7 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
                 return false;
             }
         }
-   
+
         public bool taskTakeOn(Task actualTask, ListBox lbTask, User selectedUser)
         {
             if (actualTask.ResponsibleUserId == selectedUser.Id)
@@ -104,6 +99,6 @@ namespace CRM.WPF.ViewModels.ActualTaskViewModels
             lbTask.Items.Refresh();
             return true;
         }
-    
+
     }
 }

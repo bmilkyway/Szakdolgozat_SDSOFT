@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CRM.Domain.Models
+﻿namespace CRM.Domain.Models
 {
-    public class Message :DomainObject
+    public class Message : DomainObject
     {
-       
+
         public int ToUserId { get; set; }
         public int FromUserId { get; set; }
         public string? Subject { get; set; }
@@ -18,7 +12,7 @@ namespace CRM.Domain.Models
 
         public override string ToString()
         {
-            
+
             if (isRead)
             {
                 return String.Format("{0} - {1}", Subject, SendDate.ToString());
@@ -27,6 +21,6 @@ namespace CRM.Domain.Models
                 return String.Format("(Új) {0} - {1}", Subject, SendDate.ToString());
         }
 
-       
+
     }
 }

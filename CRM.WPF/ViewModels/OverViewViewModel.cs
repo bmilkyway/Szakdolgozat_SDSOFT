@@ -1,16 +1,13 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Windows.Media;
+using System.Linq;
 
 using CRM.Domain.Models;
-using CRM.LocalDb;
-
-using SQLite;
 
 using LiveCharts;
 using LiveCharts.Wpf;
-using System.Linq;
+
 using static CRM.WPF.ChartModels.chartModels;
 
 namespace CRM.WPF.ViewModels
@@ -92,7 +89,7 @@ namespace CRM.WPF.ViewModels
             expiredPlannedTask = 0;
             expiredStartedTask = 0;
             expiredFreeTask = 0;
-            inactiveUsersCount = allUsersList.Count()-activeUsersList.Count();
+            inactiveUsersCount = allUsersList.Count() - activeUsersList.Count();
             ownTasks = new List<Task>();
             allTasks = new List<Task>();
             createdAndClosedTasks = new ColumnDiagramm();
@@ -168,8 +165,8 @@ namespace CRM.WPF.ViewModels
                             break;
                     }
                     if (Convert.ToDateTime(task.DeadLine) > DateTime.UtcNow && task.TaskStatusId != 4 && Convert.ToDateTime(task.DeadLine).DayOfYear - DateTime.Now.DayOfYear < 10)
-                    { 
-                        nearTheDeadlineCount.Add(task); 
+                    {
+                        nearTheDeadlineCount.Add(task);
                         switch (task.TaskStatusId)
                         {
                             case 1:
@@ -184,7 +181,7 @@ namespace CRM.WPF.ViewModels
                         }
                     }
                     else if (Convert.ToDateTime(task.DeadLine) < DateTime.UtcNow && task.TaskStatusId != 4)
-                    { 
+                    {
                         expiredTask.Add(task);
                         switch (task.TaskStatusId)
                         {
@@ -226,7 +223,7 @@ namespace CRM.WPF.ViewModels
                         closedTaskOneMonth++;
                         closedTaskOneWeek++;
                     }
-                    else if (DateTime.Now.DayOfYear - task.CloseDate!.Value.DayOfYear <= 30 && DateTime.Now.Year == task.CloseDate.Value.Year) 
+                    else if (DateTime.Now.DayOfYear - task.CloseDate!.Value.DayOfYear <= 30 && DateTime.Now.Year == task.CloseDate.Value.Year)
                         closedTaskOneMonth++;
                 }
             }
@@ -359,12 +356,12 @@ namespace CRM.WPF.ViewModels
             nearDeadlineTaskTypeSummary.SeriesCollection.Add(new ColumnSeries
             {
                 Title = "Szabad",
-                Values = new ChartValues<int> {nearDeadlineFreeTask, expiredFreeTask }
+                Values = new ChartValues<int> { nearDeadlineFreeTask, expiredFreeTask }
             });
             nearDeadlineTaskTypeSummary.SeriesCollection.Add(new ColumnSeries
             {
                 Title = "Elkezdve",
-                Values = new ChartValues<int> { nearDeadlineStartedTask,expiredStartedTask }
+                Values = new ChartValues<int> { nearDeadlineStartedTask, expiredStartedTask }
             });
             nearDeadlineTaskTypeSummary.Labels = new[] { "Közel", "Lejárt" };
             nearDeadlineTaskTypeSummary.Formatter = value => value.ToString("N0");
@@ -409,6 +406,6 @@ namespace CRM.WPF.ViewModels
         }
     }
 
-  
-  
+
+
 }

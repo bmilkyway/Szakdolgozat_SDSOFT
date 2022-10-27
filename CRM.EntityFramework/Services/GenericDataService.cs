@@ -3,12 +3,6 @@ using CRM.Domain.Services;
 
 using Microsoft.EntityFrameworkCore;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CRM.EntityFramework.Services
 {
     public class GenericDataService<T> : IDataService<T> where T : DomainObject
