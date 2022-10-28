@@ -33,7 +33,7 @@ namespace CRM.WPF.ViewModels
         public PieChartDiagramm deadlineForTasksChart { get; set; }
         public PieChartDiagramm taskCategories { get; set; }
         public PieChartDiagramm ownMessages { get; set; }
-
+        
         private List<Task>? ownTasks { get; set; }
         private List<Task>? allTasks { get; set; }
         private User active_User;
@@ -58,9 +58,8 @@ namespace CRM.WPF.ViewModels
         public IEnumerable<User> activeUsersList;
         public IEnumerable<User> allUsersList;
         private int inactiveUsersCount { get; set; }
-        private int ownIncomingMessages { get; set; }
         private int ownSentMessages { get; set; }
-
+        private int ownIncomingMessages { get; set; }
         private int[] ownActivateForStartedTask { get; set; }
         private int[] ownActivateForClosedTask { get; set; }
         private int[] ownActivateForCreatedTask { get; set; }

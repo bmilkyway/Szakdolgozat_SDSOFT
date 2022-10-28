@@ -19,30 +19,16 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <PackageReference Include="LiveCharts.Wpf" Version="0.9.7"  >
-		  <NoWarn>NU1701</NoWarn>
-	  </PackageReference>
-	  <PackageReference Include="MaterialDesignThemes" Version="4.7.0-ci343">
-		  <NoWarn>NU1701</NoWarn>
-	  </PackageReference>
-	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" >
-		  <NoWarn>NU1701</NoWarn>
-	  </PackageReference>
-	  <PackageReference Include="System.Data.SqlClient" Version="4.8.3" >
-		  <NoWarn>NU1701</NoWarn>
-	  </PackageReference>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.7.0-ci343" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>
-	  <ProjectReference Include="..\CRM.Domain\CRM.Domain.csproj" >
-		  <NoWarn>NU1701</NoWarn>
-	  </ProjectReference>
-	  <ProjectReference Include="..\CRM.EntityFramework\CRM.EntityFramework.csproj" >
-		  <NoWarn>NU1701</NoWarn>
-	  </ProjectReference>
-	  <ProjectReference Include="..\SD_SOFT_CRM\CRM.LocalDb\CRM.LocalDb.csproj" >
-		  <NoWarn>NU1701</NoWarn>
-	  </ProjectReference>
+    <ProjectReference Include="..\CRM.Domain\CRM.Domain.csproj" />
+    <ProjectReference Include="..\CRM.EntityFramework\CRM.EntityFramework.csproj" />
+    <ProjectReference Include="..\SD_SOFT_CRM\CRM.LocalDb\CRM.LocalDb.csproj" />
   </ItemGroup>
 
   <ItemGroup>

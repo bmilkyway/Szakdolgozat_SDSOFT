@@ -10,7 +10,6 @@ namespace CRM.EntityFramework
 
 
         public DbSet<User>? Users { get; set; }
-        public DbSet<Feedback>? Feedbacks { get; set; }
         public DbSet<Message>? Messages { get; set; }
         public DbSet<Permission>? Permissions { get; set; }
         public DbSet<Status>? Statuses { get; set; }

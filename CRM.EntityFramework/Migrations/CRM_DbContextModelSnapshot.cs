@@ -17,51 +17,6 @@ namespace CRM.EntityFramework.Migrations
                 .HasAnnotation("ProductVersion", "3.1.27")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("CRM.Domain.Models.Feedback", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("FeedbackDate")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("FeedbackDescription")
-                        .HasColumnType("text");
-
-                    b.Property<string>("FeedbackType")
-                        .HasColumnType("text");
-
-                    b.Property<int>("FeedbackUserId")
-                        .HasColumnType("int");
-
-                    b.Property<double?>("Rate")
-                        .HasColumnType("double");
-
-                    b.Property<bool?>("isRead")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("isRevised")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Feedbacks");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FeedbackDate = new DateTime(2022, 10, 28, 1, 12, 45, 921, DateTimeKind.Local).AddTicks(4819),
-                            FeedbackDescription = "Ez az első visszajelzés",
-                            FeedbackType = "Visszajelzés",
-                            FeedbackUserId = 1,
-                            Rate = 2.2000000000000002,
-                            isRead = false,
-                            isRevised = false
-                        });
-                });
-
             modelBuilder.Entity("CRM.Domain.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -101,7 +56,7 @@ namespace CRM.EntityFramework.Migrations
                             Id = 1,
                             FromUserId = 1,
                             MessageText = "Ez az első elküldött levél",
-                            SendDate = new DateTime(2022, 10, 28, 1, 12, 45, 925, DateTimeKind.Local).AddTicks(9578),
+                            SendDate = new DateTime(2022, 10, 27, 23, 37, 51, 690, DateTimeKind.Local).AddTicks(4577),
                             Subject = "Első levél",
                             ToUserId = 1,
                             isRead = false
@@ -225,7 +180,7 @@ namespace CRM.EntityFramework.Migrations
                         {
                             Id = 1,
                             Category = "Prgramozás",
-                            CreateDate = new DateTime(2022, 10, 28, 1, 12, 45, 926, DateTimeKind.Local).AddTicks(2824),
+                            CreateDate = new DateTime(2022, 10, 27, 23, 37, 51, 690, DateTimeKind.Local).AddTicks(6782),
                             CreatedUserId = 1,
                             DeadLine = new DateTime(2022, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResponsibleUserId = 1,
@@ -275,11 +230,11 @@ namespace CRM.EntityFramework.Migrations
                             Id = 1,
                             Email = "Bajarmilan2001@gmail.com",
                             IsActive = true,
-                            LoginDate = new DateTime(2022, 10, 28, 1, 12, 45, 925, DateTimeKind.Local).AddTicks(6850),
+                            LoginDate = new DateTime(2022, 10, 27, 23, 37, 51, 689, DateTimeKind.Local).AddTicks(4979),
                             Name = "Bajár Milán",
                             Password = "Admin",
                             PermissionId = 1,
-                            RegistrationDate = new DateTime(2022, 10, 28, 1, 12, 45, 925, DateTimeKind.Local).AddTicks(6140),
+                            RegistrationDate = new DateTime(2022, 10, 27, 23, 37, 51, 687, DateTimeKind.Local).AddTicks(5712),
                             UserName = "Admin"
                         });
                 });

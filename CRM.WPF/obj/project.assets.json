@@ -7040,31 +7040,19 @@
         "dependencies": {
           "LiveCharts.Wpf": {
             "target": "Package",
-            "version": "[0.9.7, )",
-            "noWarn": [
-              "NU1701"
-            ]
+            "version": "[0.9.7, )"
           },
           "MaterialDesignThemes": {
             "target": "Package",
-            "version": "[4.7.0-ci343, )",
-            "noWarn": [
-              "NU1701"
-            ]
+            "version": "[4.7.0-ci343, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
-            "version": "[4.8.3, )",
-            "noWarn": [
-              "NU1701"
-            ]
+            "version": "[4.8.3, )"
           },
           "sqlite-net-pcl": {
             "target": "Package",
-            "version": "[1.8.116, )",
-            "noWarn": [
-              "NU1701"
-            ]
+            "version": "[1.8.116, )"
           }
         },
         "imports": [
@@ -7096,6 +7084,26 @@
       "warningLevel": 1,
       "message": "Package 'LiveCharts 0.9.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "LiveCharts",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LiveCharts.Wpf 0.9.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "LiveCharts.Wpf",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Identity.Core 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Identity.Core",
       "targetGraphs": [
         "net6.0-windows7.0"
       ]
