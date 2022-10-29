@@ -11,15 +11,20 @@ namespace CRM.WPF.Views
     /// </summary>
     public partial class OwnTaskView : UserControl
     {
-
+        /// <summary>
+        /// View-hoz tartozó viewModel példánya
+        /// </summary>
         private readonly OwnTaskViewModel ownTaskViewModel;
         public OwnTaskView()
         {
             InitializeComponent();
             ownTaskViewModel = new OwnTaskViewModel();
-            //   lbTaskList.ItemsSource = ownTaskViewModel.ownTasks;
         }
-
+        /// <summary>
+        /// A kiválasztott feladat részletes megtekintése
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openSelectedTask(object sender, SelectionChangedEventArgs e)
         {
             if (lbTaskList.SelectedIndex != -1)
@@ -38,7 +43,11 @@ namespace CRM.WPF.Views
 
             }
         }
-
+        /// <summary>
+        /// Szűrés beállítása a feladatoknál
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void setFilterTaskList(object sender, RoutedEventArgs e)
         {
             ownTaskViewModel.setShowFilteredTask(cbPlanning.IsChecked!.Value, cbClosed.IsChecked!.Value, cbStarted.IsChecked!.Value, cbExpired.IsChecked!.Value, cbNearDeadline.IsChecked!.Value);

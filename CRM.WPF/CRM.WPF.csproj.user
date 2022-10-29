@@ -19,6 +19,9 @@
     <Compile Update="Views\AllTaskView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\EmailAnswerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\FeedbackForAdminsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -73,6 +76,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AllTaskView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\EmailAnswerView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\FeedbackForAdminsView.xaml">

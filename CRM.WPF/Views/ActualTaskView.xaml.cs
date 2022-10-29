@@ -130,7 +130,11 @@ namespace CRM.WPF.Views
                 MessageBox.Show("Nem sikerült lezárni a feladatot!");
 
         }
-
+        /// <summary>
+        /// Feladat elvállalása
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void takeOnTask(object sender, RoutedEventArgs e)
         {
             if (actualTaskViewModel.takeOnTask(actualTask, actualTaskViewModel.currentUser, lbTasks))
@@ -141,7 +145,11 @@ namespace CRM.WPF.Views
             else
                 MessageBox.Show("Nem sikerült elvállalni a feladatot!");
         }
-
+        /// <summary>
+        /// Feladat módosítása, csak saját feladatot lehet módosítani
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void startModify(object sender, RoutedEventArgs e)
         {
             txtCategory.Visibility = Visibility.Hidden;
@@ -153,7 +161,11 @@ namespace CRM.WPF.Views
             spModify.Visibility = Visibility.Visible;
             spOpen.Visibility = Visibility.Hidden;
         }
-
+        /// <summary>
+        /// Módosítások elmentése
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void taskSave(object sender, RoutedEventArgs e)
         {
             if (actualTaskViewModel.taskModify(actualTask, lbTasks, Convert.ToDateTime(txtDeadline.Text), cbCategory.Text, tbTaskDescription.Text))
@@ -164,11 +176,18 @@ namespace CRM.WPF.Views
             else cancel();
         }
 
+        /// <summary>
+        /// Meghívja az osztály cancel függvényét ami a visszanavigálásnál beállítja a képernyő tartalmát
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void taskCancel(object sender, RoutedEventArgs e)
         {
             this.cancel();
         }
-
+        /// <summary>
+        /// Visszanavigál minket a kijelölt feladat részletes nézetéhez
+        /// </summary>
         private void cancel()
         {
             txtCategory.Visibility = Visibility.Visible;
@@ -183,7 +202,11 @@ namespace CRM.WPF.Views
             cbResponsibleUser.Visibility = Visibility.Hidden;
             txtResponsibleUser.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Feladat átadásának műveletei, csak saját feladatot lehet átadni
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void taskGiveOtherUser(object sender, RoutedEventArgs e)
         {
             txtResponsibleUser.Visibility = Visibility.Hidden;
@@ -193,12 +216,20 @@ namespace CRM.WPF.Views
             spGive.Visibility = Visibility.Visible;
             spOpen.Visibility = Visibility.Hidden;
         }
-
+        /// <summary>
+        /// Meghívja az osztály cancel függvényét ami a visszanavigálásnál beállítja a képernyő tartalmát
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void taskCancelGive(object sender, RoutedEventArgs e)
         {
             this.cancel();
         }
-
+        /// <summary>
+        /// Feladat átadása
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void taskSaveGiveOtherUser(object sender, RoutedEventArgs e)
         {
             if (actualTaskViewModel.taskTakeOn(actualTask, lbTasks, actualTaskViewModel.users[cbResponsibleUser.SelectedIndex]))

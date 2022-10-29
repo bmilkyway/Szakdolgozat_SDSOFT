@@ -129,3 +129,5 @@ C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windo
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\UserSettingsForAdminView.g.cs
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\FeedbackForAdminsView.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\UserSettingsForAdminView.baml
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\EmailAnswerView.g.cs
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\EmailAnswerView.baml

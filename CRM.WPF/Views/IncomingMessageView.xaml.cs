@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 
 using CRM.Domain.Models;
-using CRM.WPF.State.Navigators;
 using CRM.WPF.ViewModels;
 
 
@@ -16,37 +15,52 @@ namespace CRM.WPF.Views
     /// </summary>
     public partial class IncomingMessageView : UserControl
     {
+        /// <summary>
+        /// View-hoz tartozó view model példánya
+        /// </summary>
         private readonly IncomingMessageViewModel incomingMessageViewModel;
         private List<int> filteredMessageListId;
-        private readonly MessageViewModel messageViewModel;
+        private Message? selectedMessage;
         public IncomingMessageView()
         {
             InitializeComponent();
             filteredMessageListId = new List<int>();
             incomingMessageViewModel = new IncomingMessageViewModel();
-            messageViewModel = new MessageViewModel();
+          
             for (int i = 0; i < incomingMessageViewModel.messageListTitle.Count; i++)
             {
                 lbMessageList.Items.Add(incomingMessageViewModel.messageListTitle[i].ToString());
                 filteredMessageListId.Add(i);
             }
         }
-
+        /// <summary>
+        /// Megnyitja az üzenet részletes nézetét
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void setMessageViewer(object sender, SelectionChangedEventArgs e)
         {
             if (lbMessageList.SelectedIndex != -1)
             {
+
                 try
                 {
-                    txtMessageText.Text = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].MessageText;
-                    txtSubject.Text = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].Subject;
-                    User senderUser = incomingMessageViewModel.UserService!.Get(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]].FromUserId).Result;
+                    selectedMessage = incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]];
+                    txtMessageText.Text = selectedMessage.MessageText;
+                    txtSubject.Text = selectedMessage.Subject;
+                    User senderUser = incomingMessageViewModel.UserService!.Get(selectedMessage.FromUserId).Result;
 
                     if (senderUser == null || senderUser.PermissionId == 5)
+                    {
                         txtAddress.Text = "Törölt felhasználó";
+                        btnSendAnswer.IsEnabled = false;
+                    }
                     else
+                    {
                         txtAddress.Text = senderUser.Name;
-                    incomingMessageViewModel.readNewMessage(incomingMessageViewModel.messageList[filteredMessageListId[lbMessageList.SelectedIndex]], lbMessageList, txtFilter);
+                        btnSendAnswer.IsEnabled = true;
+                    }
+                    incomingMessageViewModel.readNewMessage(selectedMessage, lbMessageList, txtFilter);
                 }
                 catch (Exception er)
                 {
@@ -56,12 +70,11 @@ namespace CRM.WPF.Views
                 }
             }
         }
-
-        private void SendAnswer(object sender, RoutedEventArgs e)
-        {
-            messageViewModel.Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.NewMessage);
-        }
-
+        /// <summary>
+        /// Szűri a beérkező listát
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void filterList(object sender, TextChangedEventArgs e)
         {
             lbMessageList.Items.Clear();
@@ -82,6 +95,19 @@ namespace CRM.WPF.Views
                     lbMessageList.Items.Add(incomingMessageViewModel.messageListTitle[i].ToString());
                     filteredMessageListId.Add(i);
                 }
+            }
+        }
+        /// <summary>
+        /// Válaszablak megnyitása, betölti a megnyitott üzenet tartalmát
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSendAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedMessage != null)
+            {
+                Window answerView = new EmailAnswerView(selectedMessage);
+                answerView.ShowDialog();
             }
         }
     }

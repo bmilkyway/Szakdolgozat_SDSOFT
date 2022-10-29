@@ -46,6 +46,9 @@ namespace CRM.WPF.ViewModels
 
 
         }
+        /// <summary>
+        /// Változások után frissülnek az adatok
+        /// </summary>
         public void reset()
         {
             showFilteredTask.Clear();
@@ -87,6 +90,15 @@ namespace CRM.WPF.ViewModels
 
 
         }
+        /// <summary>
+        /// Lista ami visszaadja a szűrt feladatokat az alábbi paraméterek alapján
+        /// </summary>
+        /// <param name="planning">tervezés alatt</param>
+        /// <param name="closed">lezárt</param>
+        /// <param name="started">elkezdett</param>
+        /// <param name="expired">lejárt</param>
+        /// <param name="nearDeadline">határidőhöz közeli</param>
+
         public void setShowFilteredTask(bool planning, bool closed, bool started, bool expired, bool nearDeadline)
         {
             IEnumerable<Domain.Models.Task> tasks = new List<Domain.Models.Task>();
