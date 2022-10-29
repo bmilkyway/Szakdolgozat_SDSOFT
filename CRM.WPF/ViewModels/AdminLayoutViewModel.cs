@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-
-using CRM.Domain.Models;
+﻿using CRM.WPF.State.Navigators;
 
 namespace CRM.WPF.ViewModels
 {
@@ -11,55 +6,12 @@ namespace CRM.WPF.ViewModels
     {
 
 
-        public List<User> users { get; set; }
+        public INavigator Navigator { get; set; } = new Navigator();
         public AdminLayoutViewModel()
         {
-            users = UserService!.GetAllUser().Result.ToList();
+            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.UserSettingsForAdmin);
         }
 
-        public bool deleteSelectedUser(User user, int selectedIndex)
-        {
-            if (MessageBox.Show("Biztos törli a kijelölt felhasználót?\nA törlés után az adatokat nem lehet visszaállítani!", "Figyelem!", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                users.Remove(users[selectedIndex]);
-                user.PermissionId = 5;
-                UserService!.Update(user.Id, user);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public bool modifySelectedUser(User user, string name, string email, string username, int permissionId, ListBox lbUsers)
-        {
-
-            if (permissionId == 1 && user.PermissionId != 1)
-            {
-                if (MessageBox.Show("Biztos szeretne adminisztrátori jogot adni a kiválasztot felhasználónak?\nA későbbiekben a felhasználót már nem lehet törölni amíg admini jogosultságot birtokol!", "Figyelem!", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-                {
-                    user.Name = name;
-                    user.Email = email;
-                    user.UserName = username;
-                    user.PermissionId = permissionId;
-                    UserService!.Update(user.Id, user);
-                    lbUsers.Items.Refresh();
-                    return true;
-                }
-                else return false;
-            }
-            else
-            {
-                user.Name = name;
-                user.Email = email;
-                user.UserName = username;
-                user.PermissionId = permissionId;
-                UserService!.Update(user.Id, user);
-                lbUsers.Items.Refresh();
-
-                return true;
-            }
-
-        }
+      
     }
 }

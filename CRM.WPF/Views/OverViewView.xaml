@@ -86,7 +86,7 @@
                     </StackPanel>
                 </Border>
             </DockPanel>
-            <TextBlock Grid.Column="0" Grid.Row="5"  Text="Hatéridők" Margin="30 15 0 0"  FontWeight="Bold" FontSize="20"/>
+            <TextBlock Grid.Column="0" Grid.Row="5"  Text="Határidők" Margin="30 15 0 0"  FontWeight="Bold" FontSize="20"/>
             <DockPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="1" Margin="10 10 10 10">
                 <Border CornerRadius="10" Background="#31407B" >
                     <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10 10 10 10">
@@ -165,18 +165,18 @@
             <DockPanel Grid.Column="2" Grid.Row="5" Grid.RowSpan="2" Margin="10 10 10 20">
                 <Border CornerRadius="10" Background="#31407B" >
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10 10 10 10">
-                        <!--  <lvc:CartesianChart Series="{Binding createdAndClosedTasks.SeriesCollection}" LegendLocation="Top" FontSize="15"   Height="380" Width="350">
-                            <lvc:CartesianChart.AxisX>
-                                <lvc:Axis Title="Feladatok műveletei" FontSize="15" Labels="{Binding createdAndClosedTasks.Labels}" Margin="10" ></lvc:Axis>
-                            </lvc:CartesianChart.AxisX>
-                            <lvc:CartesianChart.AxisY>
-                                <lvc:Axis Title="Feladatok száma"  FontSize="15"  LabelFormatter="{Binding createdAndClosedTasks.Formatter}" Margin="10"></lvc:Axis>
-                            </lvc:CartesianChart.AxisY>
-                        </lvc:CartesianChart> -->
+                        <lvc:PieChart HorizontalAlignment="Center" Series="{Binding ownMessages.SeriesCollection}" Margin="0 15 0 0" LegendLocation="None" InnerRadius="80" Height="320" Width="320" FontSize="20">
+                            <lvc:PieChart.ChartLegend>
+                                <lvc:DefaultLegend BulletSize="15"/>
+                            </lvc:PieChart.ChartLegend>
+                            <lvc:PieChart.DataTooltip>
+                                <lvc:DefaultTooltip BulletSize="20"/>
+                            </lvc:PieChart.DataTooltip>
+                        </lvc:PieChart>
                     </StackPanel>
                 </Border>
             </DockPanel>
-            <TextBlock Grid.Column="2" Grid.Row="5"  Text="Határidős feladatok" Margin="20 15 0 0"  FontWeight="Bold" FontSize="20"/>
+            <TextBlock Grid.Column="2" Grid.Row="5"  Text="Saját üzenetek" Margin="20 15 0 0"  FontWeight="Bold" FontSize="20"/>
         </Grid>
     </ScrollViewer>
 </UserControl>

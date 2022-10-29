@@ -21,7 +21,9 @@ namespace CRM.WPF.State.Navigators
         OwnTask,
         AllTask,
         Adminlayout,
-        FeedbackForUser
+        FeedbackForUser,
+        FeedbackForAdmin,
+        UserSettingsForAdmin,
 
     }
 

@@ -17,6 +17,51 @@ namespace CRM.EntityFramework.Migrations
                 .HasAnnotation("ProductVersion", "3.1.27")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("CRM.Domain.Models.Feedback", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FeedbackDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("FeedbackDescription")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FeedbackName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FeedbackType")
+                        .HasColumnType("text");
+
+                    b.Property<int>("FeedbackUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("isRead")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("isRevised")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Feedback");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FeedbackDate = new DateTime(2022, 10, 29, 0, 26, 1, 253, DateTimeKind.Local).AddTicks(5849),
+                            FeedbackDescription = "Ez az első visszajelzés",
+                            FeedbackName = "Visszajelzés",
+                            FeedbackType = "Hiba",
+                            FeedbackUserId = 1,
+                            isRead = false,
+                            isRevised = false
+                        });
+                });
+
             modelBuilder.Entity("CRM.Domain.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -56,7 +101,7 @@ namespace CRM.EntityFramework.Migrations
                             Id = 1,
                             FromUserId = 1,
                             MessageText = "Ez az első elküldött levél",
-                            SendDate = new DateTime(2022, 10, 27, 23, 37, 51, 690, DateTimeKind.Local).AddTicks(4577),
+                            SendDate = new DateTime(2022, 10, 29, 0, 26, 1, 257, DateTimeKind.Local).AddTicks(594),
                             Subject = "Első levél",
                             ToUserId = 1,
                             isRead = false
@@ -180,7 +225,7 @@ namespace CRM.EntityFramework.Migrations
                         {
                             Id = 1,
                             Category = "Prgramozás",
-                            CreateDate = new DateTime(2022, 10, 27, 23, 37, 51, 690, DateTimeKind.Local).AddTicks(6782),
+                            CreateDate = new DateTime(2022, 10, 29, 0, 26, 1, 257, DateTimeKind.Local).AddTicks(2647),
                             CreatedUserId = 1,
                             DeadLine = new DateTime(2022, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ResponsibleUserId = 1,
@@ -230,11 +275,11 @@ namespace CRM.EntityFramework.Migrations
                             Id = 1,
                             Email = "Bajarmilan2001@gmail.com",
                             IsActive = true,
-                            LoginDate = new DateTime(2022, 10, 27, 23, 37, 51, 689, DateTimeKind.Local).AddTicks(4979),
+                            LoginDate = new DateTime(2022, 10, 29, 0, 26, 1, 256, DateTimeKind.Local).AddTicks(8612),
                             Name = "Bajár Milán",
                             Password = "Admin",
                             PermissionId = 1,
-                            RegistrationDate = new DateTime(2022, 10, 27, 23, 37, 51, 687, DateTimeKind.Local).AddTicks(5712),
+                            RegistrationDate = new DateTime(2022, 10, 29, 0, 26, 1, 256, DateTimeKind.Local).AddTicks(8064),
                             UserName = "Admin"
                         });
                 });

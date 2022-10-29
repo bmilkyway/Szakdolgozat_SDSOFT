@@ -25,7 +25,6 @@ C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windo
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\CRM.WPF_MarkupCompile.cache
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\CRM.WPF_MarkupCompile.lref
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\ActualTaskModifyView.g.cs
-C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\ActualTaskView 1.g.cs
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\CRM.WPF.dll
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\refint\CRM.WPF.dll
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\CRM.WPF.pdb
@@ -105,7 +104,6 @@ C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windo
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\ActualTaskModifyView.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\ActualTaskOpenView.baml
-C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\ActualTaskView 1.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\ActualTaskView.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\AdminLayoutView.baml
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\AllTaskView.baml
@@ -127,3 +125,7 @@ C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windo
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\CRM.WPF.csproj.CopyComplete
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\CRM.WPF.genruntimeconfig.cache
 C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\ref\CRM.WPF.dll
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\FeedbackForAdminsView.g.cs
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\UserSettingsForAdminView.g.cs
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\FeedbackForAdminsView.baml
+C:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\obj\Debug\net6.0-windows\Views\UserSettingsForAdminView.baml

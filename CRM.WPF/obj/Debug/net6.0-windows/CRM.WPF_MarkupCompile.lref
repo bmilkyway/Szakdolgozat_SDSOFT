@@ -4,10 +4,10 @@ FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Controls\NavigationBa
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\MainWindow.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\ActualTaskModifyView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\ActualTaskOpenView.xaml;;
-FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\ActualTaskView 1.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\ActualTaskView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\AdminLayoutView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\AllTaskView.xaml;;
+FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\FeedbackForAdminsView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\FeedbackForUserView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\HomeView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\IncomingMessageView.xaml;;
@@ -18,4 +18,5 @@ FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\OverViewView.xa
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\OwnTaskView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\SentMessageView.xaml;;
 FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\TaskView.xaml;;
+FC:\Users\bajar\OneDrive\Dokumentumok\Szakdolgozat\CRM.WPF\Views\UserSettingsForAdminView.xaml;;
 

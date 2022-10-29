@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CRM.WPF.Views"
                  xmlns:viewModel ="clr-namespace:CRM.WPF.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
               mc:Ignorable="d" 
              Foreground="White"
           d:DesignHeight="740" d:DesignWidth="1030"  Background="#41518F">
@@ -31,12 +33,14 @@
         <ComboBox  Name="cbTaskCategory" FontSize="20" Grid.Column="1" Grid.Row="1" Margin="10,0,10,0"/>
 
         <TextBlock Text="Határidő" Grid.Column="2" Grid.Row="0" Foreground="White" FontSize="20" FontWeight="Bold" Margin="10 10 10 0"  />
-        <DatePicker Name="dpDeadline" Text=""  FontSize="20" Grid.Column="3" Grid.Row="1" Margin="10" Foreground="White"/>
+        <DatePicker Name="dpDeadline" Text=""  FontSize="20" Grid.Column="3" Grid.Row="1" Margin="10" Foreground="White" materialDesign:DatePickerAssist.OutlinedBorderActiveThickness="3"
+  materialDesign:DatePickerAssist.OutlinedBorderInactiveThickness="3"
+  materialDesign:HintAssist.FloatingOffset="0,-23"/>
         <RadioButton Name="rbPlanning" Content="Tervezés" Grid.Row="2" Grid.Column="0" FontSize="20" Margin="10" Foreground="White" FontWeight="Bold" IsChecked="true"/>
         <RadioButton Name="rbImplementation" Content="Végrehajtható" Grid.Row="2" Grid.Column="1" FontSize="20" Margin="10" Foreground="White" FontWeight="Bold"/>
         <DockPanel Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3">
             <Border CornerRadius="20" Background="#31407B">
-                <TextBox Margin="0 35 15 15"  Name="txtTaskDescription" TextWrapping="Wrap" Padding="20 10" FontSize="20" AcceptsReturn="True"/>
+                <TextBox Margin="15 35 15 15"  Name="txtTaskDescription" TextWrapping="Wrap" Padding="20 10" FontSize="20" AcceptsReturn="True"/>
             </Border>
 
         </DockPanel>

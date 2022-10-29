@@ -4,10 +4,62 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CRM.WPF.Views"
+             xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Foreground="White"
              mc:Ignorable="d" 
-             Background="Green"
-             d:DesignHeight="450" d:DesignWidth="800">
+              Background="#41518F"
+             d:DesignHeight="740" d:DesignWidth="1030">
     <Grid>
-            
-    </Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="20" />
+            <ColumnDefinition Width ="*" />
+            <ColumnDefinition Width ="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Background="#31407B" Grid.ColumnSpan="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Grid.Row="0"  Content="Jelentések" FontSize="15" Background="Transparent" BorderBrush="Transparent" Foreground="White"   />
+            </Grid> 
+        </StackPanel>
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Visszajelzés" Grid.Column="0" Grid.Row="0" Foreground="White" FontSize="20" FontWeight="Bold" Margin="10 10 0 0"/>
+                <TextBox Name="txtFeedbackName"  FontSize="20" Grid.Column="0" Grid.Row="1" Margin="10"/>
+                <TextBlock Text="Típus" Grid.Column="1" Grid.Row="0" Foreground="White" FontSize="20" FontWeight="Bold" Margin="10 10 0 0"/>
+                <ComboBox  Name="cbFeedbackType" FontSize="20" Grid.Column="1" Grid.Row="1" Margin="10,0,10,0"/>
+                <DockPanel Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Margin="0 10 0 0" Grid.ColumnSpan="3">
+                    <Border CornerRadius="20" Background="#31407B">
+                        <TextBox Margin="15 45 15 15"  Name="txtTaskDescription" TextWrapping="Wrap" Padding="20 10" FontSize="20" AcceptsReturn="True"/>
+                    </Border>
+                </DockPanel>
+                <TextBlock Text="Visszajelzés leírása" Grid.Column="0" Grid.Row="2" Foreground="White" FontSize="20" FontWeight="Bold" Margin="20 20 10 0"  />
+                <Button Name="btnSend" Grid.Row="5" Grid.Column="3" Background="White" Content="Küldés" Foreground="Black" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Width="300" MaxWidth="300" Margin="10 10 0 0"  Click="sendFeedback"/>
+            </Grid>
+        </DockPanel>
+        </Grid>
 </UserControl>

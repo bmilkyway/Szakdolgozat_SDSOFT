@@ -75,6 +75,22 @@ namespace CRM.WPF.Services.EmailSender
             Üzenet.To.Add(Fogadó);
             Client.SendMailAsync(Üzenet);
         }
+
+        public void resiveFeedback(User user, Feedback feedback)
+        {
+            SmtpClient Client = SmtpClient;
+            MailAddress Küldő = new MailAddress("sdsoft.helper@gmail.com");
+            MailAddress Fogadó = new MailAddress(user.Email!);
+            MailMessage Üzenet = new MailMessage
+            {
+                From = Küldő,
+                Subject = "Visszajelzés feldolgozva",
+                Body = $"Kedes {user.Name}!\nAz Ön által küldött visszajelzés feldolgozva és lezárva!\n\n Visszajelzése a következő volt:\n{feedback.FeedbackName} - {feedback.FeedbackType}\n\n\"{feedback.FeedbackDescription}\"\n\nKézbesítve: {feedback.FeedbackDate}" +
+                $"\n\nTovábbi kérédekkel forduljon az alkalmazás fejlesztőjéhez és üzemeltetőjéhez!\nElérhetőségek: \tgmal: sdsoft.helper@gmail.com\ttelefonszám: +36(30)3074063"
+            };
+            Üzenet.To.Add(Fogadó);
+            Client.SendMailAsync(Üzenet);
+        }
     }
 
 }

@@ -35,13 +35,33 @@ namespace CRM.WPF.ViewModels
                 await MessageService!.Update(actualMessage.Id, actualMessage);
                 messageList = MessageService!.IncomingMessages(currentUser.Id).Result.ToList();
                 lbMessages.Items.Clear();
-                for (int i = 0; i < messageList.Count; i++)
+                if (!string.IsNullOrEmpty(txtFilter.Text))
                 {
-                    if (messageList[i].isRead == true)
-                        lbMessages.Items.Add(String.Format("{0} - {1}", messageList[i].Subject, messageList[i].SendDate));
-                    else
-                        lbMessages.Items.Add(String.Format("(Új) {0} - {1}", messageList[i].Subject, messageList[i].SendDate));
+                    for (int i = 0; i < messageList.Count; i++)
+                        if (messageListTitle[i].Contains(txtFilter.Text))
+                        {
+                            messageListTitle[i] = messageList[i].ToString();
+                            if (messageList[i].isRead == true)
+                                lbMessages.Items.Add(String.Format("{0} - {1} ", messageList[i].Subject, messageList[i].SendDate));
+                            else
+                                lbMessages.Items.Add(String.Format("(Új) {0} - {1}", messageList[i].Subject, messageList[i].SendDate));
+
+                        }
                 }
+                else
+                    for (int i = 0; i < messageList.Count; i++)
+                    {
+                        messageListTitle[i] = messageList[i].ToString();
+                        if (messageList[i].isRead == true)
+                            lbMessages.Items.Add(String.Format("{0} - {1} ", messageList[i].Subject, messageList[i].SendDate));
+                        else
+                            lbMessages.Items.Add(String.Format("(Új) {0} - {1}", messageList[i].Subject, messageList[i].SendDate));
+
+                    }
+                lbMessages.Items.Refresh();
+
+
+              
             }
         }
 

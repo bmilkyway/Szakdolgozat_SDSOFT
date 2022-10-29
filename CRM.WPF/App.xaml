@@ -53,8 +53,20 @@
             <DataTemplate DataType="{x:Type viewmodels:AdminLayoutViewModel}">
                 <views:AdminLayoutView/>
             </DataTemplate>
-            
-         
+
+            <DataTemplate DataType="{x:Type viewmodels:FeedbackForUsersViewModel}">
+                <views:FeedbackForUserView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:FeedbackForAdminViewModel}">
+                <views:FeedbackForAdminsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:UserSettingsForAdminViewModel}">
+                <views:UserSettingsForAdminView/>
+            </DataTemplate>
+
+
 
 
 

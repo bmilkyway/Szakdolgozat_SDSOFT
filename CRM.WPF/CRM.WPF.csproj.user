@@ -19,6 +19,9 @@
     <Compile Update="Views\AllTaskView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\FeedbackForAdminsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ForgotPasswordView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
     <Compile Update="Views\TaskView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UserSettingsForAdminView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\NavigationBar.xaml">
@@ -67,6 +73,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AllTaskView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\FeedbackForAdminsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ForgotPasswordView.xaml">
@@ -106,6 +115,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TaskView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserSettingsForAdminView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
